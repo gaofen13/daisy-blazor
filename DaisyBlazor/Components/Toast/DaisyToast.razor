@@ -1,0 +1,12 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+@implements IDisposable
+
+<DaisyAlert Id="@Id" Class="@Class" Style="@Style" @attributes="@Attributes" Filled="@ToastSettings.Filled" ShowIcon="@ToastSettings.ShowIcon" AlertLevel="@ToastLevel" Title="@Title" ShowProgressBar="@ShowProgressBar" ProgressValue="@_progress">
+    <MessageTemplate>
+        @ChildContent
+    </MessageTemplate>
+    <ActionTemplate>
+        <DaisyButton Size="@Size.Sm" Circle OnClick="@Close">✕</DaisyButton>
+    </ActionTemplate>
+</DaisyAlert>

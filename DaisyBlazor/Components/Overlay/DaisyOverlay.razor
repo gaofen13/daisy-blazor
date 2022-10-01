@@ -1,0 +1,9 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+@if (Visible)
+{
+    <div id="@Id" style="@Style" class="@Classname" @attributes="@Attributes" @onclick="@OnBackgroundClick">
+        @ChildContent
+    </div>
+}

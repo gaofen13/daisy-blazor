@@ -1,0 +1,17 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+@if (!string.IsNullOrWhiteSpace(ImgSource))
+{
+    <figure>
+        <img id="@Id" @attributes="@Attributes" class="@Class" style="@Style" src="@ImgSource" alt="@ImgAlt" />
+    </figure>
+}
+
+@code {
+    [Parameter]
+    public string? ImgSource { get; set; }
+
+    [Parameter]
+    public string? ImgAlt { get; set; }
+}

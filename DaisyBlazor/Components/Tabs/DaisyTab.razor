@@ -1,0 +1,16 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<div id="@Id" class="grid">
+    <a class="@Classname">
+        @if (TabTemplate != null)
+        {
+            @TabTemplate
+        }
+        else
+        {
+            @TabName
+        }
+    </a>
+
+</div>

@@ -1,0 +1,14 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyInputBase<TValue>
+@typeparam TValue
+
+<option value="@Value" disabled="@Disabled" id="@Id" class="@Class" style="@Style" @attributes="@Attributes">
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+    else
+    {
+        @Text
+    }
+</option>

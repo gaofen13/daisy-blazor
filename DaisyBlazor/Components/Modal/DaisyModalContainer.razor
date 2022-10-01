@@ -1,0 +1,8 @@
+﻿@namespace DaisyBlazor
+
+<CascadingValue Value="@this" IsFixed>
+    @foreach (var modal in _modals)
+    {
+        @modal.ModalInstance
+    }
+</CascadingValue>

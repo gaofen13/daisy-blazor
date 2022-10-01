@@ -1,0 +1,33 @@
+﻿<DaisyCard>
+    <DaisyCardBody>
+        <TitleTemplate>Card</TitleTemplate>
+        <BodyTemplate>
+            @Test
+        </BodyTemplate>
+        <ActionTemplate>
+            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="CloseAsync">Button</DaisyButton>
+        </ActionTemplate>
+    </DaisyCardBody>
+</DaisyCard>
+
+@code {
+    private DaisyButton? btn;
+    [CascadingParameter]
+    private DaisyModal ModalInstance { get; set; } = default!;
+
+    [Parameter]
+    public string? Test { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (btn is not null)
+        {
+            await btn.ElementButton.FocusAsync();
+        }
+    }
+
+    private async Task CloseAsync()
+    {
+        await ModalInstance.CloseAsync(ModalResult.Ok<string>("test"));
+    }
+}

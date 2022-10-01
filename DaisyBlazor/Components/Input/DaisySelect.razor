@@ -1,0 +1,7 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyInputBase<TValue>
+@typeparam TValue
+
+<InputSelect TValue="@TValue" @ref="@Select" id="@Id" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" class="@Classname" style="@Style" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" @attributes="@Attributes">
+    @OptionList
+</InputSelect>

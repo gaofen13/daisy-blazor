@@ -1,0 +1,7 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyInputBase<TValue>
+@typeparam TValue
+
+<InputRadioGroup id="@Id" @ref="@RadioGroup" class="@Class" style="@Style" disabled="@Disabled" autofocus="@AutoFocus" placeholder="@Placeholder" TValue="TValue" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" Name="@Name" @attributes="@Attributes">
+    @RadioList
+</InputRadioGroup>

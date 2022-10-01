@@ -1,0 +1,73 @@
+﻿@page "/"
+@inject NavigationManager Navigation
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary"></DaisyRadialProgress>
+<DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
+
+<DaisyAlert>
+    <ActionTemplate>
+        <DaisyButton>关闭</DaisyButton>
+    </ActionTemplate>
+</DaisyAlert>
+<DaisyTooltip Class="w-full" Text="alert">
+    <DaisyAlert AlertLevel="Level.Warning" Filled />
+</DaisyTooltip>
+
+<DaisyButtonGroup Vertical>
+    <DaisyButton Color="@color" OnClick="@(()=>add++)">Button @add</DaisyButton>
+    <DaisyButton Color="Color.Secondary" OnClick="@Toggle">Button2</DaisyButton>
+    <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button2</DaisyButton>
+</DaisyButtonGroup>
+
+<EditForm Model="@add">
+    <DaisyInputText @bind-Value=input Bordered="@true" AutoFocus />
+    <DaisySelect @bind-Value=color>
+        <OptionList>
+            <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+            <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+            <DaisySelectOption Value="Color.Success">Success</DaisySelectOption>
+        </OptionList>
+    </DaisySelect>
+    <DaisyRadioGroup @bind-Value="@color">
+        <RadioList>
+            <DaisyRadio Value="Color.Primary" />
+            <DaisyRadio Value="Color.Secondary" />
+            <DaisyRadio Value="Color.Success" />
+        </RadioList>
+    </DaisyRadioGroup>
+    <DaisyCheckbox @bind-Value="check" />
+</EditForm>
+
+<DaisyModal Visible=check>
+    <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>
+</DaisyModal>
+
+@code {
+    private bool check;
+    private string input = "";
+    private int add;
+    private Color color { get; set; } = Color.Secondary;
+    [Inject] public ModalService? Modal { get; set; }
+    [Inject] public ToastService? Toast { get; set; }
+    private async void Toggle()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("Test", "Dialog");
+        var reference = Modal?.Show<DailogTest>(parameters);
+        var res = await reference!.Result;
+    }
+
+    private void ShowToast()
+    {
+        add++;
+        Toast?.ShowError(add.ToString(), "Error");
+    }
+}

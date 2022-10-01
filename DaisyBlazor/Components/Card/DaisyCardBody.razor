@@ -1,0 +1,32 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<div class="card-body @Class" style="@Style">
+    @if (TitleTemplate != null)
+    {
+        <h2 class="card-title">
+            @TitleTemplate
+        </h2>
+
+    }
+    <p>
+        @BodyTemplate
+    </p>
+    @if (ActionTemplate != null)
+    {
+        <div class="card-actions justify-end">
+            @ActionTemplate
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? TitleTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment? BodyTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment? ActionTemplate { get; set; }
+}
