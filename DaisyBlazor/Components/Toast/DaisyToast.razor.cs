@@ -18,20 +18,17 @@ namespace DaisyBlazor
         public string? Title { get; set; }
 
         [Parameter]
-        public bool ShowProgressBar { get; set; }
-
-        [Parameter]
         public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
         public Guid ToastId { get; set; }
 
         [Parameter]
-        public GlobalSettings ToastSettings { get; set; } = new();
+        public ToastOptions Options { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
-            _countdownTimer = new CountdownTimer(ToastSettings.TimeOut)
+            _countdownTimer = new CountdownTimer(Options.TimeOut)
                 .OnTick(CalculateProgressAsync)
                 .OnElapsed(Close);
 

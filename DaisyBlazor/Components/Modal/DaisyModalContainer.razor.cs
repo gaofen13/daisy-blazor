@@ -8,7 +8,7 @@ namespace DaisyBlazor
     {
         [Inject] private NavigationManager? NavigationManager { get; set; }
         [Inject] private ModalService ModalService { get; set; } = default!;
-        [Parameter] public bool ClickBackgroundCancel { get; set; }
+        [Parameter] public ModalOptions? GlobalOptions { get; set; }
 
         private readonly Collection<ModalReference> _modals = new();
         private bool _haveActiveModals;

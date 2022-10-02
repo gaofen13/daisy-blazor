@@ -5,6 +5,9 @@ namespace DaisyBlazor
 {
     public partial class DaisyModal
     {
+        private string? _overlayClass;
+        private bool _clickBackgroundCancel;
+
         private string Classname =>
           new ClassBuilder("modal-box relative")
             .AddClass(Class)
@@ -12,21 +15,25 @@ namespace DaisyBlazor
 
         [CascadingParameter] private DaisyModalContainer? ModalContainer { get; set; }
 
+        [Parameter] public ModalOptions? Options { get; set; }
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public bool Visible { get; set; }
         [Parameter] public Guid InstanceId { get; set; }
 
-        private bool _disableNextRender;
-
-        protected override bool ShouldRender()
+        protected override void OnInitialized()
         {
-            if (!_disableNextRender)
+            if (!string.IsNullOrWhiteSpace(Options?.OverlayClass))
             {
-                return true;
+                _overlayClass = Options.OverlayClass;
+            }
+            else if (!string.IsNullOrWhiteSpace(ModalContainer?.GlobalOptions?.OverlayClass))
+            {
+                _overlayClass = ModalContainer.GlobalOptions.OverlayClass;
             }
 
-            _disableNextRender = false;
-            return false;
+            _clickBackgroundCancel = Options?.ClickBackgroundCancel == true || ModalContainer?.GlobalOptions?.ClickBackgroundCancel == true;
+
+            base.OnInitialized();
         }
 
         /// <summary>
@@ -58,12 +65,10 @@ namespace DaisyBlazor
 
         private async Task OnClickBackgroundAsync()
         {
-            if (ModalContainer?.ClickBackgroundCancel == true)
+            if (_clickBackgroundCancel)
             {
                 await CancelAsync();
-                return;
             }
-            _disableNextRender = true;
         }
     }
 }

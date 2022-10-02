@@ -2,18 +2,18 @@
 
 namespace DaisyBlazor.Components.Toast
 {
-    internal class DaisyInstance
+    internal class ToastInstance
     {
-        public DaisyInstance(GlobalSettings settings)
+        public ToastInstance(ToastOptions settings)
         {
-            ToastSettings = settings;
+            Options = settings;
         }
 
         public Guid Id { get; set; } = Guid.NewGuid();
 
         public DateTime TimeStamp { get; set; } = DateTime.Now;
 
-        public GlobalSettings ToastSettings { get; set; }
+        public ToastOptions Options { get; set; }
 
         public Level ToastLevel { get; set; }
 

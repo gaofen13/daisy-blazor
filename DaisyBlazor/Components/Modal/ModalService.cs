@@ -12,7 +12,21 @@ namespace DaisyBlazor
         /// </summary>
         /// <param name="title">Modal title.</param>
         public ModalReference Show<T>() where T : IComponent
-            => Show<T>(new ModalParameters());
+            => Show<T>(new ModalParameters(), new ModalOptions());
+
+        /// <summary>
+        /// Shows the modal with the component type using the specified title.
+        /// </summary>
+        /// <param name="title">Modal title.</param>
+        public ModalReference Show<T>(ModalParameters parameters) where T : IComponent
+            => Show<T>(parameters, new ModalOptions());
+
+        /// <summary>
+        /// Shows the modal with the component type using the specified title.
+        /// </summary>
+        /// <param name="title">Modal title.</param>
+        public ModalReference Show<T>(ModalOptions options) where T : IComponent
+            => Show<T>(new ModalParameters(), options);
 
         /// <summary>
         /// Shows the modal with the component type using the specified <paramref name="title"/>,
@@ -20,8 +34,24 @@ namespace DaisyBlazor
         /// </summary>
         /// <param name="title">Modal title.</param>
         /// <param name="parameters">Key/Value collection of parameters to pass to component being displayed.</param>
-        public ModalReference Show<T>(ModalParameters parameters) where T : IComponent
-            => Show(typeof(T), parameters);
+        public ModalReference Show<T>(ModalParameters parameters, ModalOptions options) where T : IComponent
+            => Show(typeof(T), parameters, options);
+
+        /// <summary>
+        /// Shows the modal with the component type using the specified title.
+        /// </summary>
+        /// <param name="contentComponent">Type of component to display.</param>
+        /// <param name="title">Modal title.</param>
+        public ModalReference Show(Type contentComponent, ModalParameters parameters)
+            => Show(contentComponent, parameters, new ModalOptions());
+
+        /// <summary>
+        /// Shows the modal with the component type using the specified title.
+        /// </summary>
+        /// <param name="contentComponent">Type of component to display.</param>
+        /// <param name="title">Modal title.</param>
+        public ModalReference Show(Type contentComponent, ModalOptions options)
+            => Show(contentComponent, new ModalParameters(), options);
 
         /// <summary>
         /// Shows the modal with the component type using the specified title.
@@ -29,7 +59,7 @@ namespace DaisyBlazor
         /// <param name="contentComponent">Type of component to display.</param>
         /// <param name="title">Modal title.</param>
         public ModalReference Show(Type contentComponent)
-            => Show(contentComponent, new ModalParameters());
+            => Show(contentComponent, new ModalParameters(), new ModalOptions());
 
         /// <summary>
         /// Shows the modal with the component type using the specified <paramref name="title"/>,
@@ -39,7 +69,7 @@ namespace DaisyBlazor
         /// <param name="title">Modal title.</param>
         /// <param name="parameters">Key/Value collection of parameters to pass to component being displayed.</param>
         /// <param name="options">Options to configure the modal.</param>
-        public ModalReference Show(Type contentComponent, ModalParameters parameters)
+        public ModalReference Show(Type contentComponent, ModalParameters parameters, ModalOptions options)
         {
             if (!typeof(IComponent).IsAssignableFrom(contentComponent))
             {
@@ -64,8 +94,9 @@ namespace DaisyBlazor
                 builder.SetKey("ModalInstance_" + modalInstanceId);
                 builder.AddAttribute(1, "InstanceId", modalInstanceId);
                 builder.AddAttribute(2, "Visible", true);
-                builder.AddAttribute(3, "ChildContent", modalContent);
-                builder.AddComponentReferenceCapture(4, compRef => modalReference!.ModalInstanceRef = (DaisyModal)compRef);
+                builder.AddAttribute(3, "Options", options);
+                builder.AddAttribute(4, "ChildContent", modalContent);
+                builder.AddComponentReferenceCapture(5, compRef => modalReference!.ModalInstanceRef = (DaisyModal)compRef);
                 builder.CloseComponent();
             });
             modalReference = new ModalReference(modalInstanceId, modalInstance, this);

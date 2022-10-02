@@ -12,7 +12,7 @@ namespace DaisyBlazor
         /// <summary>
         /// A event that will be invoked when showing a toast
         /// </summary>
-        public event Action<Level, RenderFragment, string?>? OnShow;
+        public event Action<Level, RenderFragment, string?, ToastOptions?>? OnShow;
 
         /// <summary>
         /// A event that will be invoked when clearing all toasts
@@ -25,8 +25,8 @@ namespace DaisyBlazor
         /// <param name="message">Text to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowInfo(string message, string? title = null)
-            => ShowToast(Level.Info, message, title);
+        public void ShowInfo(string message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Info, message, title, options);
 
         /// <summary>
         /// Shows a information toast 
@@ -34,8 +34,8 @@ namespace DaisyBlazor
         /// <param name="message">RenderFragment to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowInfo(RenderFragment message, string? title = null)
-            => ShowToast(Level.Info, message, title);
+        public void ShowInfo(RenderFragment message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Info, message, title, options);
 
         /// <summary>
         /// Shows a success toast 
@@ -43,8 +43,8 @@ namespace DaisyBlazor
         /// <param name="message">Text to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowSuccess(string message, string? title = null)
-            => ShowToast(Level.Success, message, title);
+        public void ShowSuccess(string message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Success, message, title, options);
 
         /// <summary>
         /// Shows a success toast 
@@ -52,8 +52,8 @@ namespace DaisyBlazor
         /// <param name="message">RenderFragment to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowSuccess(RenderFragment message, string? title = null)
-            => ShowToast(Level.Success, message, title);
+        public void ShowSuccess(RenderFragment message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Success, message, title, options);
 
         /// <summary>
         /// Shows a warning toast 
@@ -61,8 +61,8 @@ namespace DaisyBlazor
         /// <param name="message">Text to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowWarning(string message, string? title = null)
-            => ShowToast(Level.Warning, message, title);
+        public void ShowWarning(string message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Warning, message, title, options);
 
         /// <summary>
         /// Shows a warning toast 
@@ -70,8 +70,8 @@ namespace DaisyBlazor
         /// <param name="message">RenderFragment to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowWarning(RenderFragment message, string? title = null)
-            => ShowToast(Level.Warning, message, title);
+        public void ShowWarning(RenderFragment message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Warning, message, title, options);
 
         /// <summary>
         /// Shows a error toast 
@@ -79,8 +79,8 @@ namespace DaisyBlazor
         /// <param name="message">Text to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowError(string message, string? title = null)
-            => ShowToast(Level.Error, message, title);
+        public void ShowError(string message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Error, message, title, options);
 
         /// <summary>
         /// Shows a error toast 
@@ -88,8 +88,8 @@ namespace DaisyBlazor
         /// <param name="message">RenderFragment to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowError(RenderFragment message, string? title = null)
-            => ShowToast(Level.Error, message, title);
+        public void ShowError(RenderFragment message, string? title = null, ToastOptions? options = null)
+            => ShowToast(Level.Error, message, title, options);
 
         /// <summary>
         /// Shows a toast using the supplied settings
@@ -98,8 +98,8 @@ namespace DaisyBlazor
         /// <param name="message">Text to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowToast(Level level, string message, string? title = null)
-            => ShowToast(level, builder => builder.AddContent(0, message), title);
+        public void ShowToast(Level level, string message, string? title = null, ToastOptions? options = null)
+            => ShowToast(level, builder => builder.AddContent(0, message), title, options);
 
         /// <summary>
         /// Shows a toast using the supplied settings
@@ -108,8 +108,8 @@ namespace DaisyBlazor
         /// <param name="message">RenderFragment to display on the toast</param>
         /// <param name="heading">The text to display as the toasts heading</param>
         /// <param name="onClick">Action to be executed on click</param>
-        public void ShowToast(Level level, RenderFragment message, string? title = null)
-            => OnShow?.Invoke(level, message, title);
+        public void ShowToast(Level level, RenderFragment message, string? title = null, ToastOptions? options = null)
+            => OnShow?.Invoke(level, message, title, options);
 
         /// <summary>
         /// Removes all toasts

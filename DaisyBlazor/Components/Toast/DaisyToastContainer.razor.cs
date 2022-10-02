@@ -9,8 +9,8 @@ namespace DaisyBlazor
     {
         private string Classname =>
           new ClassBuilder("toast")
-            .AddClass($"toast-{GlobalSettings.PositionX.ToString().ToLower()}")
-            .AddClass($"toast-{GlobalSettings.PositionY.ToString().ToLower()}")
+            .AddClass($"toast-{PositionX.ToString().ToLower()}")
+            .AddClass($"toast-{PositionY.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
@@ -26,18 +26,30 @@ namespace DaisyBlazor
         private NavigationManager NavigationManager { get; set; } = default!;
 
         [Parameter]
-        public GlobalSettings GlobalSettings { get; set; } = new();
+        public bool RemoveToastsOnNavigation { get; set; }
 
-        private List<DaisyInstance> ToastList { get; set; } = new();
+        [Parameter]
+        public int MaxItemsShown { get; set; } = 10;
 
-        private Queue<DaisyInstance> ToastWaitingQueue { get; set; } = new();
+        [Parameter]
+        public PositionX PositionX { get; set; }
+
+        [Parameter]
+        public PositionY PositionY { get; set; }
+
+        [Parameter]
+        public ToastOptions GlobalOptions { get; set; } = new();
+
+        private List<ToastInstance> ToastList { get; set; } = new();
+
+        private Queue<ToastInstance> ToastWaitingQueue { get; set; } = new();
 
         protected override void OnInitialized()
         {
             ToastService.OnShow += ShowToast;
             ToastService.OnClearAll += ClearAll;
 
-            if (GlobalSettings.RemoveToastsOnNavigation)
+            if (RemoveToastsOnNavigation)
             {
                 NavigationManager.LocationChanged += ClearToasts;
             }
@@ -76,13 +88,13 @@ namespace DaisyBlazor
             });
         }
 
-        private void ShowToast(Level level, RenderFragment message, string? title)
+        private void ShowToast(Level level, RenderFragment message, string? title, ToastOptions? options)
         {
             InvokeAsync(() =>
             {
-                var toast = new DaisyInstance(GlobalSettings) { ToastLevel = level, MessageContent = message, Title = title };
+                var toast = new ToastInstance(options ?? GlobalOptions) { ToastLevel = level, MessageContent = message, Title = title };
 
-                if (ToastList.Count < GlobalSettings.MaxItemsShown)
+                if (ToastList.Count < MaxItemsShown)
                 {
                     ToastList.Add(toast);
 

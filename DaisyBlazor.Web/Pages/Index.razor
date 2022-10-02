@@ -61,13 +61,14 @@ Welcome to your new app.
     {
         var parameters = new ModalParameters();
         parameters.Add("Test", "Dialog");
-        var reference = Modal?.Show<DailogTest>(parameters);
+        var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
     }
 
     private void ShowToast()
     {
         add++;
-        Toast?.ShowError(add.ToString(), "Error");
+        Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 2 });
+        Toast?.ShowSuccess(add.ToString(), "Success");
     }
 }

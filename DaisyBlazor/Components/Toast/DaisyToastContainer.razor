@@ -7,7 +7,7 @@
         <CascadingValue Value="@this" IsFixed>
             @foreach (var toast in ToastList.OrderBy(x => x.TimeStamp))
             {
-                <DaisyToast @key="toast" ToastSettings="toast.ToastSettings" ToastId="@toast.Id" ToastLevel="@toast.ToastLevel" Title="@toast.Title" ShowProgressBar="@GlobalSettings.ShowProgressBar">
+                <DaisyToast @key="toast" Options="toast.Options" ToastId="@toast.Id" ToastLevel="@toast.ToastLevel" Title="@toast.Title">
                     @toast.MessageContent
                 </DaisyToast>
             }
