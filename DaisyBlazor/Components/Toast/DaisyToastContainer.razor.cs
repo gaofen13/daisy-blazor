@@ -1,8 +1,7 @@
 ﻿using DaisyBlazor.Components.Toast;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Components;
 using DaisyBlazor.Utilities;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 
 namespace DaisyBlazor
 {
