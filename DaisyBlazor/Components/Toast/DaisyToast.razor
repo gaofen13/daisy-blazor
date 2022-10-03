@@ -2,11 +2,31 @@
 @inherits DaisyComponentBase
 @implements IDisposable
 
-<DaisyAlert Id="@Id" Class="@Class" Style="@Style" @attributes="@Attributes" Filled="@Options.Filled" ShowIcon="@Options.ShowIcon" AlertLevel="@ToastLevel" Title="@Title" ShowProgressBar="@Options.ShowProgressBar" ProgressValue="@_progress">
-    <MessageTemplate>
-        @ChildContent
-    </MessageTemplate>
-    <ActionTemplate>
-        <DaisyButton Size="@Size.Sm" Circle OnClick="@Close">✕</DaisyButton>
-    </ActionTemplate>
-</DaisyAlert>
+<div id="@Id" class="@Classname" style="@Style" @attributes="@Attributes">
+    @if (ChildContent is not null)
+    {
+        <CascadingValue Value="@this" IsFixed>
+            @ChildContent
+        </CascadingValue>
+    }
+    else
+    {
+        <div class="flex flex-row">
+            <DaisyAlert Filled="@Options.Filled" ShowIcon="@Options.ShowIcon" AlertLevel="@ToastLevel" Title="@Title">
+                <ChildContent>
+                    @MessageContent
+                </ChildContent>
+                <ActionContent>
+                    @if (Options.ShowCloseButton)
+                    {
+                        <DaisyButton Size="@Size.Sm" Circle OnClick="@Close">✕</DaisyButton>
+                    }
+                </ActionContent>
+            </DaisyAlert>
+        </div>
+    }
+    @if (Options.ShowProgress)
+    {
+        <DaisyProgress Color="@(Enum.Parse<Color>(ToastLevel.ToString()))" Value="@_progress" />
+    }
+</div>

@@ -24,22 +24,13 @@ namespace DaisyBlazor
         public bool ShowIcon { get; set; } = true;
 
         [Parameter]
-        public bool ShowProgressBar { get; set; }
-
-        [Parameter]
-        public int ProgressValue { get; set; }
-
-        [Parameter]
-        public bool Indeterminate { get; set; }
-
-        [Parameter]
         public bool Filled { get; set; }
 
         [Parameter]
-        public RenderFragment? MessageTemplate { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
-        public RenderFragment? ActionTemplate { get; set; }
+        public RenderFragment? ActionContent { get; set; }
 
         [Parameter]
         public RenderFragment? InfoIconTemplate { get; set; }

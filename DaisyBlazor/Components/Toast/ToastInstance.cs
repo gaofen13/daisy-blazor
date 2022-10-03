@@ -9,6 +9,12 @@ namespace DaisyBlazor.Components.Toast
             Options = settings;
         }
 
+        public ToastInstance(RenderFragment toastContent, ToastOptions settings)
+        {
+            ToastContent = toastContent;
+            Options = settings;
+        }
+
         public Guid Id { get; set; } = Guid.NewGuid();
 
         public DateTime TimeStamp { get; set; } = DateTime.Now;
@@ -20,5 +26,7 @@ namespace DaisyBlazor.Components.Toast
         public string? Title { get; set; }
 
         public RenderFragment? MessageContent { get; set; }
+
+        public RenderFragment? ToastContent { get; set; }
     }
 }

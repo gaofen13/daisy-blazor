@@ -9,12 +9,14 @@ namespace DaisyBlazor
 {
     public class ToastOptions
     {
-        public bool Filled { get; set; }
+        public int TimeOut { get; set; } = 5;
+
+        public bool ShowProgress { get; set; } = true;
+
+        public bool ShowCloseButton { get; set; } = true;
 
         public bool ShowIcon { get; set; } = true;
 
-        public bool ShowProgressBar { get; set; } = true;
-
-        public int TimeOut { get; set; } = 5;
+        public bool Filled { get; set; }
     }
 }

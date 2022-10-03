@@ -15,6 +15,11 @@ namespace DaisyBlazor
         public event Action<Level, RenderFragment, string?, ToastOptions?>? OnShow;
 
         /// <summary>
+        /// A event that will be invoked when showing a toast
+        /// </summary>
+        public event Action<Type, Level, ToastParameters?, ToastOptions?>? OnShowComponent;
+
+        /// <summary>
         /// A event that will be invoked when clearing all toasts
         /// </summary>
         public event Action? OnClearAll;
@@ -110,6 +115,27 @@ namespace DaisyBlazor
         /// <param name="onClick">Action to be executed on click</param>
         public void ShowToast(Level level, RenderFragment message, string? title = null, ToastOptions? options = null)
             => OnShow?.Invoke(level, message, title, options);
+
+        public void ShowToast<TComponent>(Level level, ToastParameters? parameters = null, ToastOptions? options = null) where TComponent : IComponent
+            => ShowToast(typeof(TComponent), level, parameters, options);
+
+        public void ShowToast<TComponent>(Level level, ToastParameters? parameters = null) where TComponent : IComponent
+            => ShowToast(typeof(TComponent), level, parameters);
+
+        public void ShowToast<TComponent>(Level level, ToastOptions? options = null) where TComponent : IComponent
+            => ShowToast(typeof(TComponent), level, null, options);
+
+        public void ShowToast<TComponent>(Level level) where TComponent : IComponent
+            => ShowToast(typeof(TComponent), level);
+
+        public void ShowToast(Type toastComponent, Level level, ToastParameters? parameters = null, ToastOptions? options = null)
+        {
+            if (!typeof(IComponent).IsAssignableFrom(toastComponent))
+            {
+                throw new ArgumentException($"{toastComponent.FullName} must be a Blazor Component");
+            }
+            OnShowComponent?.Invoke(toastComponent, level, parameters, options);
+        }
 
         /// <summary>
         /// Removes all toasts

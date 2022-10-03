@@ -1,4 +1,5 @@
 ﻿using DaisyBlazor.Components.Toast;
+using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
@@ -7,6 +8,11 @@ namespace DaisyBlazor
     {
         private int _progress = 100;
         private CountdownTimer? _countdownTimer;
+
+        private string Classname =>
+            new ClassBuilder("flex flex-col w-full")
+            .AddClass(Class)
+            .Build();
 
         [CascadingParameter]
         private DaisyToastContainer? ToastContainer { get; set; }
@@ -19,6 +25,9 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
+
+        [Parameter]
+        public RenderFragment? MessageContent { get; set; }
 
         [Parameter]
         public Guid ToastId { get; set; }
@@ -46,7 +55,7 @@ namespace DaisyBlazor
         /// </summary>
         public void Close() => ToastContainer?.RemoveToast(ToastId);
 
-        public void Dispose()
+        void IDisposable.Dispose()
         {
             _countdownTimer?.Dispose();
             _countdownTimer = null;

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using DaisyBlazor.Utilities;
+using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
@@ -47,6 +48,7 @@ namespace DaisyBlazor
         protected override void OnInitialized()
         {
             ToastService.OnShow += ShowToast;
+            ToastService.OnShowComponent += ShowToast;
             ToastService.OnClearAll += ClearAll;
 
             if (RemoveToastsOnNavigation)
@@ -97,7 +99,6 @@ namespace DaisyBlazor
                 if (ToastList.Count < MaxItemsShown)
                 {
                     ToastList.Add(toast);
-
                     StateHasChanged();
                 }
                 else
@@ -107,6 +108,39 @@ namespace DaisyBlazor
             });
 
         }
+
+        private void ShowToast(Type contentComponent, Level level, ToastParameters? parameters, ToastOptions? options)
+        {
+            InvokeAsync(() =>
+            {
+                var childContent = new RenderFragment(builder =>
+                {
+                    var i = 0;
+                    builder.OpenComponent(i++, contentComponent);
+                    if (parameters is not null)
+                    {
+                        foreach (var parameter in parameters.Parameters)
+                        {
+                            builder.AddAttribute(i++, parameter.Key, parameter.Value);
+                        }
+                    }
+                    builder.CloseComponent();
+                });
+
+                var toast = new ToastInstance(childContent, options ?? GlobalOptions) { ToastLevel = level };
+
+                if (ToastList.Count < MaxItemsShown)
+                {
+                    ToastList.Add(toast);
+                    StateHasChanged();
+                }
+                else
+                {
+                    ToastWaitingQueue.Enqueue(toast);
+                }
+            });
+        }
+
         private void ShowEnqueuedToast()
         {
             InvokeAsync(() =>

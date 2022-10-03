@@ -12,4 +12,8 @@
 </Router>
 
 <DaisyModalContainer />
-<DaisyToastContainer PositionX="PositionX.End" PositionY="PositionY.Bottom" GlobalOptions="new ToastOptions{ TimeOut=5}" />
+<DaisyToastContainer PositionX="PositionX.End" PositionY="PositionY.Bottom" />
+
+@code {
+    private RenderFragment error => @<div>error</div>;
+}

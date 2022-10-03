@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyTab : IDisposable
+    public partial class DaisyTab
     {
         private string Classname =>
           new ClassBuilder("Tab")
@@ -43,7 +43,7 @@ namespace DaisyBlazor
             DaisyTabs.OnActiveTabChanged(this);
         }
 
-        public void Dispose()
+        void IDisposable.Dispose()
         {
             DaisyTabs.RemoveTab(this);
             GC.SuppressFinalize(this);

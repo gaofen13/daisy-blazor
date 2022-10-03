@@ -12,13 +12,11 @@ Welcome to your new app.
 <DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary"></DaisyRadialProgress>
 <DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
 
-<DaisyAlert>
-    <ActionTemplate>
-        <DaisyButton>关闭</DaisyButton>
-    </ActionTemplate>
+<DaisyAlert Title="Info">
+    <DaisyButton>关闭</DaisyButton>
 </DaisyAlert>
 <DaisyTooltip Class="w-full" Text="alert">
-    <DaisyAlert AlertLevel="Level.Warning" Filled />
+    <DaisyAlert Title="Warning" AlertLevel="Level.Warning" Filled />
 </DaisyTooltip>
 
 <DaisyButtonGroup Vertical>
@@ -68,7 +66,8 @@ Welcome to your new app.
     private void ShowToast()
     {
         add++;
-        Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 2 });
+        Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 3 });
+        Toast?.ShowToast<ToastTest>(Level.Info, new ToastOptions { TimeOut = 4 });
         Toast?.ShowSuccess(add.ToString(), "Success");
     }
 }
