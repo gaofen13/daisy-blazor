@@ -1,4 +1,4 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyInputBase<string>
 
-<InputText @ref="@InputText" id="@Id" class="@Classname" style="@Style" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" @attributes="@Attributes" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+<input @ref="@InputElement" id="@Id" class="@Classname" style="@Style" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" @attributes="@Attributes" value="@Value" @onchange="@OnChanged" />

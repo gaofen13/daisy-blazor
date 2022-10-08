@@ -5,7 +5,7 @@
             @Test
         </BodyTemplate>
         <ActionTemplate>
-            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="CloseAsync">Button</DaisyButton>
+            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">Button</DaisyButton>
         </ActionTemplate>
     </DaisyCardBody>
 </DaisyCard>
@@ -26,8 +26,8 @@
         }
     }
 
-    private async Task CloseAsync()
+    private void Close()
     {
-        await ModalInstance.CloseAsync(ModalResult.Ok<string>("test"));
+        ModalInstance.Close(ModalResult.Ok<string>("test"));
     }
 }

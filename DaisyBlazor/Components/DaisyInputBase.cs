@@ -21,6 +21,9 @@ namespace DaisyBlazor
         public bool Disabled { get; set; }
 
         [Parameter]
+        public bool ReadOnly { get; set; }
+
+        [Parameter]
         public string? Placeholder { get; set; }
 
         [Parameter]

@@ -4,9 +4,9 @@
 <div class="card-body @Class" style="@Style">
     @if (TitleTemplate != null)
     {
-        <h2 class="card-title">
+        <div class="card-title">
             @TitleTemplate
-        </h2>
+        </div>
 
     }
     <p>
@@ -14,7 +14,7 @@
     </p>
     @if (ActionTemplate != null)
     {
-        <div class="card-actions justify-end">
+        <div class="card-actions">
             @ActionTemplate
         </div>
     }

@@ -1,5 +1,4 @@
 ﻿@page "/"
-@inject NavigationManager Navigation
 
 <PageTitle>Index</PageTitle>
 
@@ -10,7 +9,7 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 <DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary"></DaisyRadialProgress>
-<DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
+<DaisyProgress Value="20" Max="100"></DaisyProgress>
 
 <DaisyAlert Title="Info">
     <DaisyButton>关闭</DaisyButton>
@@ -26,7 +25,7 @@ Welcome to your new app.
 </DaisyButtonGroup>
 
 <EditForm Model="@add">
-    <DaisyInputText @bind-Value=input Bordered="@true" AutoFocus />
+    <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
     <DaisySelect @bind-Value=color>
         <OptionList>
             <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
@@ -49,6 +48,7 @@ Welcome to your new app.
 </DaisyModal>
 
 @code {
+    private DaisyInputText? _input;
     private bool check;
     private string input = "";
     private int add;
@@ -61,6 +61,7 @@ Welcome to your new app.
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
+        _ = _input!.InputElement.FocusAsync();
     }
 
     private void ShowToast()

@@ -39,35 +39,35 @@ namespace DaisyBlazor
         /// <summary>
         /// Closes the modal with a default Ok result />.
         /// </summary>
-        public async Task CloseAsync() => await CloseAsync(ModalResult.Ok());
+        public void Close() => Close(ModalResult.Ok());
 
         /// <summary>
         /// Closes the modal with the specified <paramref name="modalResult"/>.
         /// </summary>
         /// <param name="modalResult"></param>
-        public async Task CloseAsync(ModalResult modalResult)
+        public void Close(ModalResult modalResult)
         {
             if (ModalContainer is not null)
             {
-                await ModalContainer.DismissInstance(InstanceId, modalResult);
+                ModalContainer.DismissInstance(InstanceId, modalResult);
             }
         }
 
         /// <summary>
         /// Closes the modal and returns a cancelled ModalResult.
         /// </summary>
-        public async Task CancelAsync() => await CloseAsync(ModalResult.Cancel());
+        public void Cancel() => Close(ModalResult.Cancel());
 
         /// <summary>
         /// Closes the modal returning the specified <paramref name="payload"/> in a cancelled ModalResult.
         /// </summary>
-        public async Task CancelAsync<TPayload>(TPayload payload) => await CloseAsync(ModalResult.Cancel(payload));
+        public void Cancel<TPayload>(TPayload payload) => Close(ModalResult.Cancel(payload));
 
-        private async Task OnClickBackgroundAsync()
+        private void OnClickBackgroundAsync()
         {
             if (_clickBackgroundCancel)
             {
-                await CancelAsync();
+                Cancel();
             }
         }
     }

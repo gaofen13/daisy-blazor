@@ -4,8 +4,8 @@ namespace DaisyBlazor
 {
     public class ModalService
     {
-        internal event Func<ModalReference, Task>? OnModalInstanceAdded;
-        internal event Func<ModalReference, ModalResult, Task>? OnModalCloseRequested;
+        internal event Action<ModalReference>? OnModalInstanceAdded;
+        internal event Action<ModalReference, ModalResult>? OnModalCloseRequested;
 
         /// <summary>
         /// Shows the modal with the component type using the specified title.

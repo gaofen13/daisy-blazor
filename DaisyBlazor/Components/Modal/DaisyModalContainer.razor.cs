@@ -27,12 +27,12 @@ namespace DaisyBlazor
             NavigationManager!.LocationChanged += CancelModals;
         }
 
-        internal async Task CloseInstance(ModalReference? modal, ModalResult result)
+        internal void CloseInstance(ModalReference? modal, ModalResult result)
         {
             if (modal?.ModalInstanceRef != null)
             {
                 // Gracefully close the modal
-                await modal.ModalInstanceRef.CloseAsync(result);
+                modal.ModalInstanceRef.Close(result);
                 if (!_modals.Any())
                 {
                     ClearBodyStyles();
@@ -41,17 +41,17 @@ namespace DaisyBlazor
             }
             else
             {
-                await DismissInstance(modal, result);
+                DismissInstance(modal, result);
             }
         }
 
-        internal Task DismissInstance(Guid id, ModalResult result)
+        internal void DismissInstance(Guid id, ModalResult result)
         {
             var reference = GetModalReference(id);
-            return DismissInstance(reference, result);
+            DismissInstance(reference, result);
         }
 
-        internal async Task DismissInstance(ModalReference? modal, ModalResult result)
+        internal void DismissInstance(ModalReference? modal, ModalResult result)
         {
             if (modal != null)
             {
@@ -61,12 +61,12 @@ namespace DaisyBlazor
                 {
                     ClearBodyStyles();
                 }
-                await InvokeAsync(StateHasChanged);
+                StateHasChanged();
                 OnModalClosed?.Invoke();
             }
         }
 
-        private async void CancelModals(object? sender, LocationChangedEventArgs e)
+        private void CancelModals(object? sender, LocationChangedEventArgs e)
         {
             foreach (var modalReference in _modals.ToList())
             {
@@ -75,10 +75,10 @@ namespace DaisyBlazor
 
             _modals.Clear();
             ClearBodyStyles();
-            await InvokeAsync(StateHasChanged);
+            StateHasChanged();
         }
 
-        private async Task Update(ModalReference modalReference)
+        private void Update(ModalReference modalReference)
         {
             _modals.Add(modalReference);
 
@@ -87,7 +87,7 @@ namespace DaisyBlazor
                 _haveActiveModals = true;
             }
 
-            await InvokeAsync(StateHasChanged);
+            StateHasChanged();
         }
 
         private ModalReference? GetModalReference(Guid id) => _modals.SingleOrDefault(x => x.InstanceId == id);
