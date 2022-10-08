@@ -1,5 +1,5 @@
 using DaisyBlazor;
-using DaisyBlazor.Web.Data;
+using DaisyBlazor.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
