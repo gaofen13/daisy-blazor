@@ -8,7 +8,7 @@ namespace DaisyBlazor
     {
         [Inject] private NavigationManager? NavigationManager { get; set; }
         [Inject] private ModalService ModalService { get; set; } = default!;
-        [Parameter] public ModalOptions? GlobalOptions { get; set; }
+        [Parameter] public ModalOptions GlobalOptions { get; set; } = new();
 
         private readonly Collection<ModalReference> _modals = new();
         private bool _haveActiveModals;

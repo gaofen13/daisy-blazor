@@ -9,29 +9,30 @@ namespace DaisyBlazor
         private bool _clickBackgroundCancel;
 
         private string Classname =>
-          new ClassBuilder("modal-box relative")
+          new ClassBuilder("flex justify-center modal-w-full")
+            .AddClass($"max-w-{Options.MaxWidth.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
         [CascadingParameter] private DaisyModalContainer? ModalContainer { get; set; }
 
-        [Parameter] public ModalOptions? Options { get; set; }
+        [Parameter] public ModalOptions Options { get; set; } = new();
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public bool Visible { get; set; }
         [Parameter] public Guid InstanceId { get; set; }
 
         protected override void OnInitialized()
         {
-            if (!string.IsNullOrWhiteSpace(Options?.OverlayClass))
+            if (!string.IsNullOrWhiteSpace(Options.OverlayClass))
             {
                 _overlayClass = Options.OverlayClass;
             }
-            else if (!string.IsNullOrWhiteSpace(ModalContainer?.GlobalOptions?.OverlayClass))
+            else if (!string.IsNullOrWhiteSpace(ModalContainer?.GlobalOptions.OverlayClass))
             {
                 _overlayClass = ModalContainer.GlobalOptions.OverlayClass;
             }
 
-            _clickBackgroundCancel = Options?.ClickBackgroundCancel == true || ModalContainer?.GlobalOptions?.ClickBackgroundCancel == true;
+            _clickBackgroundCancel = Options.ClickBackgroundCancel || ModalContainer?.GlobalOptions.ClickBackgroundCancel == true;
 
             base.OnInitialized();
         }
@@ -47,10 +48,7 @@ namespace DaisyBlazor
         /// <param name="modalResult"></param>
         public void Close(ModalResult modalResult)
         {
-            if (ModalContainer is not null)
-            {
-                ModalContainer.DismissInstance(InstanceId, modalResult);
-            }
+            ModalContainer?.DismissInstance(InstanceId, modalResult);
         }
 
         /// <summary>

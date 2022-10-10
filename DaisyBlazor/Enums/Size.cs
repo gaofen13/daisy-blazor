@@ -5,6 +5,8 @@
         Lg,
         Md,
         Sm,
-        Xs
+        Xs,
+        Xl,
+        Full
     }
 }
