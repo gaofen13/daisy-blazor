@@ -17,7 +17,25 @@
 
   <ItemGroup>
     <Folder Include="Pages\" />
-    <Folder Include="Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Buttons.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\Counter.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\FetchData.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\Index.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

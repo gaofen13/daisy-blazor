@@ -6,7 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DaisyBlazor.Shared\DaisyBlazor.Shared.csproj" />
-    <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
   </ItemGroup>
 
 </Project>

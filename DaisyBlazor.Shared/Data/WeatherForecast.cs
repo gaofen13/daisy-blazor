@@ -1,4 +1,4 @@
-namespace DaisyBlazor.Server.Data
+namespace DaisyBlazor.Shared.Data
 {
     public class WeatherForecast
     {
