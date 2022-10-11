@@ -1952,10 +1952,10 @@ html {
     border-radius: var(--rounded-box, 1rem);
 }
 
-.card:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-}
+    .card:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+    }
 
 .card-body {
     display: flex;
@@ -2097,6 +2097,7 @@ html {
     bottom: 0px;
     left: 0px;
     display: flex;
+    align-items: center;
     justify-content: center;
     opacity: 0;
     z-index: 999;
@@ -2287,7 +2288,7 @@ html {
 }
 
 .toast {
-    position: fixed;
+    position: absolute;
     display: flex;
     min-width: -moz-fit-content;
     min-width: fit-content;
