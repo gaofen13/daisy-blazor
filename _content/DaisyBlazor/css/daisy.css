@@ -2117,6 +2117,10 @@ html {
     width: calc(100% - 64px);
 }
 
+.modal-h-fit {
+    height: fit-content;
+}
+
 .modal-open,
 .modal:target,
 .modal-toggle:checked + .modal {

@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "DaisyBlazor.Client.dll": "sha256-cOx5ac7omyItStJbINqkgtXViS\/RcSPPIDLmDOkS2D4=",
-      "DaisyBlazor.dll": "sha256-+Tep5SS3Lry5nYGm6x9twhh4qcMPHuEkz+uiVa4+CtM=",
+      "DaisyBlazor.dll": "sha256-d7UMgpIzxJOGrV3n9tVw+a9NA39AzCZBqaA2wHC+FzA=",
       "DaisyBlazor.Shared.dll": "sha256-EQaiapzl1gCAN5Oa2xvGFBEHdvas\/0PUQpYkKhysI5I=",
       "Microsoft.AspNetCore.Components.dll": "sha256-0E\/35ZBURTxFw9rC5V5e+4+80XBKPJ7pBHioNsljUvo=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-9K99kFAAa6SHJdYfsQg0fLSrBSItJums\/Qy+8s7vHnk=",
