@@ -6,7 +6,7 @@ namespace DaisyBlazor
     public partial class DaisyOverlay
     {
         private string Classname =>
-          new ClassBuilder("modal modal-open")
+          new ClassBuilder("modal modal-open items-center")
             .AddClass(Class)
             .Build();
 

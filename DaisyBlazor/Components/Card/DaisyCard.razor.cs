@@ -10,7 +10,7 @@ namespace DaisyBlazor
             .AddClass("card-compact", Compact)
             .AddClass("bg-base-100", !Neutra)
             .AddClass("bg-neutral text-neutral-content", Neutra)
-            .AddClass("class", Glass && !Neutra)
+            .AddClass("glass", Glass && !Neutra)
             .AddClass(Class)
             .Build();
 
