@@ -2100,7 +2100,7 @@ html {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    z-index: 999;
+    z-index: 1050;
     background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
     --tw-bg-opacity: 0.4;
     transition-duration: 200ms;
@@ -2114,10 +2114,6 @@ html {
     align-items: center;
 }
 
-.modal-w-full {
-    width: calc(100% - 64px);
-}
-
 .modal-open,
 .modal:target,
 .modal-toggle:checked + .modal {
@@ -2126,10 +2122,11 @@ html {
     opacity: 1;
 }
 
-.modal-action {
+.modal-content {
     display: flex;
-    margin-top: 1.5rem;
-    justify-content: flex-end;
+    justify-content: center;
+    z-index: 1055;
+    width: calc(100% - 64px);
 }
 
 .modal-toggle {
@@ -2288,13 +2285,14 @@ html {
 }
 
 .toast {
-    position: absolute;
+    position: fixed;
     display: flex;
     min-width: -moz-fit-content;
     min-width: fit-content;
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
+    z-index: 1055;
 }
 
 .tooltip {
