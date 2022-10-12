@@ -2295,6 +2295,13 @@ html {
     z-index: 1055;
 }
 
+.toast-instance {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .tooltip {
     position: relative;
     display: inline-block;
