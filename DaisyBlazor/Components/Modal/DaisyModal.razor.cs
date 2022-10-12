@@ -9,7 +9,7 @@ namespace DaisyBlazor
         private bool _clickBackgroundCancel;
 
         private string Classname =>
-          new ClassBuilder("flex modal-w-full")
+          new ClassBuilder("modal-content")
             .AddClass($"max-w-{Options.MaxWidth.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
