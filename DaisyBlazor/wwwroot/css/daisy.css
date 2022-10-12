@@ -4179,7 +4179,7 @@ body[dir="rtl"] .checkbox {
     min-height: 1.5rem;
 }
 
-:where(.toast) {
+.toast {
     right: 0px;
     /*left: auto;
     top: auto;*/
