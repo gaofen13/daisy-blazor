@@ -10,7 +10,7 @@ namespace DaisyBlazor
         private CountdownTimer? _countdownTimer;
 
         private string Classname =>
-            new ClassBuilder("flex flex-col w-full")
+            new ClassBuilder("toast-instance")
             .AddClass(Class)
             .Build();
 

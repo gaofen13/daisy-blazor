@@ -52,12 +52,12 @@
                     }
                 </div>
             }
-            <div>
+            <div class="@(Filled ? "text-black" : $"text-{AlertLevel.ToString().ToLower()}")">
                 @if (!string.IsNullOrWhiteSpace(Title))
                 {
                     <h3 class="font-bold">@Title</h3>
                 }
-                <p class="text-sm @(Filled ? "text-white" : "text-black")">
+                <p class="text-sm">
                     @if (ChildContent != null)
                     {
                         @ChildContent
