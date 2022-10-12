@@ -4181,12 +4181,12 @@ body[dir="rtl"] .checkbox {
 
 :where(.toast) {
     right: 0px;
-    left: auto;
-    top: auto;
+    /*left: auto;
+    top: auto;*/
     bottom: 0px;
-    --tw-translate-x: 0px;
+    /*--tw-translate-x: 0px;
     --tw-translate-y: 0px;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));*/
 }
 
 .toast:where(.toast-start) {
