@@ -9,6 +9,7 @@
 Vertical:
 <DaisyCheckbox @bind-Value=@vertical />
 按钮1Color:<DaisyRadioGroup @bind-Value=@color>
+<RadioList>
     <DaisyRadio Value="Color.Primary" />
     <DaisyRadio Value="Color.Secondary" />
     <DaisyRadio Value="Color.Accent" />
@@ -18,6 +19,7 @@ Vertical:
     <DaisyRadio Value="Color.Success" />
     <DaisyRadio Value="Color.Warning" />
     <DaisyRadio Value="Color.Error" />
+</RadioList>
 </DaisyRadioGroup>
 
 @code {
