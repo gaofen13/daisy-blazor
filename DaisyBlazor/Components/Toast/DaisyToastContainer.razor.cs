@@ -9,8 +9,8 @@ namespace DaisyBlazor
     {
         private string Classname =>
           new ClassBuilder("toast")
-            //.AddClass($"toast-{PositionX.ToString().ToLower()}")
-            //.AddClass($"toast-{PositionY.ToString().ToLower()}")
+            .AddClass($"toast-{PositionX.ToString().ToLower()}")
+            .AddClass($"toast-{PositionY.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
