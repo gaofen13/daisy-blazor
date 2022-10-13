@@ -9,7 +9,7 @@ namespace DaisyBlazor
         private readonly List<DaisySelectOption<TValue>> _options = new();
 
         private string Classname =>
-          new ClassBuilder("select w-full max-w-xs")
+          new ClassBuilder("select")
             .AddClass("select-bordered", Bordered)
             .AddClass("select-ghost ", Ghost)
             .AddClass($"select-{Color.ToString()?.ToLower()}", Color != null)

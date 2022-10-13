@@ -7,10 +7,10 @@ namespace DaisyBlazor
     public partial class DaisyInputTextArea
     {
         private string Classname =>
-          new ClassBuilder("textarea w-full max-w-xs")
+          new ClassBuilder("textarea")
             .AddClass("textarea-bordered", Bordered)
             .AddClass("textarea-ghost ", Ghost)
-            .AddClass($"input-{Color.ToString()?.ToLower()}", Color != null)
+            .AddClass($"textarea-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass(Class)
             .Build();
 

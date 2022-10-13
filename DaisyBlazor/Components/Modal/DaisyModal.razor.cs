@@ -10,7 +10,7 @@ namespace DaisyBlazor
 
         private string Classname =>
           new ClassBuilder("modal-content")
-            .AddClass($"max-w-{Options.MaxWidth.ToString().ToLower()}")
+            .AddClass($"modal-max-w-{Options.MaxWidth.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 

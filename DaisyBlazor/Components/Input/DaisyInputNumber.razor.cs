@@ -7,7 +7,7 @@ namespace DaisyBlazor
     public partial class DaisyInputNumber<TValue>
     {
         private string Classname =>
-          new ClassBuilder("input w-full max-w-xs")
+          new ClassBuilder("input")
             .AddClass("input-bordered", Bordered)
             .AddClass("input-ghost ", Ghost)
             .AddClass($"input-{Color.ToString()?.ToLower()}", Color != null)

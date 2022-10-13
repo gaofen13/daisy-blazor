@@ -7,9 +7,9 @@ namespace DaisyBlazor
     {
         private string Classname =>
           new ClassBuilder("radial-progress")
-            .AddClass($"text-{Color.ToString()?.ToLower()}", Color != null)
-            .AddClass($"bg-{BgColor.ToString()?.ToLower()}", BgColor != null)
-            .AddClass($"border-{BorderColor.ToString()?.ToLower()}", BorderColor != null)
+            .AddClass($"progress-text-{Color.ToString()?.ToLower()}", Color != null)
+            .AddClass($"progress-bg-{BgColor.ToString()?.ToLower()}", BgColor != null)
+            .AddClass($"progress-border-{BorderColor.ToString()?.ToLower()}", BorderColor != null)
             .AddClass(Class)
             .Build();
 

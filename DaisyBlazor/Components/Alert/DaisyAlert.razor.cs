@@ -6,9 +6,21 @@ namespace DaisyBlazor
     public partial class DaisyAlert
     {
         private string Classname =>
-          new ClassBuilder("alert shadow-lg")
+          new ClassBuilder("alert")
             .AddClass($"alert-{AlertLevel.ToString().ToLower()}", Filled)
             .AddClass(Class)
+            .Build();
+
+        private string BodyClass =>
+            new ClassBuilder("alert-body")
+            .AddClass("alert-text-filled", Filled)
+            .AddClass($"alert-text-{AlertLevel.ToString().ToLower()}", !Filled)
+            .Build();
+
+        private string IconClass =>
+            new ClassBuilder()
+            .AddClass("alert-icon-filled", Filled)
+            .AddClass($"alert-icon-{AlertLevel.ToString().ToLower()}", !Filled)
             .Build();
 
         [Parameter]
