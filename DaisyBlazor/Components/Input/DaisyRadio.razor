@@ -2,4 +2,14 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<InputRadio TValue="@TValue" @ref="@Radio" Name="@Name" Value="@Value" disabled="@Disabled" class="@Classname" style="@Style" @attributes="@Attributes" />
+<label class="@ContainerClass">
+    @if (ChildContent is not null)
+    {
+        <span>@ChildContent</span>
+    }
+    else if (Label is not null)
+    {
+        <span>@Label</span>
+    }
+    <InputRadio TValue="@TValue" @ref="@Radio" Name="@Name" Value="@Value" disabled="@Disabled" class="@Classname" style="@Style" @attributes="@Attributes" />
+</label>

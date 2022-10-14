@@ -1,4 +1,14 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyInputBase<bool>
 
-<InputCheckbox @ref="@Checkbox" id="@Id" class="@Classname" style="@Style" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+<label class="@ContainerClass">
+    @if (ChildContent is not null)
+    {
+        <span>@ChildContent</span>
+    }
+    else if (Label is not null)
+    {
+        <span>@Label</span>
+    }
+    <InputCheckbox @ref="@Checkbox" id="@Id" class="@Classname" style="@Style" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+</label>

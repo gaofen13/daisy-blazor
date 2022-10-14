@@ -1,30 +1,37 @@
 ﻿@page "/buttons"
 
 <DaisyButtonGroup Vertical="@vertical">
-    <DaisyButton Color="@color">按钮1</DaisyButton>
-    <DaisyButton Color="@Color.Secondary">按钮2</DaisyButton>
-    <DaisyButton Color="@Color.Accent">按钮3</DaisyButton>
+    <DaisyButton Color="@color" Outline=@outline>按钮1</DaisyButton>
+    <DaisyButton Color="@Color.Secondary" Outline=@outline>按钮2</DaisyButton>
+    <DaisyButton Color="@Color.Accent" Outline=@outline>按钮3</DaisyButton>
 </DaisyButtonGroup>
 
 <EditForm Model=@vertical>
-Vertical:
-<DaisyCheckbox @bind-Value=@vertical />
-按钮1Color:<DaisyRadioGroup @bind-Value=@color>
-<RadioList>
-    <DaisyRadio Value="Color.Primary" />
-    <DaisyRadio Value="Color.Secondary" />
-    <DaisyRadio Value="Color.Accent" />
-    <DaisyRadio Value="Color.Ghost" />
-    <DaisyRadio Value="Color.Link" />
-    <DaisyRadio Value="Color.Info" />
-    <DaisyRadio Value="Color.Success" />
-    <DaisyRadio Value="Color.Warning" />
-    <DaisyRadio Value="Color.Error" />
-</RadioList>
-</DaisyRadioGroup>
+    <DaisyField Label="Vertical">
+        <DaisyCheckbox Label="Vertical" @bind-Value=@vertical />
+    </DaisyField>
+    <DaisyField Label="Outline">
+        <DaisyCheckbox Label="Outline" @bind-Value=@outline />
+    </DaisyField>
+    <DaisyField Label="按钮1Color">
+        <DaisyRadioGroup @bind-Value=@color>
+            <RadioList>
+                <DaisyRadio Label="Primary" Value="Color.Primary" />
+                <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+                <DaisyRadio Label="Accent" Value="Color.Accent" />
+                <DaisyRadio Label="Ghost" Value="Color.Ghost" />
+                <DaisyRadio Label="Link" Value="Color.Link" />
+                <DaisyRadio Label="Info" Value="Color.Info" />
+                <DaisyRadio Label="Success" Value="Color.Success" />
+                <DaisyRadio Label="Warning" Value="Color.Warning" />
+                <DaisyRadio Label="Error" Value="Color.Error" />
+            </RadioList>
+        </DaisyRadioGroup>
+    </DaisyField>
 </EditForm>
 
 @code {
     bool vertical;
+    bool outline;
     Color color;
 }

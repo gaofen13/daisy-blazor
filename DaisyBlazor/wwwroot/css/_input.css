@@ -1,4 +1,29 @@
-﻿.checkbox {
+﻿.form-field {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+@media(min-width:768px) {
+    .form-field {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+        .form-field .form-field-label {
+            flex-shrink: 0;
+            flex: 0 0 auto;
+            width: 20%;
+            text-align: right;
+            margin-right: 0.5rem;
+        }
+}
+
+.checkbox {
     flex-shrink: 0;
     --chkbg: var(--bc);
     --chkfg: var(--b1);
@@ -481,6 +506,46 @@ body[dir="rtl"] .checkbox {
     .textarea[disabled]::placeholder {
         color: hsl(var(--bc) / var(--tw-placeholder-opacity));
         --tw-placeholder-opacity: 0.2;
+    }
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+
+    .radio-group.radio-group-vertical {
+        flex-direction: column;
+    }
+
+.input-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .input-container.label-left {
+        flex-direction: row;
+        justify-content: right;
+        margin: 0 0.25rem;
+    }
+
+    .input-container.label-right {
+        flex-direction: row-reverse;
+        justify-content: left;
+        margin: 0 0.25rem;
+    }
+
+    .input-container.label-top {
+        flex-direction: column;
+        justify-content: center;
+        margin: 0.25rem 0;
+    }
+
+    .input-container.label-bottom {
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 0.25rem 0;
     }
 
 .radio {

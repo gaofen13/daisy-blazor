@@ -15,7 +15,7 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        public ElementReference InputElement { get; set; }
+        public InputText? InputText { get; set; }
 
         [Parameter]
         public bool Bordered { get; set; } = true;
@@ -28,12 +28,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
-
-        protected void OnChanged(ChangeEventArgs args)
-        {
-            var value = args.Value as string;
-            Value = value;
-            ValueChanged.InvokeAsync(Value);
-        }
     }
 }

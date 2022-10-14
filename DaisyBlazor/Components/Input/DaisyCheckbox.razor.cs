@@ -13,6 +13,11 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
+        private string ContainerClass =>
+          new ClassBuilder("input-container")
+            .AddClass($"label-{LabelPosition.ToString()?.ToLower()}")
+            .Build();
+
         public InputCheckbox? Checkbox { get; protected set; }
 
         [Parameter]
@@ -20,5 +25,14 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
+
+        [Parameter]
+        public string? Label { get; set; }
+
+        [Parameter]
+        public Position LabelPosition { get; set; } = Position.Right;
+
+        [Parameter]
+        public RenderFragment? ChildContent { get; set; }
     }
 }

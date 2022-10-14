@@ -17,22 +17,30 @@
 </DaisyButtonGroup>
 
 <EditForm Model="@add">
-    <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
-    <DaisySelect @bind-Value=color>
-        <OptionList>
-            <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Success">Success</DaisySelectOption>
-        </OptionList>
-    </DaisySelect>
-    <DaisyRadioGroup @bind-Value="@color">
-        <RadioList>
-            <DaisyRadio Value="Color.Primary" />
-            <DaisyRadio Value="Color.Secondary" />
-            <DaisyRadio Value="Color.Success" />
-        </RadioList>
-    </DaisyRadioGroup>
-    <DaisyCheckbox @bind-Value="check" />
+    <DaisyField Label="输入框">
+        <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
+    </DaisyField>
+    <DaisyField Label="选择器">
+        <DaisySelect @bind-Value=color>
+            <OptionList>
+                <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+                <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+                <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
+            </OptionList>
+        </DaisySelect>
+    </DaisyField>
+    <DaisyField Label="单选器">
+        <DaisyRadioGroup @bind-Value="@color">
+            <RadioList>
+                <DaisyRadio Label="Primary" Value="Color.Primary" />
+                <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+                <DaisyRadio Label="Accent" Value="Color.Accent" />
+            </RadioList>
+        </DaisyRadioGroup>
+    </DaisyField>
+    <DaisyField Label="复选框">
+        <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
+    </DaisyField>
 </EditForm>
 
 <DaisyModal Visible=check>
@@ -53,7 +61,7 @@
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
-        _ = _input!.InputElement.FocusAsync();
+        _ = _input?.InputText?.Element?.FocusAsync();
     }
 
     private void ShowToast()
