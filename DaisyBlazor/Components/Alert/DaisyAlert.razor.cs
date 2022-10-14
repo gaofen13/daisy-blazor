@@ -19,6 +19,7 @@ namespace DaisyBlazor
 
         private string IconClass =>
             new ClassBuilder()
+            .AddClass("alert-icon-size")
             .AddClass(Filled ? "alert-icon-filled" : $"alert-icon-{AlertLevel.ToString().ToLower()}")
             .Build();
 
