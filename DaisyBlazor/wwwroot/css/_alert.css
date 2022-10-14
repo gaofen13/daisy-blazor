@@ -99,22 +99,27 @@
 
 .alert .alert-icon-filled {
     stroke: currentColor;
+    flex-shrink: 0;
 }
 
 .alert .alert-icon-info {
     stroke: hsl(var(--in));
+    flex-shrink: 0;
 }
 
 .alert .alert-icon-success {
     stroke: hsl(var(--su));
+    flex-shrink: 0;
 }
 
 .alert .alert-icon-warning {
     stroke: hsl(var(--wa));
+    flex-shrink: 0;
 }
 
 .alert .alert-icon-error {
     stroke: hsl(var(--er));
+    flex-shrink: 0;
 }
 
 .alert .alert-body {
