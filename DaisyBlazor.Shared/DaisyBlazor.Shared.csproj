@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
   </ItemGroup>
 
