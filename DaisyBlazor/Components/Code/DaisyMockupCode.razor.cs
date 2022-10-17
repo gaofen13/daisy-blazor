@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyCode
+    public partial class DaisyMockupCode
     {
         private string Classname =>
             new ClassBuilder("mockup-code")
@@ -16,6 +16,6 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public RenderFragment? PreList { get; set; }
+        public RenderFragment? ChildContent { get; set; }
     }
 }
