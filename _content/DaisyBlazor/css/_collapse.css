@@ -1,6 +1,5 @@
 ﻿.collapse {
     position: relative;
-    margin: 0.5rem;
     overflow: hidden;
     --tw-bg-opacity: 1;
     background-color: hsl(var(--b1)/var(--tw-bg-opacity));
@@ -9,11 +8,6 @@
     border-color: hsl(var(--b3,var(--b2))/var(--tw-border-opacity));
     border-radius: var(--rounded-box,1rem);
 }
-
-    .collapse.collapse-open {
-        outline: 2px solid hsl(var(--nf));
-        outline-offset: 2px;
-    }
 
 .collapse-title {
     position: relative;
