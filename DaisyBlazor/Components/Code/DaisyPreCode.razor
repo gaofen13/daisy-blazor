@@ -1,0 +1,18 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<pre id="@Id"
+     data-prefix="@DataPrefix"
+     class="@Classname"
+     style="@Style">
+<code>
+        @if (ChildContent is not null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            @CodeText
+        }
+</code>
+</pre>
