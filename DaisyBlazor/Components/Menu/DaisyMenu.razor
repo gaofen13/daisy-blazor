@@ -1,0 +1,8 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<ul id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+    <CascadingValue Value="@this" IsFixed>
+        @ChildContent
+    </CascadingValue>
+</ul>

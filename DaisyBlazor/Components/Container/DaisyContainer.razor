@@ -1,0 +1,17 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+@using DaisyBlazor.Utilities
+
+<div id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+    @ChildContent
+</div>
+
+@code {
+    private string Classname =>
+        new ClassBuilder("container")
+        .AddClass(Class)
+        .Build();
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}
