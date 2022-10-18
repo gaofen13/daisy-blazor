@@ -13,7 +13,8 @@
 }
 
     .mockup-code pre {
-        padding-right: 1.25rem;
+        display: flex;
+        flex-wrap: nowrap;
     }
 
 pre[data-prefix].code-data-prefix:before {
@@ -24,12 +25,7 @@ pre[data-prefix].code-data-prefix:before {
     opacity: .5;
 }
 
-pre.code-data-prefix:before {
-    content: "";
-    margin-right: 2ch;
-}
-
 pre code {
     border-radius: 0;
-    padding: 0;
+    padding: 0 1rem;
 }
