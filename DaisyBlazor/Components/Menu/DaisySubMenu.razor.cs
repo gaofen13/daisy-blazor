@@ -9,12 +9,19 @@ using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyCollapse
+    public partial class DaisySubMenu
     {
-        private string Classname =>
-            new ClassBuilder("collapse collapse-arrow")
-            .AddClass("collapse-open", !Collapsed)
+        private string SubClass =>
+            new ClassBuilder("menu-sub")
+            .AddClass("menu-collapsed", Collapsed)
+            .AddClass("rounded-box", Root?.Rounded == true)
             .Build();
+
+        [CascadingParameter]
+        private DaisyMenu? Root { get; set; }
+
+        [CascadingParameter]
+        private DaisySubMenu? Parent { get; set; }
 
         [Parameter]
         public bool Collapsed { get; set; } = true;
@@ -29,15 +36,12 @@ namespace DaisyBlazor
         public RenderFragment? TitleContent { get; set; }
 
         [Parameter]
-        public string? Message { get; set; }
-
-        [Parameter]
-        public RenderFragment? MessageContent { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
 
-        private async Task OnClickTitleAsync(MouseEventArgs args)
+        private async Task OnHandlerClickTilte(MouseEventArgs args)
         {
             if (OnTitleClicked.HasDelegate)
             {

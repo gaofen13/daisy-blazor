@@ -1,13 +1,35 @@
 ﻿@page "/menus"
 
-<DaisyMenu>
+<DaisyMenu Rounded Bordered=false>
     <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
     <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
-    <DaisyMenuItem>Item3</DaisyMenuItem>
+    <DaisySubMenu Title="SubMenu">
+        <DaisyMenuItem>Item3</DaisyMenuItem>
+    </DaisySubMenu>
 </DaisyMenu>
 
 <DaisyMenu Compact Horizontal>
     <DaisyMenuItem Href="buttons">Item1</DaisyMenuItem>
-    <DaisyMenuItem>Item2</DaisyMenuItem>
+    <DaisySubMenu Title="SubMenu">
+        <DaisyMenuItem>Item2</DaisyMenuItem>
+        <DaisyMenuItem>Item3</DaisyMenuItem>
+    </DaisySubMenu>
+</DaisyMenu>
+
+<DaisyMenu>
+    <DaisyMenuItemGroup Title="Group">
+        <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
+        <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
+    </DaisyMenuItemGroup>
+    <DaisyMenuItem>Item3</DaisyMenuItem>
+</DaisyMenu>
+
+<DaisyMenu>
+    <DaisySubMenu Title="SubMenu">
+        <DaisySubMenu Title="Level2">
+            <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
+            <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
+        </DaisySubMenu>
+    </DaisySubMenu>
     <DaisyMenuItem>Item3</DaisyMenuItem>
 </DaisyMenu>

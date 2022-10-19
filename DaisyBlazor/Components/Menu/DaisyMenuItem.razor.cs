@@ -14,14 +14,17 @@ namespace DaisyBlazor
         private string Classname =>
             new ClassBuilder()
             .AddClass("disabled", Disabled)
-            .AddClass("bordered", Menu?.Bordered == true)
+            .AddClass("bordered", Root?.Bordered == true)
             .AddClass(Class)
             .Build();
 
         private Dictionary<string, object>? NavLinkAttributes => Disabled || string.IsNullOrWhiteSpace(Href) ? null : new Dictionary<string, object> { { "href", Href } };
 
         [CascadingParameter]
-        private DaisyMenu? Menu { get; set; }
+        private DaisyMenu? Root { get; set; }
+
+        [CascadingParameter]
+        private DaisySubMenu? Parent { get; set; }
 
         [Parameter]
         public string? Href { get; set; }
@@ -37,13 +40,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Disabled { get; set; }
-
-        private void OnHandlerClick()
-        {
-            if (string.IsNullOrWhiteSpace(Href))
-            {
-                return;
-            }
-        }
     }
 }

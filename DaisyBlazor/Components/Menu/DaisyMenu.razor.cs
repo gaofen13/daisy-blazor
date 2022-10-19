@@ -22,7 +22,7 @@ namespace DaisyBlazor
         public bool Horizontal { get; set; }
 
         [Parameter]
-        public bool Rounded { get; set; } = true;
+        public bool Rounded { get; set; }
 
         [Parameter]
         public bool Bordered { get; set; } = true;

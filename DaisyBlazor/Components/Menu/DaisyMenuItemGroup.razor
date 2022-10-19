@@ -1,0 +1,10 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+@if (Menu?.Horizontal == false)
+{
+    <li id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+        <span>@Title</span>
+    </li>
+}
+@ChildContent

@@ -1,0 +1,20 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<li id="@Id" style="@Style" class="@Class" @attributes="@Attributes">
+    <span @onclick="@OnHandlerClickTilte">
+        @if (TitleContent is not null)
+        {
+            @TitleContent
+        }
+        else
+        {
+            @Title
+        }
+    </span>
+    <ul class="@SubClass">
+        <CascadingValue Value="@this" IsFixed>
+            @ChildContent
+        </CascadingValue>
+    </ul>
+</li>
