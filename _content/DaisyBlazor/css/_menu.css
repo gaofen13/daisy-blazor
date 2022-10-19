@@ -8,12 +8,36 @@
     --tw-bg-opacity: 1;
     background-color: hsl(var(--b1)/var(--tw-bg-opacity));
     width: 14rem;
-    padding: .5rem;
 }
 
-    .menu.rounded-box {
+    .menu.rounded-box, .menu .rounded-box {
         border-radius: var(--rounded-box,1rem);
     }
+
+    .menu .menu-sub {
+        --tw-bg-opacity: 1;
+        background-color: hsl(var(--b1)/var(--tw-bg-opacity));
+        --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1);
+        --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    }
+
+    .menu li ul {
+        position: absolute;
+        display: none;
+        top: initial;
+        left: 100%;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+        border-bottom-left-radius: inherit;
+    }
+
+        .menu li ul:not(.menu-collapsed) {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
 
     .menu li {
         position: relative;
@@ -24,30 +48,32 @@
         align-items: stretch;
     }
 
-    .menu > li:first-child {
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-        border-bottom-right-radius: unset;
-        border-bottom-left-radius: unset;
+    .menu .menu-title > * {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        font-size: .75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        color: hsl(var(--bc)/var(--tw-text-opacity));
+        --tw-text-opacity: .4;
     }
 
-        .menu > li:first-child > :not(ul) {
+    .menu > li:first-child, .menu ul > li:first-child {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+
+        .menu > li:first-child > :not(ul), .menu ul > li:first-child > :not(ul) {
             border-top-left-radius: inherit;
             border-top-right-radius: inherit;
-            border-bottom-right-radius: unset;
-            border-bottom-left-radius: unset;
         }
 
-    .menu > li:last-child {
-        border-top-left-radius: unset;
-        border-top-right-radius: unset;
+    .menu > li:last-child, .menu ul > li:last-child {
         border-bottom-right-radius: inherit;
         border-bottom-left-radius: inherit;
     }
 
-        .menu > li:last-child > :not(ul) {
-            border-top-left-radius: unset;
-            border-top-right-radius: unset;
+        .menu > li:last-child > :not(ul), .menu ul > li:last-child > :not(ul) {
             border-bottom-right-radius: inherit;
             border-bottom-left-radius: inherit;
         }
@@ -125,32 +151,29 @@
     flex-direction: row;
 }
 
-    .menu-horizontal > li:first-child {
+    .menu-horizontal > li > ul {
+        top: 100%;
+        left: initial;
+    }
+
+    .menu-horizontal > li:first-child, .menu-horizontal ul > li:first-child {
         border-top-left-radius: inherit;
-        border-top-right-radius: unset;
-        border-bottom-right-radius: unset;
         border-bottom-left-radius: inherit;
     }
 
-        .menu-horizontal > li:first-child > *:not(ul) {
+        .menu-horizontal > li:first-child > *:not(ul), .menu-horizontal ul > li:first-child > *:not(ul) {
             border-top-left-radius: inherit;
-            border-top-right-radius: unset;
-            border-bottom-right-radius: unset;
             border-bottom-left-radius: inherit;
         }
 
-    .menu-horizontal > li:last-child {
-        border-top-left-radius: unset;
+    .menu-horizontal > li:last-child, .menu-horizontal ul > li:last-child {
         border-top-right-radius: inherit;
         border-bottom-right-radius: inherit;
-        border-bottom-left-radius: unset;
     }
 
-        .menu-horizontal > li:last-child > *:not(ul) {
-            border-top-left-radius: unset;
+        .menu-horizontal > li:last-child > *:not(ul), .menu-horizontal ul > li:last-child > *:not(ul) {
             border-top-right-radius: inherit;
             border-bottom-right-radius: inherit;
-            border-bottom-left-radius: unset;
         }
 
     .menu-horizontal li.bordered > *:not(ul).active {
