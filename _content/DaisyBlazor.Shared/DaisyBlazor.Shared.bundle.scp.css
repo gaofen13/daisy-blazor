@@ -61,7 +61,6 @@ main[b-f8y9nve1bd] {
     .top-row[b-f8y9nve1bd] {
         position: sticky;
         top: 0;
-        z-index: 1;
     }
 
     .top-row[b-f8y9nve1bd], article[b-f8y9nve1bd] {
