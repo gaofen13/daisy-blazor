@@ -1,0 +1,67 @@
+﻿.link {
+    cursor: pointer;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+}
+
+
+
+.link-hover {
+    -webkit-text-decoration-line: none;
+    text-decoration-line: none;
+}
+
+    .link-hover:hover {
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline
+    }
+
+.link-primary {
+    --tw-text-opacity: 1;
+    color: hsl(var(--p)/var(--tw-text-opacity))
+}
+
+    .link-primary:hover {
+        --tw-text-opacity: 1;
+        color: hsl(var(--pf,var(--p))/var(--tw-text-opacity))
+    }
+
+.link-secondary {
+    --tw-text-opacity: 1;
+    color: hsl(var(--s)/var(--tw-text-opacity))
+}
+
+    .link-secondary:hover {
+        --tw-text-opacity: 1;
+        color: hsl(var(--sf,var(--s))/var(--tw-text-opacity))
+    }
+
+.link-accent {
+    --tw-text-opacity: 1;
+    color: hsl(var(--a)/var(--tw-text-opacity))
+}
+
+    .link-accent:hover {
+        --tw-text-opacity: 1;
+        color: hsl(var(--af,var(--a))/var(--tw-text-opacity))
+    }
+
+.link-neutral {
+    --tw-text-opacity: 1;
+    color: hsl(var(--n)/var(--tw-text-opacity))
+}
+
+    .link-neutral:hover {
+        --tw-text-opacity: 1;
+        color: hsl(var(--nf,var(--n))/var(--tw-text-opacity))
+    }
+
+.link:focus {
+    outline-offset: 2px;
+    outline: 2px solid #0000
+}
+
+.link:focus-visible {
+    outline-offset: 2px;
+    outline: 2px solid
+}

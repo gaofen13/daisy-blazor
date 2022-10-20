@@ -1,0 +1,38 @@
+﻿.divider {
+    height: 1rem;
+    white-space: nowrap;
+    flex-direction: row;
+    align-self: stretch;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex
+}
+
+    .divider:before, .divider:after {
+        content: "";
+        height: .125rem;
+        width: 100%;
+        flex-grow: 1
+    }
+
+    .divider:before, .divider:after {
+        background-color: hsl(var(--bc)/var(--tw-bg-opacity));
+        --tw-bg-opacity: .1
+    }
+
+    .divider:not(:empty) {
+        gap: 1rem
+    }
+
+.divider-horizontal {
+    flex-direction: column;
+    height: auto;
+    width: 1rem;
+    margin: 0 1rem
+}
+
+    .divider-horizontal:before, .divider-horizontal:after {
+        height: 100%;
+        width: .125rem
+    }
