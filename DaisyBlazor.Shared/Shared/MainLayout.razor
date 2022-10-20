@@ -1,22 +1,43 @@
 ﻿@inherits LayoutComponentBase
 
-<PageTitle>DaisyComponent</PageTitle>
-
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
+    <nav class="top-row">
+        <DaisyNavbar Style="background-color:#f0f0f0" Class="navbar-fixed" Rounded Shadow>
+            <DaisyButton OnClick="_=>showSidebar=!showSidebar" Square Color="Color.Ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="width: 1.2rem;height: 1.2rem;stroke: black;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </DaisyButton>
+            <DaisyButton Color="Color.Ghost">
+                <a href="/" style="font-size:larger;font-weight:bolder">DaisyBlazor</a>
+            </DaisyButton>
+            <div style="margin-left:auto">
+                <DaisyButton Color="Color.Ghost">
+                    <a href="https://github.com/gaofen13/daisy-blazor/" target="_blank">Github</a>
+                </DaisyButton>
+                <DaisyButton Color="Color.Ghost">
+                    <a href="https://gitee.com/gaofen13/daisy-blazor/" target="_blank">Gitee</a>
+                </DaisyButton>
+            </div>
+        </DaisyNavbar>
+    </nav>
     <main>
-        <div class="top-row px-4">
-            <a href="https://github.com/gaofen13/daisy-blazor/" target="_blank">Github</a>
-            <a href="https://gitee.com/gaofen13/daisy-blazor/" target="_blank">Gitee</a>
-        </div>
-
-        <article class="content px-4">
+        <nav class="sidebar @ShowClass">
+            <NavMenu />
+            <div class="overlay-responsive">
+                <DaisyOverlay OnBackgroundClick="_=>showSidebar=!showSidebar" Visible />
+            </div>
+        </nav>
+        <article>
             <DaisyErrorBoundary>
                 @Body
             </DaisyErrorBoundary>
         </article>
     </main>
 </div>
+
+@code {
+    private bool showSidebar = true;
+
+    private string ShowClass => showSidebar ? "sidebar-show" : "";
+}

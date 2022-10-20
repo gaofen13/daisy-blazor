@@ -1,57 +1,20 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">DaisyComponent</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="menus">
-                <span class="oi oi-plus" aria-hidden="true"></span> Menus
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="buttons">
-                <span class="oi oi-plus" aria-hidden="true"></span> Buttons
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="code">
-                <span class="oi oi-plus" aria-hidden="true"></span> Code
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="collapses">
-                <span class="oi oi-plus" aria-hidden="true"></span> Collapses
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+﻿<DaisyMenu Rounded Style="height:100%;overflow-y:auto;z-index:1051;background-color:#fafafa;">
+    <DaisyMenuItem Href="/" Match="@NavLinkMatch.All">
+        <span class="oi oi-home" aria-hidden="true"></span> Home
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="menus">
+        <span class="oi oi-plus" aria-hidden="true"></span> Menus
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="buttons">
+        <span class="oi oi-plus" aria-hidden="true"></span> Buttons
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="code">
+        <span class="oi oi-plus" aria-hidden="true"></span> Code
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="collapses">
+        <span class="oi oi-home" aria-hidden="true"></span> Collapses
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="fetchdata">
+        <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+    </DaisyMenuItem>
+</DaisyMenu>

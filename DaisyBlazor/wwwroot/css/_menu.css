@@ -1,7 +1,7 @@
 ﻿.menu {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     --tw-bg-opacity: 1;
     background-color: hsl(var(--b1)/var(--tw-bg-opacity));
     width: var(--menu-width);
@@ -152,6 +152,7 @@
     display: inline-flex;
     width: max-content;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
     .menu-horizontal > li > ul {
