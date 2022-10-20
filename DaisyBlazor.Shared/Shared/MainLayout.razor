@@ -8,16 +8,11 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </DaisyButton>
-            <DaisyButton Color="Color.Ghost">
-                <a href="/" style="font-size:larger;font-weight:bolder">DaisyBlazor</a>
-            </DaisyButton>
+            <DaisyLink UnderlineOnHover Href="/"><h3>DaisyBlazor</h3></DaisyLink>
             <div style="margin-left:auto">
-                <DaisyButton Color="Color.Ghost">
-                    <a href="https://github.com/gaofen13/daisy-blazor/" target="_blank">Github</a>
-                </DaisyButton>
-                <DaisyButton Color="Color.Ghost">
-                    <a href="https://gitee.com/gaofen13/daisy-blazor/" target="_blank">Gitee</a>
-                </DaisyButton>
+                <DaisyLink UnderlineOnHover Color="Color.Primary" Href="https://github.com/gaofen13/daisy-blazor/" Target="_blank">Github</DaisyLink>
+                <DaisyDivider Horizontal />
+                <DaisyLink UnderlineOnHover Color="Color.Secondary" Href="https://gitee.com/gaofen13/daisy-blazor/" Target="_blank">Gitee</DaisyLink>
             </div>
         </DaisyNavbar>
     </nav>
