@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyBlazor.Client", "Daisy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyBlazor.Shared", "DaisyBlazor.Shared\DaisyBlazor.Shared.csproj", "{A8BF9446-0CE4-42D3-9957-903B0D43E9B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyBlazor.Server", "DaisyBlazor.Sever\DaisyBlazor.Server.csproj", "{FD0FFC17-C3E5-493D-B153-C9A9A1528BCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyBlazor.Server", "DaisyBlazor.Server\DaisyBlazor.Server.csproj", "{FD0FFC17-C3E5-493D-B153-C9A9A1528BCB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{6B1417B8-963E-47C3-BC55-3D58001EF4F9}"
 	ProjectSection(SolutionItems) = preProject

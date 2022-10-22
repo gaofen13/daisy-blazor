@@ -6,10 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\js\main.js" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -24,9 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\main.js">
+    <Content Update="wwwroot\js\main.js">
       <SubType>Code</SubType>
-    </None>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
