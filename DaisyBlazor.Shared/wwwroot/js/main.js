@@ -13,3 +13,7 @@ function RemoveWindowWidthListener(objReference) {
 function UpdateWindowWidth(objReference) {
     objReference.invokeMethodAsync("UpdateWindowWidth", window.innerWidth);
 }
+
+function GetWindowWidth() {
+    return window.innerWidth;
+}

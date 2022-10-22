@@ -32,6 +32,8 @@ namespace DaisyBlazor.Shared.Shared
             if (firstRender)
             {
                 await JSRuntime!.InvokeVoidAsync("AddWindowWidthListener", objectReference);
+                var width = await JSRuntime!.InvokeAsync<int>("GetWindowWidth");
+                UpdateWindowWidth(width);
             }
             base.OnAfterRender(firstRender);
         }
