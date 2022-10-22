@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@implements IAsyncDisposable
 
 <div class="page">
     <nav class="top-row">
@@ -30,9 +31,3 @@
         </article>
     </main>
 </div>
-
-@code {
-    private bool showSidebar = true;
-
-    private string ShowClass => showSidebar ? "sidebar-show" : "";
-}
