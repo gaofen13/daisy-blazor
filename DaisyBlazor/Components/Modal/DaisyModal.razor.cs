@@ -19,6 +19,7 @@ namespace DaisyBlazor
         [Parameter] public ModalOptions Options { get; set; } = new();
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public bool Visible { get; set; }
+        [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
         [Parameter] public Guid InstanceId { get; set; }
 
         protected override void OnInitialized()
@@ -61,11 +62,16 @@ namespace DaisyBlazor
         /// </summary>
         public void Cancel<TPayload>(TPayload payload) => Close(ModalResult.Cancel(payload));
 
-        private void OnClickBackgroundAsync()
+        private async Task OnClickBackgroundAsync()
         {
             if (_clickBackgroundCancel)
             {
                 Cancel();
+                if (Visible)
+                {
+                    Visible = false;
+                    await VisibleChanged.InvokeAsync(Visible);
+                }
             }
         }
     }

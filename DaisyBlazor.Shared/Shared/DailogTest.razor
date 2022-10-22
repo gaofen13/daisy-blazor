@@ -5,13 +5,18 @@
             @Test
         </BodyTemplate>
         <ActionTemplate>
-            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">Button</DaisyButton>
+            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
+            <DaisyButton Color="Color.Secondary" OnClick="NavigateTo">跳转</DaisyButton>
         </ActionTemplate>
     </DaisyCardBody>
 </DaisyCard>
 
 @code {
     private DaisyButton? btn;
+
+    [Inject]
+    private NavigationManager? Navigation { get; set; }
+
     [CascadingParameter]
     private DaisyModal ModalInstance { get; set; } = default!;
 
@@ -24,6 +29,11 @@
         {
             await btn.ElementButton.FocusAsync();
         }
+    }
+
+    private void NavigateTo()
+    {
+        Navigation?.NavigateTo("code");
     }
 
     private void Close()

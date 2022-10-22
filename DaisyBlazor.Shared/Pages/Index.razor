@@ -43,8 +43,9 @@
     </DaisyField>
 </EditForm>
 
-<DaisyModal Visible=check>
+<DaisyModal @bind-Visible=check Options="new ModalOptions{ClickBackgroundCancel=true}">
     <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>
+    <DaisyButton OnClick="@(_=>Navigation?.NavigateTo("code"))">跳转</DaisyButton>
 </DaisyModal>
 
 @code {
@@ -53,8 +54,9 @@
     private string input = "";
     private int add;
     private Color color { get; set; } = Color.Secondary;
-    [Inject] public ModalService? Modal { get; set; }
-    [Inject] public ToastService? Toast { get; set; }
+    [Inject] private NavigationManager? Navigation { get; set; }
+    [Inject] private ModalService? Modal { get; set; }
+    [Inject] private ToastService? Toast { get; set; }
     private async void Toggle()
     {
         var parameters = new ModalParameters();
