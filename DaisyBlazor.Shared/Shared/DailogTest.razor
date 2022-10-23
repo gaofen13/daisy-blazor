@@ -1,14 +1,9 @@
-﻿<DaisyCard>
-    <DaisyCardBody>
-        <TitleTemplate>Card</TitleTemplate>
-        <BodyTemplate>
-            @Test
-        </BodyTemplate>
-        <ActionTemplate>
-            <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
-            <DaisyButton Color="Color.Secondary" OnClick="NavigateTo">跳转</DaisyButton>
-        </ActionTemplate>
-    </DaisyCardBody>
+﻿<DaisyCard Title="Card">
+    <ContentTemplate>@Test</ContentTemplate>
+    <ActionTemplate>
+        <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
+        <DaisyButton Color="Color.Secondary" OnClick="NavigateTo">跳转</DaisyButton>
+    </ActionTemplate>
 </DaisyCard>
 
 @code {

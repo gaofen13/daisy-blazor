@@ -123,14 +123,23 @@
     font-weight: 600;
 }
 
-.card-side {
+.card-img-bottom {
+    flex-direction: column-reverse;
+}
+
+.card-img-left {
     align-items: stretch;
     flex-direction: row;
 }
 
-    .card-side figure > * {
-        max-width: unset;
-    }
+.card-img-right {
+    align-items: stretch;
+    flex-direction: row-reverse;
+}
+
+.card figure > * {
+    max-width: unset;
+}
 
 :where(.card-side figure > *) {
     width: 100%;
