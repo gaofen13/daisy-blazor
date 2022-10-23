@@ -19,11 +19,4 @@
     <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\js\main.js">
-      <SubType>Code</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

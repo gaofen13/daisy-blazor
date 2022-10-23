@@ -13,15 +13,13 @@
         }
     </div>
     <div class="collapse-content">
-        <p>
-            @if (MessageContent is not null)
-            {
-                @MessageContent
-            }
-            else
-            {
-                @Message
-            }
-        </p>
+        @if (MessageContent is not null)
+        {
+            @MessageContent
+        }
+        else
+        {
+            @Message
+        }
     </div>
 </div>
