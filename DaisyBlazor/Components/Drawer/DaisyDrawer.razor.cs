@@ -158,9 +158,13 @@ namespace DaisyBlazor
 
         async ValueTask IAsyncDisposable.DisposeAsync()
         {
-            await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
-            _objectReference?.Dispose();
-            GC.SuppressFinalize(this);
+            try
+            {
+                await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
+                _objectReference?.Dispose();
+                GC.SuppressFinalize(this);
+            }
+            finally { }
         }
 
         private static int GetBreakpointWidth(Size breakpoint)
