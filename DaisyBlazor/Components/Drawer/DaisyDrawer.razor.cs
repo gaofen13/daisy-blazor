@@ -91,13 +91,13 @@ namespace DaisyBlazor
         {
             _breakpointWidth = GetBreakpointWidth(_breakpoint);
             Navigation!.LocationChanged += OnLoactionChanged;
-            _objectReference = DotNetObjectReference.Create(this);
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
+                _objectReference = DotNetObjectReference.Create(this);
                 await JSRuntime!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
                 var width = await JSRuntime!.InvokeAsync<int>("GetWindowWidth");
                 UpdateWindowWidth(width);
@@ -158,9 +158,15 @@ namespace DaisyBlazor
 
         async ValueTask IAsyncDisposable.DisposeAsync()
         {
-            await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
-            _objectReference?.Dispose();
-            GC.SuppressFinalize(this);
+            try
+            {
+                await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
+            }
+            finally
+            {
+                _objectReference?.Dispose();
+                GC.SuppressFinalize(this);
+            }
         }
 
         private static int GetBreakpointWidth(Size breakpoint)
