@@ -3,39 +3,10 @@ main[b-f8y9nve1bd] {
     display: flex;
 }
 
-.sidebar[b-f8y9nve1bd] {
-    display: none;
-    position: sticky;
-    height: calc(100vh - 4rem);
-    top: 4rem;
-}
-
-    .sidebar.sidebar-show[b-f8y9nve1bd] {
-        display: flex;
-    }
-
-    .sidebar .overlay-responsive[b-f8y9nve1bd] {
-        display: none;
-    }
-
-@media(max-width:640px) {
-    .sidebar.sidebar-show[b-f8y9nve1bd] {
-        position: fixed;
-        top: 0;
-        height: 100vh;
-        z-index: 1;
-        display: flex;
-    }
-
-    .sidebar.sidebar-show .overlay-responsive[b-f8y9nve1bd] {
-        display: unset;
-    }
-}
-
 .top-row[b-f8y9nve1bd] {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 1030;
 }
 
 article[b-f8y9nve1bd] {
