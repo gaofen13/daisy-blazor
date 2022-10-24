@@ -1,0 +1,8 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+@implements IAsyncDisposable
+
+<aside id="@Id" style="@DrawerStyle" class="@DrawerClass" @attributes="@Attributes">
+    @ChildContent
+    <DaisyOverlay Visible="@OverlayVisible" OnBackgroundClick="@OnClickedOverlayAsync" />
+</aside>

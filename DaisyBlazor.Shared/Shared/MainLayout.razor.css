@@ -2,39 +2,10 @@ main {
     display: flex;
 }
 
-.sidebar {
-    display: none;
-    position: sticky;
-    height: calc(100vh - 4rem);
-    top: 4rem;
-}
-
-    .sidebar.sidebar-show {
-        display: flex;
-    }
-
-    .sidebar .overlay-responsive {
-        display: none;
-    }
-
-@media(max-width:640px) {
-    .sidebar.sidebar-show {
-        position: fixed;
-        top: 0;
-        height: 100vh;
-        z-index: 1;
-        display: flex;
-    }
-
-    .sidebar.sidebar-show .overlay-responsive {
-        display: unset;
-    }
-}
-
 .top-row {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 1030;
 }
 
 article {

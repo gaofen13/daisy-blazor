@@ -1,5 +1,4 @@
 ﻿@inherits LayoutComponentBase
-@implements IAsyncDisposable
 
 <div class="page">
     <nav class="top-row">
@@ -18,12 +17,9 @@
         </DaisyNavbar>
     </nav>
     <main>
-        <nav class="sidebar @ShowClass">
+        <DaisyDrawer @bind-Show="@showSidebar">
             <NavMenu />
-            <div class="overlay-responsive">
-                <DaisyOverlay OnBackgroundClick="_=>showSidebar=!showSidebar" Visible />
-            </div>
-        </nav>
+        </DaisyDrawer>
         <article>
             <DaisyErrorBoundary>
                 @Body

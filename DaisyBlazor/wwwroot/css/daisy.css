@@ -5,6 +5,7 @@
 @import '_collapse.css';
 @import '_container.css';
 @import '_divider.css';
+@import '_drawer.css';
 @import '_input.css';
 @import '_link.css';
 @import '_menu.css';
@@ -449,6 +450,8 @@ html {
     --suc: 158 100% 10%;
     --wac: 43 100% 11%;
     --erc: 0 100% 14%;
+    --drawer-width-left: 14rem;
+    --drawer-width-right: 14rem;
     --rounded-box: 1rem;
     --rounded-btn: 0.5rem;
     --rounded-badge: 1.9rem;

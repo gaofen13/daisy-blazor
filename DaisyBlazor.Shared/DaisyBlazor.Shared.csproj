@@ -19,4 +19,8 @@
     <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

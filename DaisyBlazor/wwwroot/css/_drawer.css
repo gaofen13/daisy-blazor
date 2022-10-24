@@ -1,0 +1,36 @@
+﻿.sidebar {
+    display: none;
+    position: fixed;
+    height: 100%;
+    z-index: 1020;
+}
+
+.sidebar-show {
+    display: flex;
+}
+
+.sidebar-right.sidebar-show {
+    display: flex;
+    right: 0;
+}
+
+.sidebar-show.sidebar-temporary {
+    top: 0;
+    height: 100vh;
+    z-index: 1040;
+}
+
+.sidebar-right.sidebar-show.sidebar-temporary {
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 1040;
+}
+
+.sidebar-show.sidebar-persistent ~ *:not(.sidebar) {
+    margin-left: var(--drawer-width-left);
+}
+
+.sidebar-right.sidebar-show.sidebar-persistent ~ *:not(.sidebar) {
+    margin-right: var(--drawer-width-right);
+}
