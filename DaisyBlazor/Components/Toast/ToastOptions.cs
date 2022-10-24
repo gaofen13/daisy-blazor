@@ -2,7 +2,7 @@
 {
     public class ToastOptions
     {
-        public int TimeOut { get; set; } = 5;
+        public int TimeOut { get; set; } = 5000;
 
         public bool ShowProgress { get; set; } = true;
 

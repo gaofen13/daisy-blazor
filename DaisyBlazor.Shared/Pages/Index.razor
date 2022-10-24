@@ -69,8 +69,8 @@
     private void ShowToast()
     {
         add++;
-        Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 3 });
-        Toast?.ShowToast<ToastTest>(Level.Info, new ToastOptions { TimeOut = 4 });
+        Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 3000 });
+        Toast?.ShowToast<ToastTest>(Level.Info, new ToastOptions { TimeOut = 4000 });
         Toast?.ShowSuccess(add.ToString(), "Success");
     }
 }
