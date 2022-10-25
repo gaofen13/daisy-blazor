@@ -7,6 +7,7 @@
 @import '_divider.css';
 @import '_drawer.css';
 @import '_input.css';
+@import '_kbd.css';
 @import '_link.css';
 @import '_menu.css';
 @import '_modal.css';
@@ -14,6 +15,7 @@
 @import '_overlay.css';
 @import '_progress.css';
 @import '_tab.css';
+@import '_table.css';
 @import '_toast.css';
 @import '_tooltip.css';
 
