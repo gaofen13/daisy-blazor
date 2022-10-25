@@ -1,0 +1,68 @@
+.table {
+    display: table;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 11;
+}
+
+:where(.table *:first-child) :where(*:first-child) :where(th,td):first-child {
+    border-top-left-radius: 0.5rem;
+}
+
+table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    border-bottom-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: hsl(var(--b2,var(--b1))/var(--tw-border-opacity));
+}
+
+.table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b2,var(--b1))/var(--tw-bg-opacity));
+    font-size: .75rem;
+    line-height: 1rem;
+    font-weight: 700;
+}
+.table :where(th,td) {
+    white-space: nowrap;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b1)/var(--tw-bg-opacity));
+}
+
+.table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    border-bottom-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: hsl(var(--b2,var(--b1))/var(--tw-border-opacity));
+}
+
+.table tr.active th, .table tr.active td, .table tr.active:nth-child(even) th, .table tr.active:nth-child(even) td {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b3,var(--b2))/var(--tw-bg-opacity));
+}
+
+.table tr.active th, .table tr.active td, .table tr.active:nth-child(2n) th, .table tr.active:nth-child(2n) td, .table-hover tbody tr:hover th, .table-hover tbody tr:hover td, .table-hover tbody tr:nth-child(2n):hover th, .table-hover tbody tr:nth-child(2n):hover td {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b3,var(--b2))/var(--tw-bg-opacity))
+}
+
+.table-zebra tbody tr:nth-child(even) th, .table-zebra tbody tr:nth-child(even) td {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b2,var(--b1))/var(--tw-bg-opacity));
+}
+
+.table-compact :where(th,td) {
+    padding: 0.5rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
