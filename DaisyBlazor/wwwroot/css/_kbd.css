@@ -1,0 +1,24 @@
+﻿.kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-color: hsl(var(--nf,var(--n))/var(--tw-border-opacity));
+    --tw-border-opacity: .2;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b2,var(--b1))/var(--tw-bg-opacity));
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: var(--rounded-btn,.5rem);
+    border-bottom-width: 2px;
+    min-height: 2.2em;
+    min-width: 2.2em;
+    cursor: pointer;
+}
+
+kbd:hover, kbd:active {
+    --tw-border-opacity: 1;
+    border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgba(0,0,0,0.5);
+}
