@@ -10,7 +10,7 @@ namespace DaisyBlazor
         [Parameter]
         public string? Style { get; set; }
 
-        [Parameter]
+        [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object>? Attributes { get; set; }
 
         [Parameter]
