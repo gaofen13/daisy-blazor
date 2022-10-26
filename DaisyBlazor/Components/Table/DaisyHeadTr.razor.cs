@@ -3,13 +3,12 @@ using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyTr
+    public partial class DaisyHeadTr
     {
         private bool _checked;
 
         private string TrClass =>
             new ClassBuilder()
-            .AddClass("active", Checked)
             .AddClass(Class)
             .Build();
 
@@ -23,11 +22,11 @@ namespace DaisyBlazor
                     _checked = value;
                     if (Checked)
                     {
-                        Table?.AddSelectedItem(Item);
+                        Table?.SelectAllItems();
                     }
                     else
                     {
-                        Table?.RemoveSelectedItem(Item);
+                        Table?.ClearSelectedItems();
                     }
                 }
             }
@@ -36,21 +35,21 @@ namespace DaisyBlazor
         [CascadingParameter]
         public IDataTable? Table { get; set; }
 
-        [CascadingParameter(Name = "MultiSelection")]
+        [Parameter]
         public bool MultiSelection { get; set; }
+
+        [Parameter]
+        public IEnumerable<dynamic>? Items { get; set; }
 
         [CascadingParameter(Name = "SelectedItems")]
         public IEnumerable<dynamic>? SelectedItems { get; set; }
-
-        [Parameter]
-        public object Item { get; set; } = new();
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
 
         protected override void OnInitialized()
         {
-            if (SelectedItems?.Contains(Item) == true)
+            if (SelectedItems == Items)
             {
                 _checked = true;
             }

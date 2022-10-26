@@ -18,10 +18,10 @@ namespace DaisyBlazor
             .AddClass($"label-{LabelPosition.ToString()?.ToLower()}")
             .Build();
 
-        public InputRadio<TValue>? Radio { get; protected set; }
+        private bool Checked => RadioGroup?.CheckCurrentValue(Value) == true;
 
         [CascadingParameter]
-        private DaisyRadioGroup<TValue> RadioGroup { get; set; } = default!;
+        private DaisyRadioGroup<TValue>? RadioGroup { get; set; }
 
         [Parameter]
         public Color? Color { get; set; }
@@ -40,8 +40,13 @@ namespace DaisyBlazor
 
         protected override void OnInitialized()
         {
-            LabelPosition ??= RadioGroup.LabelPosition;
+            LabelPosition ??= RadioGroup?.LabelPosition;
             base.OnInitialized();
+        }
+
+        private void OnInputChanged(ChangeEventArgs args)
+        {
+            RadioGroup?.OnCheckedRadioChanged(this);
         }
     }
 }

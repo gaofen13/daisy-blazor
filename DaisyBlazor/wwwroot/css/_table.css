@@ -5,12 +5,12 @@
     width: 100%;
 }
 
-.table th:first-child {
-    position: sticky;
-    position: -webkit-sticky;
-    left: 0;
-    z-index: 11;
-}
+    .table th:first-child {
+        position: sticky;
+        position: -webkit-sticky;
+        left: 0;
+        z-index: 11;
+    }
 
 :where(.table *:first-child) :where(*:first-child) :where(th,td):first-child {
     border-top-left-radius: 0.5rem;
@@ -25,15 +25,20 @@ table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-ch
 .table :where(thead,tfoot) :where(th,td) {
     --tw-bg-opacity: 1;
     background-color: hsl(var(--b2,var(--b1))/var(--tw-bg-opacity));
-    font-size: .75rem;
+    font-size: 1.1rem;
     line-height: 1rem;
     font-weight: 700;
 }
+
 .table :where(th,td) {
     white-space: nowrap;
     padding: 1rem;
     vertical-align: middle;
 }
+
+    .table :where(th,td):where(.td-checkbox) {
+        width: 1rem;
+    }
 
 .table :where(tbody th,tbody td) {
     --tw-bg-opacity: 1;
@@ -61,8 +66,25 @@ table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-ch
     background-color: hsl(var(--b2,var(--b1))/var(--tw-bg-opacity));
 }
 
+.table-border :where(th,td) {
+    border-width: medium;
+}
+
 .table-compact :where(th,td) {
     padding: 0.5rem;
     font-size: .875rem;
     line-height: 1.25rem;
 }
+
+.pager {
+    width: 100%;
+    display: flex;
+}
+
+    .pager.pager-center {
+        justify-content: center;
+    }
+
+    .pager.pager-end {
+        justify-content: end;
+    }

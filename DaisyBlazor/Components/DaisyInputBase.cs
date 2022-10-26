@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
+using System.Globalization;
 
 namespace DaisyBlazor
 {
@@ -13,9 +13,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public EventCallback<TValue> ValueChanged { get; set; }
-
-        [Parameter]
-        public Expression<Func<TValue>>? ValueExpression { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }

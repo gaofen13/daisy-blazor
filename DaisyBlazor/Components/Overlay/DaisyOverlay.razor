@@ -3,7 +3,7 @@
 
 @if (Visible)
 {
-    <div id="@Id" style="@Style" class="@Classname" @attributes="@Attributes" @onclick="@OnBackgroundClick">
+    <div @ref="@Element" id="@Id" style="@Style" class="@Classname" @attributes="@Attributes" @onclick="@OnBackgroundClick">
         @ChildContent
     </div>
 }

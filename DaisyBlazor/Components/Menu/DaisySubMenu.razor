@@ -1,7 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<li id="@Id" style="@Style" class="@Class" @attributes="@Attributes">
+<li @ref="@Element" id="@Id" style="@Style" class="@Class" @attributes="@Attributes">
     <span @onclick="@OnHandlerClickTilte">
         @if (TitleContent is not null)
         {

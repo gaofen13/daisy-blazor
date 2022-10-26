@@ -1,10 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<pre id="@Id"
-     data-prefix="@DataPrefix"
-     class="@Classname"
-     style="@Style">
+<pre @ref="@Element" id="@Id" data-prefix="@DataPrefix" class="@Classname" style="@Style">
 <code>
         @if (ChildContent is not null)
         {

@@ -18,8 +18,6 @@ namespace DaisyBlazor
             .AddClass($"label-{LabelPosition.ToString()?.ToLower()}")
             .Build();
 
-        public InputCheckbox? Checkbox { get; protected set; }
-
         [Parameter]
         public Color? Color { get; set; }
 
@@ -34,5 +32,18 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
+
+        private void OnCheckedChanged(ChangeEventArgs args)
+        {
+            if(args.Value is not null)
+            {
+                var value = (bool)args.Value;
+                if (Value != value)
+                {
+                    Value = value;
+                    ValueChanged.InvokeAsync(Value);
+                }
+            }
+        }
     }
 }

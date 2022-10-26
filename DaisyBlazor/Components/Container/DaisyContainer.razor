@@ -2,7 +2,7 @@
 @inherits DaisyComponentBase
 @using DaisyBlazor.Utilities
 
-<div id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+<div @ref="@Element" id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
     @ChildContent
 </div>
 

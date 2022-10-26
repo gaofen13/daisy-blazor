@@ -1,7 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<li id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+<li @ref="@Element" id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
     <NavLink ActiveClass="active" Match="@Match" @attributes="@NavLinkAttributes">
         @if (ChildContent is not null)
         {

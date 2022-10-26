@@ -7,6 +7,12 @@
     width: 100%;
 }
 
+    .form-field .form-field-input {
+        display: flex;
+        align-items: center;
+        width: 100%
+    }
+
 @media(min-width:768px) {
     .form-field {
         flex-direction: row;

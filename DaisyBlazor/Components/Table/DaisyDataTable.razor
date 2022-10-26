@@ -1,0 +1,45 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+@typeparam TItem
+
+<table @ref="@Element" id="@Id" style="@Style" class="@TableClass" @attributes="@Attributes">
+    <CascadingValue Value="@this" IsFixed>
+        @if (HeadTemplate is not null)
+        {
+            <thead>
+                <CascadingValue Value="@SelectedItems" IsFixed>
+                    <DaisyHeadTr MultiSelection="@MultiSelection" Items="@Items">
+                        @HeadTemplate
+                    </DaisyHeadTr>
+                </CascadingValue>
+            </thead>
+        }
+        <tbody>
+            @if (Items.Any())
+            {
+
+            }
+            else
+            {
+                <tr><td colspan="1000" align="center">Empty Table</td></tr>
+            }
+        </tbody>
+        @if (FootTemplate is not null)
+        {
+            <tfoot><tr>@FootTemplate</tr></tfoot>
+        }
+    </CascadingValue>
+</table>
+@if (ShowPager)
+{
+    <div class="@PagerClass">
+        @if (PagerTemplate is not null)
+        {
+            @PagerTemplate
+        }
+        else
+        {
+
+        }
+    </div>
+}

@@ -15,28 +15,28 @@
 }
 else
 {
-    <DaisyTable>
-        <DaisyTHead>
-            <DaisyTr>
-                <DaisyTh>Date</DaisyTh>
-                <DaisyTh>Temp. (C)</DaisyTh>
-                <DaisyTh>Temp. (F)</DaisyTh>
-                <DaisyTh>Summary</DaisyTh>
-            </DaisyTr>
-        </DaisyTHead>
-        <DaisyTBody>
+    <DaisySimpleTable Border>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var forecast in forecasts)
             {
-                <DaisyTr>
-                    <DaisyTd>@forecast.Date.ToShortDateString()</DaisyTd>
-                    <DaisyTd>@forecast.TemperatureC</DaisyTd>
-                    <DaisyTd>@forecast.TemperatureF</DaisyTd>
-                    <DaisyTd>@forecast.Summary</DaisyTd>
-                </DaisyTr>
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
             }
-        </DaisyTBody>
-        <DaisyTFoot><DaisyTr><DaisyTh Colspan="4">这是table foot</DaisyTh></DaisyTr></DaisyTFoot>
-    </DaisyTable>
+        </tbody>
+        <tfoot><tr><th colspan="4">这是table foot</th></tr></tfoot>
+    </DaisySimpleTable>
 }
 
 @code {

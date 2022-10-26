@@ -1,6 +1,7 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using System.Globalization;
 
 namespace DaisyBlazor
 {
@@ -17,8 +18,6 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        public InputSelect<TValue>? Select { get; protected set; }
-
         [Parameter]
         public RenderFragment? OptionList { get; set; }
 
@@ -33,5 +32,26 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
+
+        private bool CheckCurrentValue(TValue? value)
+        {
+            if (Value == null && value == null)
+            {
+                return true;
+            }
+            return Value?.Equals(value) == true;
+        }
+
+        private void OnSelectionChanged(ChangeEventArgs args)
+        {
+            if (BindConverter.TryConvertTo(args.Value, CultureInfo.InvariantCulture, out TValue? res))
+            {
+                if (!CheckCurrentValue(res))
+                {
+                    Value = res;
+                    ValueChanged.InvokeAsync(Value);
+                }
+            }
+        }
     }
 }

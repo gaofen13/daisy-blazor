@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
@@ -14,8 +13,6 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        public InputTextArea? InputTextArea { get; protected set; }
-
         [Parameter]
         public bool Bordered { get; set; } = true;
 
@@ -24,5 +21,15 @@ namespace DaisyBlazor
 
         [Parameter]
         public Color? Color { get; set; }
+
+        private void OnInputChanged(ChangeEventArgs args)
+        {
+            var value = args.Value as string;
+            if (Value != value)
+            {
+                Value = value;
+                ValueChanged.InvokeAsync(Value);
+            }
+        }
     }
 }

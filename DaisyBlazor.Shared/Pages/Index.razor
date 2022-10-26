@@ -63,7 +63,7 @@
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
-        _ = _input?.InputText?.Element?.FocusAsync();
+        _ = _input?.Element?.FocusAsync();
     }
 
     private void ShowToast()

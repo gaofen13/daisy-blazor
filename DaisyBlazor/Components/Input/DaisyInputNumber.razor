@@ -2,4 +2,4 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<InputNumber TValue="@TValue" @ref="@InputNumber" id="@Id" class="@Classname" style="@Style" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" @attributes="@Attributes" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+<input type="number" @ref="@Element" id="@Id" class="@Classname" style="@Style" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" @attributes="@Attributes" value="@Value" @onchange="@OnInputChanged" />

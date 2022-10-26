@@ -1,6 +1,7 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using System.Globalization;
 
 namespace DaisyBlazor
 {
@@ -15,8 +16,6 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        public InputNumber<TValue>? InputNumber { get; protected set; }
-
         [Parameter]
         public bool Bordered { get; set; } = true;
 
@@ -28,5 +27,26 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
+
+        private bool CheckCurrentValue(TValue? value)
+        {
+            if (Value == null && value == null)
+            {
+                return true;
+            }
+            return Value?.Equals(value) == true;
+        }
+
+        private void OnInputChanged(ChangeEventArgs args)
+        {
+            if (BindConverter.TryConvertTo(args.Value, CultureInfo.InvariantCulture, out TValue? res))
+            {
+                if (!CheckCurrentValue(res))
+                {
+                    Value = res;
+                    ValueChanged.InvokeAsync(Value);
+                }
+            }
+        }
     }
 }

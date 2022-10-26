@@ -2,12 +2,10 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<InputRadioGroup id="@Id" @ref="@RadioGroup" disabled="@Disabled" autofocus="@AutoFocus" placeholder="@Placeholder" TValue="TValue" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" Name="@Name" @attributes="@Attributes">
-    <div style="width:100%">
-        <div class="@Classname">
-            <CascadingValue Value="@this" IsFixed>
-                @RadioList
-            </CascadingValue>
-        </div>
+<div @ref="@Element" id="@Id" style="width:100%">
+    <div class="@Classname">
+        <CascadingValue Value="@this" IsFixed>
+            @RadioList
+        </CascadingValue>
     </div>
-</InputRadioGroup>
+</div>

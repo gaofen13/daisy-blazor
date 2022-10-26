@@ -11,5 +11,5 @@
     {
         <span>@Label</span>
     }
-    <InputRadio TValue="@TValue" @ref="@Radio" Name="@Name" Value="@Value" disabled="@Disabled" class="@Classname" style="@Style" @attributes="@Attributes" />
+    <input type="radio" @ref="@Element" name="@Name" checked="@Checked" value="@Value" @onchange="@OnInputChanged" disabled="@Disabled" class="@Classname" style="@Style" @attributes="@Attributes" />
 </label>

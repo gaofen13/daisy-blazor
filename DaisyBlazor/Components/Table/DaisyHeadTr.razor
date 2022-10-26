@@ -4,9 +4,9 @@
 <tr @ref="@Element" id="@Id" style="@Style" class="@TrClass" @attributes="@Attributes">
     @if (MultiSelection)
     {
-        <td class="td-checkbox">
+        <th class="td-checkbox">
             <DaisyCheckbox @bind-Value="@Checked" />
-        </td>
+        </th>
     }
     @ChildContent
 </tr>

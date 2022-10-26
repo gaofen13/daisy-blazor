@@ -10,5 +10,5 @@
     {
         <span>@Label</span>
     }
-    <InputCheckbox @ref="@Checkbox" id="@Id" class="@Classname" style="@Style" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+    <input type="checkbox" @ref="@Element" id="@Id" class="@Classname" style="@Style" checked="@Value" @onchange="@OnCheckedChanged" />
 </label>

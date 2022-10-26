@@ -4,6 +4,8 @@ namespace DaisyBlazor
 {
     public class DaisyComponentBase : ComponentBase
     {
+        public ElementReference? Element { get; protected set; }
+
         [Parameter]
         public string? Class { get; set; }
 

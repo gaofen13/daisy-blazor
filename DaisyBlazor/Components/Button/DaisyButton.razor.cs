@@ -22,8 +22,6 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        public ElementReference ElementButton { get; protected set; }
-
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
 

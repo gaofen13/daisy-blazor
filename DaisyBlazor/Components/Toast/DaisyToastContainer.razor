@@ -3,7 +3,7 @@
 
 @if (ToastList.Any())
 {
-    <div id="@Id" class="@Classname" style="@StyleAttribute" @attributes="@Attributes">
+    <div @ref="@Element" id="@Id" class="@Classname" style="@StyleAttribute" @attributes="@Attributes">
         <CascadingValue Value="@this" IsFixed>
             @foreach (var toast in ToastList.OrderBy(x => x.TimeStamp))
             {
