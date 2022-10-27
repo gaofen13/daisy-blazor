@@ -16,5 +16,15 @@ namespace DaisyBlazor.Shared.Data
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             }).ToArray());
         }
+
+        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate, int start, int size)
+        {
+            return Task.FromResult(Enumerable.Range(start, start + size - 1).Select(index => new WeatherForecast
+            {
+                Date = startDate.AddDays(index),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            }).ToArray());
+        }
     }
 }

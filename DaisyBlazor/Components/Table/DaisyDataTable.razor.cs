@@ -82,10 +82,22 @@ namespace DaisyBlazor
         public bool ShowPager { get; set; }
 
         [Parameter]
+        public int TotalPager { get; set; }
+
+        [Parameter]
         public int PageSzie { get; set; }
 
         [Parameter]
+        public EventCallback<int> PageSizeChanged { get; set; }
+
+        [Parameter]
         public int PageIndex { get; set; }
+
+        [Parameter]
+        public EventCallback<int> PageIndexChanged { get; set; }
+
+        [Parameter]
+        public int[] PageSizeOption { get; set; } = { 10, 20, 50, 100 };
 
         [Parameter]
         public PositionX PagePosition { get; set; }

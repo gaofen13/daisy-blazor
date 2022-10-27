@@ -10,6 +10,7 @@ namespace DaisyBlazor
           new ClassBuilder("btn")
             .AddClass($"btn-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"btn-{Size.ToString()?.ToLower()}", Size != null)
+            .AddClass("btn-active", Active)
             .AddClass("btn-disabled", Disabled)
             .AddClass("btn-outline", Outline)
             .AddClass("btn-glass", Glass)
@@ -39,6 +40,9 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
+
+        [Parameter]
+        public bool Active { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }

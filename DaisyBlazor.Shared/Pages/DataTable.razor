@@ -2,7 +2,13 @@
 @using DaisyBlazor.Shared.Data
 @inject WeatherForecastService ForecastService
 
-<DaisyDataTable Items="@forecasts" MultiSelection>
+<DaisyDataTable Items="@_forecasts"
+                MultiSelection ShowPager TotalPager="25" 
+                PageIndex="@_index"
+                PageSzie="@_size"
+                PageSizeOption="@(new int[]{5,10,30,100})"
+                PageSizeChanged="(size)=>GetWeaterForecastAsync(_index,size)"
+                PageIndexChanged="(index)=>GetWeaterForecastAsync(index,_size)">
     <Columns>
         <DaisyColumn Title="Data">@context.Date</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
@@ -12,10 +18,19 @@
 </DaisyDataTable>
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private int _index = 1;
+    private int _size = 5;
+    private WeatherForecast[]? _forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        await GetWeaterForecastAsync(_index, _size);
+    }
+
+    private async Task GetWeaterForecastAsync(int index, int size)
+    {
+        _index = index;
+        _size = size;
+        _forecasts = await ForecastService.GetForecastAsync(DateTime.Now, _index, _size);
     }
 }

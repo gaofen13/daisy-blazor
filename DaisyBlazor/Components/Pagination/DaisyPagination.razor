@@ -1,0 +1,72 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<div style="display:inline-flex;align-items:center;width:100%;">
+    @if (ShowSizeOption)
+    {
+        <div style="display:inline-flex;justify-content:end;align-items:center;width:100%;margin-right:1rem;">
+            <h6>@SizeOptionLabel</h6>
+            <DaisySelect @bind-Value="@PageSize" Style="max-width:fit-content">
+                <OptionList>
+                    @foreach (var option in SizeOption)
+                    {
+                        <DaisySelectOption Value="@option">@option</DaisySelectOption>
+                    }
+                </OptionList>
+            </DaisySelect>
+        </div>
+    }
+    <DaisyButtonGroup>
+        <DaisyButton Disabled="@PrevDisabled" OnClick="@OnClickPrev">&lt;</DaisyButton>
+        @if (Total >= 1)
+        {
+            <DaisyButton OnClick="_=>OnClickPager(1)" Active="@(PageIndex==1)">1</DaisyButton>
+        }
+        @if (Total <= 7)
+        {
+            for (int i = 2; i < Total; i++)
+            {
+                var buttonIndex = i;
+                <DaisyButton OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
+            }
+        }
+        else
+        {
+            if (PageIndex <= 4)
+            {
+                for (int i = 2; i < 5; i++)
+                {
+                    var buttonIndex = i;
+                    <DaisyButton OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
+                }
+                <DaisyButton OnClick="_=>OnClickPager(5)" Active="@(PageIndex==5)">5</DaisyButton>
+                <DaisyButton Disabled>…</DaisyButton>
+            }
+            else if (PageIndex > Total - 4)
+            {
+                <DaisyButton Disabled>…</DaisyButton>
+                @for (int i = Total - 4; i < Total; i++)
+                {
+                    var buttonIndex = i;
+                    <DaisyButton OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
+                }
+            }
+            else
+            {
+                <DaisyButton Disabled>…</DaisyButton>
+                @for (int i = PageIndex - 1; i < PageIndex + 2; i++)
+                {
+                    var buttonIndex = i;
+                    <DaisyButton OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
+                }
+                <DaisyButton Disabled>…</DaisyButton>
+            }
+
+        }
+        @if (Total >= 2)
+        {
+            <DaisyButton OnClick="_=>OnClickPager(Total)" Active="@(PageIndex==Total)">@Total</DaisyButton>
+        }
+        <DaisyButton Disabled="@NexDisabled" OnClick="@OnClickNex">&gt;</DaisyButton>
+    </DaisyButtonGroup>
+</div>
