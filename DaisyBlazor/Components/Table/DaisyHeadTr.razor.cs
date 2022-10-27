@@ -3,57 +3,40 @@ using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyHeadTr
+    public partial class DaisyHeadTr<TItem>
     {
-        private bool _checked;
-
         private string TrClass =>
             new ClassBuilder()
             .AddClass(Class)
             .Build();
 
-        private bool Checked
-        {
-            get => _checked;
-            set
-            {
-                if (_checked != value)
-                {
-                    _checked = value;
-                    if (Checked)
-                    {
-                        Table?.SelectAllItems();
-                    }
-                    else
-                    {
-                        Table?.ClearSelectedItems();
-                    }
-                }
-            }
-        }
+        private bool Checked => SelectedItems?.Count() == Items?.Count();
 
         [CascadingParameter]
-        public IDataTable? Table { get; set; }
+        public IDataTable<TItem>? Table { get; set; }
+
+        [Parameter]
+        public IEnumerable<TItem>? SelectedItems { get; set; }
 
         [Parameter]
         public bool MultiSelection { get; set; }
 
         [Parameter]
-        public IEnumerable<dynamic>? Items { get; set; }
-
-        [CascadingParameter(Name = "SelectedItems")]
-        public IEnumerable<dynamic>? SelectedItems { get; set; }
+        public IEnumerable<TItem>? Items { get; set; }
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
 
-        protected override void OnInitialized()
+        private void OnCheckedChanged(bool @checked)
         {
-            if (SelectedItems == Items)
+            if (@checked)
             {
-                _checked = true;
+                Table?.SelectAllItems();
             }
-            base.OnInitialized();
+            else
+            {
+                Table?.ClearSelectedItems();
+            }
         }
     }
 }

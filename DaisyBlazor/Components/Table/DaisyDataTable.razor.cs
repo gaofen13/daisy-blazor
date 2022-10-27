@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyDataTable<TItem> : IDataTable where TItem : class
+    public partial class DaisyDataTable<TItem> : IDataTable<TItem>
     {
+        private IEnumerable<TItem> _items = Enumerable.Empty<TItem>();
         private List<TItem> _selectedItems = new();
 
         private string TableClass =>
@@ -21,8 +22,24 @@ namespace DaisyBlazor
             .AddClass($"pager-{PagePosition.ToString().ToLower()}")
             .Build();
 
+        private TItem DefaultValue => Activator.CreateInstance<TItem>();
+
         [Parameter]
-        public IEnumerable<TItem> Items { get; set; } = Enumerable.Empty<TItem>();
+        public IEnumerable<TItem>? Items
+        {
+            get => _items;
+            set
+            {
+                if (value == null)
+                {
+                    _items = Enumerable.Empty<TItem>();
+                }
+                else
+                {
+                    _items = value;
+                }
+            }
+        }
 
         [Parameter]
         public IEnumerable<TItem> SelectedItems
@@ -76,34 +93,44 @@ namespace DaisyBlazor
         [Parameter]
         public RenderFragment? PagerTemplate { get; set; }
 
-        public void AddSelectedItem(dynamic item)
+        public void AddSelectedItem(TItem item)
         {
             if (!_selectedItems.Contains(item))
             {
                 _selectedItems.Add(item);
-                SelectedItemsChanged.InvokeAsync(SelectedItems);
+                SelectedItemsChanged.InvokeAsync(_selectedItems);
+                if (_selectedItems.Count == Items?.Count())
+                {
+                    StateHasChanged();
+                }
             }
         }
 
-        public void RemoveSelectedItem(dynamic item)
+        public void RemoveSelectedItem(TItem item)
         {
             if (_selectedItems.Contains(item))
             {
                 _selectedItems.Remove(item);
-                SelectedItemsChanged.InvokeAsync(SelectedItems);
+                SelectedItemsChanged.InvokeAsync(_selectedItems);
+                if (_selectedItems.Count + 1 == Items?.Count())
+                {
+                    StateHasChanged();
+                }
             }
         }
 
         public void SelectAllItems()
         {
-            SelectedItems = Items;
-            SelectedItemsChanged.InvokeAsync(Items);
+            SelectedItems = _items;
+            SelectedItemsChanged.InvokeAsync(_items);
+            StateHasChanged();
         }
 
         public void ClearSelectedItems()
         {
             _selectedItems.Clear();
-            SelectedItemsChanged.InvokeAsync(SelectedItems);
+            SelectedItemsChanged.InvokeAsync(_selectedItems);
+            StateHasChanged();
         }
     }
 }

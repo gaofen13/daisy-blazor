@@ -1,18 +1,21 @@
 ﻿@page "/table"
+@using DaisyBlazor.Shared.Data
+@inject WeatherForecastService ForecastService
 
-<DaisyDataTable TItem="object" MultiSelection>
-    <HeadTemplate>
-        <th>表头1</th>
-        <th>表头2</th>
-        <th>表头3</th>
-        <th>表头4</th>
-        <th>表头5</th>
-    </HeadTemplate>
+<DaisyDataTable Items="@forecasts" MultiSelection>
     <Columns>
-
+        <DaisyColumn Title="Data">@context.Date</DaisyColumn>
+        <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
+        <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
+        <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
     </Columns>
 </DaisyDataTable>
 
 @code {
+    private WeatherForecast[]? forecasts;
 
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
 }

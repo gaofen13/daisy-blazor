@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
-    public interface IDataTable
+    public interface IDataTable<TItem>
     {
-        void AddSelectedItem(object item);
+        void AddSelectedItem(TItem item);
 
-        void RemoveSelectedItem(object item);
+        void RemoveSelectedItem(TItem item);
 
         void SelectAllItems();
 

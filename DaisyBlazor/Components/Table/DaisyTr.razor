@@ -1,11 +1,12 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
+@typeparam TItem
 
 <tr @ref="@Element" id="@Id" style="@Style" class="@TrClass" @attributes="@Attributes">
     @if (MultiSelection)
     {
         <td class="td-checkbox">
-            <DaisyCheckbox @bind-Value="@Checked" />
+            <DaisyCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />
         </td>
     }
     @ChildContent
