@@ -89,6 +89,9 @@ namespace DaisyBlazor
         public bool ShowPager { get; set; }
 
         [Parameter]
+        public bool OutlinePager { get; set; }
+
+        [Parameter]
         public int TotalPager { get; set; }
 
         [Parameter]
