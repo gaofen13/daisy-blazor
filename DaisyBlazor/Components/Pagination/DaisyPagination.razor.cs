@@ -12,6 +12,9 @@ namespace DaisyBlazor
         private bool NexDisabled => PageIndex == Total || Total <= 0;
 
         [Parameter]
+        public bool Outline { get; set; }
+
+        [Parameter]
         public int Total { get; set; }
 
         [Parameter]

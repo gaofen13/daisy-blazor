@@ -26,8 +26,7 @@ namespace DaisyBlazor
 
         private string DrawerStyle =>
             new StyleBuilder()
-            .AddStyle("--drawer-width-left", Width)
-            .AddStyle("--drawer-width-right", Width)
+            .AddStyle(RightSide ? "--drawer-width-right" : "--drawer-width-left", Width)
             .AddStyle(Style)
             .Build();
 
