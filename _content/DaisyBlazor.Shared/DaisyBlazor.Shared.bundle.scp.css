@@ -1,6 +1,7 @@
 /* _content/DaisyBlazor.Shared/Shared/MainLayout.razor.rz.scp.css */
 main[b-f8y9nve1bd] {
     display: flex;
+    overflow: auto;
 }
 
 .top-row[b-f8y9nve1bd] {
