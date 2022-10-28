@@ -7,6 +7,8 @@ namespace DaisyBlazor
     {
         private IEnumerable<TItem> _items = Enumerable.Empty<TItem>();
         private List<TItem> _selectedItems = new();
+        private int _pageIndex = 1;
+        private int _pageSize = 10;
 
         private string TableClass =>
             new ClassBuilder("table")
@@ -37,6 +39,11 @@ namespace DaisyBlazor
                 else
                 {
                     _items = value;
+                }
+                if (_selectedItems.Any())
+                {
+                    _selectedItems.Clear();
+                    SelectedItemsChanged.InvokeAsync(_selectedItems);
                 }
             }
         }
@@ -85,13 +92,35 @@ namespace DaisyBlazor
         public int TotalPager { get; set; }
 
         [Parameter]
-        public int PageSzie { get; set; }
+        public int PageSzie
+        {
+            get => _pageSize;
+            set
+            {
+                if (_pageSize != value && value > 0)
+                {
+                    _pageSize = value;
+                    PageSizeChanged.InvokeAsync(value);
+                }
+            }
+        }
 
         [Parameter]
         public EventCallback<int> PageSizeChanged { get; set; }
 
         [Parameter]
-        public int PageIndex { get; set; }
+        public int PageIndex
+        {
+            get => _pageIndex;
+            set
+            {
+                if (_pageIndex != value && value > 0)
+                {
+                    _pageIndex = value;
+                    PageIndexChanged.InvokeAsync(value);
+                }
+            }
+        }
 
         [Parameter]
         public EventCallback<int> PageIndexChanged { get; set; }

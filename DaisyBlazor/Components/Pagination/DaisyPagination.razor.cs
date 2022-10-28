@@ -5,6 +5,7 @@ namespace DaisyBlazor
     public partial class DaisyPagination
     {
         private int _index = 1;
+        private int _size = 10;
 
         private bool PrevDisabled => PageIndex <= 1 || Total <= 0;
 
@@ -23,7 +24,18 @@ namespace DaisyBlazor
         public int[] SizeOption { get; set; } = { 10, 20, 50, 100 };
 
         [Parameter]
-        public int PageSize { get; set; } = 10;
+        public int PageSize
+        {
+            get => _size;
+            set
+            {
+                if (_size != value && value > 0)
+                {
+                    _size = value;
+                    PageSizeChanged.InvokeAsync(value);
+                }
+            }
+        }
 
         [Parameter]
         public EventCallback<int> PageSizeChanged { get; set; }

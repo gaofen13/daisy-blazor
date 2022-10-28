@@ -19,7 +19,7 @@ namespace DaisyBlazor.Shared.Data
 
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate, int start, int size)
         {
-            return Task.FromResult(Enumerable.Range(start, start + size - 1).Select(index => new WeatherForecast
+            return Task.FromResult(Enumerable.Range((start - 1) * size, size).Select(index => new WeatherForecast
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
