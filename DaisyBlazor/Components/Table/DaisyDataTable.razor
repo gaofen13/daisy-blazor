@@ -39,18 +39,24 @@
         {
             <tfoot><tr>@FootTemplate</tr></tfoot>
         }
+        @if (ShowPager)
+        {
+            <tfoot>
+                <tr>
+                    <td colspan="1000">
+                        <div class="@PagerClass">
+                            @if (PagerTemplate is not null)
+                            {
+                                @PagerTemplate
+                            }
+                            else
+                            {
+                                <DaisyPagination Total="@TotalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" />
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        }
     </CascadingValue>
 </table>
-@if (ShowPager)
-{
-    <div class="@PagerClass">
-        @if (PagerTemplate is not null)
-        {
-            @PagerTemplate
-        }
-        else
-        {
-            <DaisyPagination Total="@TotalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" />
-        }
-    </div>
-}

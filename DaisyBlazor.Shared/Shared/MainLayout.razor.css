@@ -1,5 +1,6 @@
 main {
     display: flex;
+    overflow: auto;
 }
 
 .top-row {
