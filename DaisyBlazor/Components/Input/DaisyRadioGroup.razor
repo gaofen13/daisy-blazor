@@ -2,7 +2,7 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<div @ref="@Element" id="@Id" style="width:100%">
+<div @ref="@Element" id="@Id" style="width:100%" @attributes="@Attributes">
     <div class="@Classname">
         <CascadingValue Value="@this" IsFixed>
             @RadioList

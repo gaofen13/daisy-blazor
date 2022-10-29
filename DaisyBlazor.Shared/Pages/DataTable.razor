@@ -3,12 +3,20 @@
 @inject WeatherForecastService ForecastService
 
 <DaisyDataTable Items="@_forecasts"
-                MultiSelection ShowPager TotalPager="25" 
+                MultiSelection ShowPager TotalPager="25"
+                PagePosition="PositionX.End"
                 PageIndex="@_index"
                 PageSzie="@_size"
                 PageSizeOption="@(new int[]{5,10,30,100})"
                 PageSizeChanged="(size)=>GetWeaterForecastAsync(_index,size)"
                 PageIndexChanged="(index)=>GetWeaterForecastAsync(index,_size)">
+    <ToolbarTemplate>
+        <DaisyButtonGroup>
+            <DaisyButton Color="Color.Primary">Add</DaisyButton>
+            <DaisyButton Color="Color.Accent">Edit</DaisyButton>
+            <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
+        </DaisyButtonGroup>
+    </ToolbarTemplate>
     <Columns>
         <DaisyColumn Title="Data">@context.Date</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>

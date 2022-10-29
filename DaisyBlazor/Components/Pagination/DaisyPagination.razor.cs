@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using DaisyBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
@@ -6,6 +7,11 @@ namespace DaisyBlazor
     {
         private int _index = 1;
         private int _size = 10;
+
+        private string PagerClass =>
+            new ClassBuilder("pager-container")
+            .AddClass(Class)
+            .Build();
 
         private bool PrevDisabled => PageIndex <= 1 || Total <= 0;
 

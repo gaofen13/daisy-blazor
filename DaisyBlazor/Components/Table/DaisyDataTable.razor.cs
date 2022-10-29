@@ -20,7 +20,7 @@ namespace DaisyBlazor
             .Build();
 
         private string PagerClass =>
-            new ClassBuilder("pager")
+            new ClassBuilder("table-pager")
             .AddClass($"pager-{PagePosition.ToString().ToLower()}")
             .Build();
 
@@ -78,6 +78,9 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment<TItem>? Columns { get; set; }
+
+        [Parameter]
+        public RenderFragment? ToolbarTemplate { get; set; }
 
         [Parameter]
         public RenderFragment? HeadTemplate { get; set; }

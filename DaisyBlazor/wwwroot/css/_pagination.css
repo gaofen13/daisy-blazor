@@ -1,0 +1,13 @@
+﻿.pager-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.pager-sizeoption {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: 1rem;
+    word-break: keep-all;
+}

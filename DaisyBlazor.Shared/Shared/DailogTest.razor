@@ -18,11 +18,11 @@
     [Parameter]
     public string? Test { get; set; }
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (btn is not null)
         {
-            btn.Element?.FocusAsync();
+            await btn.FocusAsync();
         }
     }
 

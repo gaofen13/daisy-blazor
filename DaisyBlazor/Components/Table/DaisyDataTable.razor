@@ -2,61 +2,63 @@
 @inherits DaisyComponentBase
 @typeparam TItem
 
-<table @ref="@Element" id="@Id" style="@Style" class="@TableClass" @attributes="@Attributes">
-    <CascadingValue Value="@this" IsFixed>
-        <thead>
-            <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
-                @if (HeadTemplate is not null)
+<div class="table-container">
+    @if (ToolbarTemplate is not null)
+    {
+        <div class="table-toolbar">
+            @ToolbarTemplate
+        </div>
+    }
+    <table @ref="@Element" id="@Id" style="@Style" class="@TableClass" @attributes="@Attributes">
+        <CascadingValue Value="@this" IsFixed>
+            <thead>
+                <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
+                    @if (HeadTemplate is not null)
+                    {
+                        @HeadTemplate
+                    }
+                    else if (Columns is not null)
+                    {
+                        <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
+                            @Columns(DefaultValue)
+                        </CascadingValue>
+                    }
+                </DaisyHeadTr>
+            </thead>
+            <tbody>
+                @if (_items.Any() && Columns != null)
                 {
-                    @HeadTemplate
-                }
-                else if (Columns is not null)
-                {
-                    <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
-                        @Columns(DefaultValue)
+                    <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Body" IsFixed>
+                        @foreach (var item in _items)
+                        {
+                            <DaisyTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
+                                @Columns(item)
+                            </DaisyTr>
+                        }
                     </CascadingValue>
                 }
-            </DaisyHeadTr>
-        </thead>
-        <tbody>
-            @if (_items.Any() && Columns != null)
+                else
+                {
+                    <tr><td colspan="1000" align="center">Empty Table</td></tr>
+                }
+            </tbody>
+            @if (FootTemplate is not null)
             {
-                <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Body" IsFixed>
-                    @foreach (var item in _items)
-                    {
-                        <DaisyTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
-                            @Columns(item)
-                        </DaisyTr>
-                    }
-                </CascadingValue>
+                <tfoot><tr>@FootTemplate</tr></tfoot>
+            }
+        </CascadingValue>
+    </table>
+    @if (ShowPager)
+    {
+        <div class="@PagerClass">
+            @if (PagerTemplate is not null)
+            {
+                @PagerTemplate
             }
             else
             {
-                <tr><td colspan="1000" align="center">Empty Table</td></tr>
+                <DaisyPagination Total="@TotalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" Outline="@OutlinePager" />
             }
-        </tbody>
-        @if (FootTemplate is not null)
-        {
-            <tfoot><tr>@FootTemplate</tr></tfoot>
-        }
-        @if (ShowPager)
-        {
-            <tfoot>
-                <tr>
-                    <td colspan="1000">
-                        <div class="@PagerClass">
-                            @if (PagerTemplate is not null)
-                            {
-                                @PagerTemplate
-                            }
-                            else
-                            {
-                                <DaisyPagination Total="@TotalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" Outline="@OutlinePager" />
-                            }
-                        </div>
-                    </td>
-                </tr>
-            </tfoot>
-        }
-    </CascadingValue>
-</table>
+        </div>
+    }
+</div>

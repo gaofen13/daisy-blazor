@@ -53,17 +53,19 @@
     private bool check;
     private string input = "";
     private int add;
-    private Color color { get; set; } = Color.Secondary;
+    private Color color = Color.Secondary;
+
     [Inject] private NavigationManager? Navigation { get; set; }
     [Inject] private ModalService? Modal { get; set; }
     [Inject] private ToastService? Toast { get; set; }
-    private async void Toggle()
+
+    private async Task Toggle()
     {
         var parameters = new ModalParameters();
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
-        _ = _input?.Element?.FocusAsync();
+        _ = _input?.FocusAsync();
     }
 
     private void ShowToast()
