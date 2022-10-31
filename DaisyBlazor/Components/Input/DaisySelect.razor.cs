@@ -19,7 +19,7 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public RenderFragment? OptionList { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
         public bool Bordered { get; set; } = true;

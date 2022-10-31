@@ -22,11 +22,9 @@
     </DaisyField>
     <DaisyField Label="选择器">
         <DaisySelect @bind-Value=color>
-            <OptionList>
-                <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-                <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-                <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
-            </OptionList>
+            <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+            <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+            <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
         </DaisySelect>
     </DaisyField>
     <DaisyField Label="单选器">
@@ -65,7 +63,7 @@
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
         var res = await reference!.Result;
-        _ = _input?.FocusAsync();
+        await _input!.FocusAsync();
     }
 
     private void ShowToast()

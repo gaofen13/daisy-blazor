@@ -13,7 +13,13 @@ namespace DaisyBlazor
     {
         private string SubClass =>
             new ClassBuilder("menu-sub")
-            .AddClass("menu-collapsed", Collapsed)
+            .AddClass("menu-sub-collapsed", Collapsed)
+            .AddClass("menu-sub-arrow")
+            .AddClass(Class)
+            .Build();
+
+        private string SubContentClass =>
+            new ClassBuilder()
             .AddClass("rounded-box", Root?.Rounded == true)
             .Build();
 

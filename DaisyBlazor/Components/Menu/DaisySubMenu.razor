@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<li @ref="@Element" id="@Id" style="@Style" class="@Class" @attributes="@Attributes">
-    <span @onclick="@OnHandlerClickTilte">
+<li @ref="@Element" id="@Id" style="@Style" class="@SubClass" @attributes="@Attributes">
+    <span class="menu-sub-title" @onclick="@OnHandlerClickTilte">
         @if (TitleContent is not null)
         {
             @TitleContent
@@ -12,7 +12,7 @@
             @Title
         }
     </span>
-    <ul class="@SubClass">
+    <ul class="@SubContentClass">
         <CascadingValue Value="@this" IsFixed>
             @ChildContent
         </CascadingValue>
