@@ -14,7 +14,7 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public RenderFragment? RadioList { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
         public Position LabelPosition { get; set; } = Position.Right;

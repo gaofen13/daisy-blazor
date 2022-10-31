@@ -71,13 +71,14 @@ namespace DaisyBlazor
         [Parameter]
         public bool NoAnimation { get; set; }
 
-        private Task Click(MouseEventArgs args)
+        private async Task Click(MouseEventArgs args)
         {
+            if (Disabled)
+                return;
             if (OnClick.HasDelegate)
             {
-                return OnClick.InvokeAsync(args);
+                await OnClick.InvokeAsync(args);
             }
-            return Task.CompletedTask;
         }
     }
 }
