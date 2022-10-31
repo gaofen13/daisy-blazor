@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
@@ -32,6 +31,15 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender && AutoFocus)
+            {
+                await FocusAsync();
+            }
+        }
 
         private void OnCheckedChanged(ChangeEventArgs args)
         {

@@ -28,6 +28,15 @@ namespace DaisyBlazor
         [Parameter]
         public Size? Size { get; set; }
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender && AutoFocus)
+            {
+                await FocusAsync();
+            }
+        }
+
         private bool CheckCurrentValue(TValue? value)
         {
             if (Value == null && value == null)

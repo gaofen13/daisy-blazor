@@ -1,10 +1,11 @@
 ﻿@page "/"
+@using Microsoft.JSInterop
 
 <DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary"></DaisyRadialProgress>
 <DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
 
 <DaisyAlert Title="Info">
-    <DaisyButton role="button">关闭</DaisyButton>
+    <DaisyButton>关闭</DaisyButton>
 </DaisyAlert>
 <DaisyTooltip Class="w-full" Text="alert">
     <DaisyAlert Title="Warning" AlertLevel="Level.Warning" Filled />
@@ -13,7 +14,7 @@
 <DaisyButtonGroup Vertical>
     <DaisyButton Color="@color" OnClick="@(()=>add++)">Button @add</DaisyButton>
     <DaisyButton Color="Color.Secondary" OnClick="@Toggle">Button2</DaisyButton>
-    <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button2</DaisyButton>
+    <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
 </DaisyButtonGroup>
 
 <EditForm Model="@add">
@@ -56,14 +57,15 @@
     [Inject] private NavigationManager? Navigation { get; set; }
     [Inject] private ModalService? Modal { get; set; }
     [Inject] private ToastService? Toast { get; set; }
+    [Inject] private IJSRuntime? JSRuntime { get; set; }
 
     private async Task Toggle()
     {
         var parameters = new ModalParameters();
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
-        var res = await reference!.Result;
-        await _input!.FocusAsync();
+        await reference!.Result;
+        _ = _input?.FocusAsync();
     }
 
     private void ShowToast()

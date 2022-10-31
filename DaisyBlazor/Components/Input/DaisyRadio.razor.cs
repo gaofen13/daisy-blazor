@@ -44,6 +44,15 @@ namespace DaisyBlazor
             base.OnInitialized();
         }
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender && AutoFocus)
+            {
+                await FocusAsync();
+            }
+        }
+
         private void OnInputChanged(ChangeEventArgs args)
         {
             RadioGroup?.OnCheckedRadioChanged(this);
