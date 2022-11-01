@@ -18,7 +18,7 @@
     </nav>
     <main>
         <DaisyDrawer @bind-Show="@showSidebar">
-            <NavMenu />
+            <NavMenu OnCloseBtnClicked="(_=>showSidebar=false)" />
         </DaisyDrawer>
         <article>
             <DaisyErrorBoundary>

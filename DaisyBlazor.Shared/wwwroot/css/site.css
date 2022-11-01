@@ -18,3 +18,14 @@
 w-full {
     width: 100%;
 }
+
+
+.menu .close-btn {
+    display: block;
+}
+
+@media(min-width:768px) {
+    .menu .close-btn {
+        display: none;
+    }
+}
