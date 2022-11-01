@@ -11,33 +11,31 @@
 </DaisyTooltip>
 
 <DaisyButtonGroup Vertical>
-    <DaisyButton Color="@color" OnClick="@(()=>add++)">Button @add</DaisyButton>
+    <DaisyButton Color="@color" OnClick="@(()=>add+=1)">Button @add</DaisyButton>
     <DaisyButton Color="Color.Secondary" OnClick="@Toggle">Button2</DaisyButton>
     <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
 </DaisyButtonGroup>
 
-<EditForm Model="@add">
-    <DaisyField Label="输入框">
-        <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
-    </DaisyField>
-    <DaisyField Label="选择器">
-        <DaisySelect @bind-Value=color>
-            <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
-        </DaisySelect>
-    </DaisyField>
-    <DaisyField Label="单选器">
-        <DaisyRadioGroup @bind-Value="@color">
-            <DaisyRadio Label="Primary" Value="Color.Primary" />
-            <DaisyRadio Label="Secondary" Value="Color.Secondary" />
-            <DaisyRadio Label="Accent" Value="Color.Accent" />
-        </DaisyRadioGroup>
-    </DaisyField>
-    <DaisyField Label="复选框">
-        <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
-    </DaisyField>
-</EditForm>
+<DaisyField Label="输入框">
+    <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
+</DaisyField>
+<DaisyField Label="选择器">
+    <DaisySelect @bind-Value=color>
+        <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+        <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+        <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
+    </DaisySelect>
+</DaisyField>
+<DaisyField Label="单选器">
+    <DaisyRadioGroup @bind-Value="@color">
+        <DaisyRadio Label="Primary" Value="Color.Primary" />
+        <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+        <DaisyRadio Label="Accent" Value="Color.Accent" />
+    </DaisyRadioGroup>
+</DaisyField>
+<DaisyField Label="复选框">
+    <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
+</DaisyField>
 
 <DaisyModal @bind-Visible=check Options="new ModalOptions{ClickBackgroundCancel=true}">
     <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>
@@ -50,29 +48,21 @@
     private string input = "";
     private int add;
     private Color color = Color.Secondary;
-    private bool _stopRendering;
 
     [Inject] private NavigationManager? Navigation { get; set; }
     [Inject] private ModalService? Modal { get; set; }
     [Inject] private ToastService? Toast { get; set; }
-
-    protected override bool ShouldRender()
-    {
-        if (_stopRendering == true)
-        {
-            _stopRendering = false;
-            return false;
-        }
-        return base.ShouldRender();
-    }
 
     private async Task Toggle()
     {
         var parameters = new ModalParameters();
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
-        await reference!.Result;
-        _stopRendering = true;
+        var res = await reference!.Result;
+        if (res.Data?.ToString() == "test")
+        {
+            await _input!.FocusAsync();
+        }
     }
 
     private void ShowToast()

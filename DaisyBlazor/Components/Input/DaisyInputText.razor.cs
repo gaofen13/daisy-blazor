@@ -28,7 +28,7 @@ namespace DaisyBlazor
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await base.OnAfterRenderAsync(firstRender);
+            base.OnAfterRender(firstRender);
             if (firstRender && AutoFocus)
             {
                 await FocusAsync();

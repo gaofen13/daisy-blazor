@@ -14,6 +14,9 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
+        public int Rows { get; set; } = 5;
+
+        [Parameter]
         public bool Bordered { get; set; } = true;
 
         [Parameter]
