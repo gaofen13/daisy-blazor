@@ -13,8 +13,6 @@ namespace DaisyBlazor
         private readonly Collection<ModalReference> _modals = new();
         private bool _haveActiveModals;
 
-        internal event Action? OnModalClosed;
-
         protected override void OnInitialized()
         {
             if (ModalService == null)
@@ -37,7 +35,6 @@ namespace DaisyBlazor
                 {
                     ClearBodyStyles();
                 }
-                OnModalClosed?.Invoke();
             }
             else
             {
@@ -62,7 +59,6 @@ namespace DaisyBlazor
                     ClearBodyStyles();
                 }
                 StateHasChanged();
-                OnModalClosed?.Invoke();
             }
         }
 
