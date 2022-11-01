@@ -8,7 +8,7 @@ namespace DaisyBlazor
         private string? _overlayClass;
         private bool _clickBackgroundCancel;
 
-        private string Classname =>
+        private string ModalClass =>
           new ClassBuilder("modal-content")
             .AddClass($"modal-max-w-{Options.MaxWidth.ToString().ToLower()}")
             .AddClass(Class)

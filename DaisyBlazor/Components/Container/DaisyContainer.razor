@@ -2,12 +2,12 @@
 @inherits DaisyComponentBase
 @using DaisyBlazor.Utilities
 
-<div @ref="@Element" id="@Id" style="@Style" class="@Classname" @attributes="@Attributes">
+<div class="@ContainerClass" style="@Style" @attributes="@Attributes">
     @ChildContent
 </div>
 
 @code {
-    private string Classname =>
+    private string ContainerClass =>
         new ClassBuilder("container")
         .AddClass(Class)
         .Build();

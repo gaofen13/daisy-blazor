@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyRadialProgress
     {
-        private string Classname =>
+        private string RadialProgressClass =>
           new ClassBuilder("radial-progress")
             .AddClass($"progress-text-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"progress-bg-{BgColor.ToString()?.ToLower()}", BgColor != null)
@@ -13,7 +13,7 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        private string StyleAttribute =>
+        private string RadialProgressStyle =>
             new StyleBuilder("--value", Value.ToString())
             .AddStyle("--size", $"{Size}rem")
             .Build();

@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyInputTextArea
     {
-        private string Classname =>
+        private string InputClass =>
           new ClassBuilder("textarea")
             .AddClass("textarea-bordered", Bordered)
             .AddClass("textarea-ghost ", Ghost)

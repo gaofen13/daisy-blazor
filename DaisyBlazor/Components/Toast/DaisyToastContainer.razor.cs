@@ -7,14 +7,14 @@ namespace DaisyBlazor
 {
     public partial class DaisyToastContainer
     {
-        private string Classname =>
+        private string ContainerClass =>
           new ClassBuilder("toast")
             .AddClass($"toast-{PositionX.ToString().ToLower()}")
             .AddClass($"toast-{PositionY.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
-        private string StyleAttribute =>
+        private string ContainerStyle =>
             new StyleBuilder("min-width", "300px")
             .AddStyle(Style)
             .Build();

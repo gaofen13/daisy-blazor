@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 using System.Globalization;
 
 namespace DaisyBlazor
@@ -9,7 +8,7 @@ namespace DaisyBlazor
     {
         private readonly List<DaisySelectOption<TValue>> _options = new();
 
-        private string Classname =>
+        private string SelectClass =>
           new ClassBuilder("select")
             .AddClass("select-bordered", Bordered)
             .AddClass("select-ghost ", Ghost)

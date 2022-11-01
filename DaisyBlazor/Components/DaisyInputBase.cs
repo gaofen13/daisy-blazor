@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Globalization;
 
 namespace DaisyBlazor
 {
     public class DaisyInputBase<TValue> : DaisyComponentBase
     {
+        public ElementReference Element { get; protected set; }
+
         [Parameter]
         public string? Name { get; set; }
 
@@ -25,5 +26,10 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool AutoFocus { get; set; }
+
+        public ValueTask FocusAsync()
+        {
+            return Element.FocusAsync();
+        }
     }
 }

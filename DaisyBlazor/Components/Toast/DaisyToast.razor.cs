@@ -9,7 +9,7 @@ namespace DaisyBlazor
         private int _progress = 100;
         private CountdownTimer? _countdownTimer;
 
-        private string Classname =>
+        private string ToastClass =>
             new ClassBuilder("toast-instance")
             .AddClass(Class)
             .Build();

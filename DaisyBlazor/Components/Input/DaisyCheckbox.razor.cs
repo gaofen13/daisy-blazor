@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyCheckbox
     {
-        private string Classname =>
+        private string CheckboxClass =>
           new ClassBuilder("checkbox")
             .AddClass($"checkbox-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"checkbox-{Size.ToString()?.ToLower()}", Size != null)
@@ -43,7 +43,7 @@ namespace DaisyBlazor
 
         private void OnCheckedChanged(ChangeEventArgs args)
         {
-            if(args.Value is not null)
+            if (args.Value is not null)
             {
                 var value = (bool)args.Value;
                 if (Value != value)

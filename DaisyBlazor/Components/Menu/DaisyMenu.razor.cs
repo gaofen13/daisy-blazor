@@ -1,16 +1,11 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
     public partial class DaisyMenu
     {
-        private string Classname =>
+        private string MenuClass =>
             new ClassBuilder("menu")
             .AddClass("menu-shadow-xl", Shadow)
             .AddClass("menu-horizontal", Horizontal)

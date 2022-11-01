@@ -2,8 +2,8 @@
 @inherits DaisyComponentBase
 @implements IDisposable
 
-<div @ref="@Element" id="@Id" class="grid">
-    <a class="@Classname">
+<div class="grid">
+    <a class="@TabClass" style="@Style" @attributes="@Attributes">
         @if (TabTemplate != null)
         {
             @TabTemplate

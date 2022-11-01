@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyOverlay
     {
-        private string Classname =>
+        private string OverlayClass =>
           new ClassBuilder("overlay")
             .AddClass(Class)
             .Build();

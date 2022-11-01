@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyTab
     {
-        private string Classname =>
+        private string TabClass =>
           new ClassBuilder("tab")
             .AddClass("tab-active", Active)
             .AddClass($"tab-{TabType.ToString()?.ToLower()}", TabType != null)

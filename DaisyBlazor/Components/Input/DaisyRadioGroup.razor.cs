@@ -7,7 +7,7 @@ namespace DaisyBlazor
     {
         private DaisyRadio<TValue>? _checkedRadio;
 
-        private string Classname =>
+        private string RadioGroupClass =>
           new ClassBuilder("radio-group")
             .AddClass($"radio-group-vertical", Vertical)
             .AddClass(Class)

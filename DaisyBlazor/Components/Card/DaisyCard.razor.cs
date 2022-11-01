@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyCard
     {
-        private string Classname =>
+        private string CardClass =>
           new ClassBuilder("card")
             .AddClass("card-compact", Compact)
             .AddClass("card-bg-base", !Neutra)

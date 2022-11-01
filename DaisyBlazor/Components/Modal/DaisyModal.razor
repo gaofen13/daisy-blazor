@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<DaisyOverlay Id="@Id" Class="@_overlayClass" Visible="@Visible" Attributes="@Attributes" OnBackgroundClick="@OnClickBackgroundAsync">
-    <div @ref="@Element" class="@Classname" style="@Style" @onclick:stopPropagation="@true">
+<DaisyOverlay Class="@_overlayClass" Visible="@Visible" OnBackgroundClick="@OnClickBackgroundAsync">
+    <div class="@ModalClass" style="@Style" @attributes="@Attributes" @onclick:stopPropagation="@true">
         <CascadingValue Value="@this" IsFixed>
             @ChildContent
         </CascadingValue>

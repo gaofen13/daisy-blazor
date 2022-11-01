@@ -1,12 +1,11 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyInputText
     {
-        private string Classname =>
+        private string InputClass =>
           new ClassBuilder("input")
             .AddClass("input-bordered", Bordered)
             .AddClass("input-ghost ", Ghost)

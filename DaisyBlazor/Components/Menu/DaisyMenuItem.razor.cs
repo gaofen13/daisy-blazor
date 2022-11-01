@@ -1,17 +1,12 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
     public partial class DaisyMenuItem
     {
-        private string Classname =>
+        private string MenuItemClass =>
             new ClassBuilder()
             .AddClass("disabled", Disabled)
             .AddClass("bordered", Root?.Bordered == true)

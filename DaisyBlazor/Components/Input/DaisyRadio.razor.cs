@@ -1,12 +1,11 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyRadio<TValue>
     {
-        private string Classname =>
+        private string RadioClass =>
           new ClassBuilder("radio")
             .AddClass($"radio-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"radio-{Size.ToString()?.ToLower()}", Size != null)

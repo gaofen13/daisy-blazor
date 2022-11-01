@@ -4,7 +4,6 @@ namespace DaisyBlazor
 {
     public class DaisyComponentBase : ComponentBase
     {
-        public ElementReference Element { get; protected set; }
 
         [Parameter]
         public string? Class { get; set; }
@@ -17,10 +16,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public string? Id { get; set; }
-
-        public ValueTask FocusAsync()
-        {
-            return Element.FocusAsync();
-        }
     }
 }

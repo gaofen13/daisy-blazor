@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyButtonGroup
     {
-        private string Classname =>
+        private string BtnGroupClass =>
           new ClassBuilder("btn-group")
             .AddClass("btn-group-vertical", Vertical)
             .AddClass(Class)

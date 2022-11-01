@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using DaisyBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
@@ -6,6 +7,11 @@ namespace DaisyBlazor
     {
         private List<DaisyTab> _tabs = new();
         private DaisyTab? _activeTab;
+
+        private string TabsClass =>
+            new ClassBuilder("tabs")
+            .AddClass(Class)
+            .Build();
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }

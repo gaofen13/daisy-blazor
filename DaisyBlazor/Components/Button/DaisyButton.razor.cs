@@ -6,7 +6,9 @@ namespace DaisyBlazor
 {
     public partial class DaisyButton
     {
-        private string Classname =>
+        public ElementReference Element { get; protected set; }
+
+        private string BtnClass =>
           new ClassBuilder("btn")
             .AddClass($"btn-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"btn-{Size.ToString()?.ToLower()}", Size != null)
@@ -70,6 +72,11 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool NoAnimation { get; set; }
+
+        public ValueTask FocusAsync()
+        {
+            return Element.FocusAsync();
+        }
 
         private async Task Click(MouseEventArgs args)
         {

@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyAlert
     {
-        private string Classname =>
+        private string AlertClass =>
           new ClassBuilder("alert")
             .AddClass($"alert-{AlertLevel.ToString().ToLower()}", Filled)
             .AddClass(Class)

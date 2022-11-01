@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyTooltip
     {
-        private string Classname =>
+        private string TooltipClass =>
           new ClassBuilder("tooltip")
             .AddClass("tooltip-open", ForceOpen)
             .AddClass($"tooltip-{Color.ToString()?.ToLower()}", Color != null)
