@@ -12,9 +12,12 @@
             @Title
         }
     </span>
-    <ul class="@SubContentClass">
-        <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
-    </ul>
+    @if (!Collapsed)
+    {
+        <ul class="@SubContentClass">
+            <CascadingValue Value="@this" IsFixed>
+                @ChildContent
+            </CascadingValue>
+        </ul>
+    }
 </li>

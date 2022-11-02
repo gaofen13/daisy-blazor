@@ -4,8 +4,8 @@ namespace DaisyBlazor
 {
     public partial class DaisySelectOption<TValue>
     {
-        [CascadingParameter]
-        private DaisySelect<TValue> DaisySelect { get; set; } = default!;
+        [Parameter]
+        public bool DefaultSelected { get; set; }
 
         [Parameter]
         public string? Text { get; set; }

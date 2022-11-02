@@ -2,7 +2,10 @@
 @inherits DaisyComponentBase
 @implements IAsyncDisposable
 
-<aside class="@DrawerClass" style="@DrawerStyle" @attributes="@Attributes">
-    @ChildContent
-    <DaisyOverlay Visible="@OverlayVisible" OnBackgroundClick="@OnClickedOverlayAsync" />
-</aside>
+@if (Show)
+{
+    <aside class="@DrawerClass" style="@DrawerStyle" @attributes="@Attributes">
+        @ChildContent
+        <DaisyOverlay Visible="@OverlayVisible" OnBackgroundClick="@OnClickedOverlayAsync" />
+    </aside>
+}

@@ -16,6 +16,9 @@ namespace DaisyBlazor
         public EventCallback<TValue> ValueChanged { get; set; }
 
         [Parameter]
+        public bool Required { get; set; }
+
+        [Parameter]
         public bool Disabled { get; set; }
 
         [Parameter]

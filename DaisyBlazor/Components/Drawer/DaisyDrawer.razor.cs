@@ -14,11 +14,10 @@ namespace DaisyBlazor
         private DrawerVariant _variant;
         private DrawerVariant _currentVariant;
 
-        private bool OverlayVisible => Show && _currentVariant == DrawerVariant.Temporary;
+        private bool OverlayVisible => _currentVariant == DrawerVariant.Temporary;
 
         private string DrawerClass =>
             new ClassBuilder("sidebar")
-            .AddClass("sidebar-show", Show)
             .AddClass("sidebar-right", RightSide)
             .AddClass($"sidebar-{_currentVariant.ToString().ToLower()}")
             .AddClass(Class)
@@ -90,13 +89,13 @@ namespace DaisyBlazor
         {
             _breakpointWidth = GetBreakpointWidth(_breakpoint);
             Navigation!.LocationChanged += OnLoactionChanged;
-            _objectReference = DotNetObjectReference.Create(this);
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
+                _objectReference = DotNetObjectReference.Create(this);
                 await JSRuntime!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
                 var width = await JSRuntime!.InvokeAsync<int>("GetWindowWidth");
                 UpdateWindowWidth(width);
@@ -159,8 +158,11 @@ namespace DaisyBlazor
         {
             try
             {
-                await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
-                _objectReference?.Dispose();
+                if (_objectReference is not null)
+                {
+                    await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
+                    _objectReference.Dispose();
+                }
                 GC.SuppressFinalize(this);
             }
             finally { }

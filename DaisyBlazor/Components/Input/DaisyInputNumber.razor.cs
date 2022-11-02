@@ -16,6 +16,15 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
+        public int Min { get; set; } = int.MinValue;
+
+        [Parameter]
+        public int Max { get; set; } = int.MaxValue;
+
+        [Parameter]
+        public double Step { get; set; } = 1;
+
+        [Parameter]
         public bool Bordered { get; set; } = true;
 
         [Parameter]

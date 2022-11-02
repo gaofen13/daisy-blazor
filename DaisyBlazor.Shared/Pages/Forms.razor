@@ -1,0 +1,56 @@
+﻿@page "/form"
+
+<EditForm Model="@info" OnSubmit="@Submit">
+    <DataAnnotationsValidator />
+    <DaisyField Label="文本1">
+        <DaisyInputText @bind-Value="@info.Text" />
+    </DaisyField>
+    <DaisyField Label="选择1">
+        <DaisySelect @bind-Value="@info.Select1">
+            <DaisySelectOption DefaultSelected Disabled TValue="string" Value="default">请选择</DaisySelectOption>
+            <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
+            <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
+            <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
+        </DaisySelect>
+    </DaisyField>
+    <DaisyField Label="选择2">
+        <DaisySelect Multiple @bind-SelectedValues="@info.Select2">
+            <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
+            <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
+            <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
+        </DaisySelect>
+    </DaisyField>
+    <DaisyField>
+        <DaisyButton Type="submit">确定</DaisyButton>
+    </DaisyField>
+</EditForm>
+
+@code {
+    private InputInfo info = new InputInfo();
+    private void Submit(EditContext content)
+    {
+        if (content.IsModified())
+        {
+            if (content.Validate())
+            {
+
+            }
+        }
+    }
+    private void ValidSubmit(EditContext content)
+    {
+
+    }
+    private void InvalidSubmit(EditContext content)
+    {
+
+    }
+    class InputInfo
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        public string? Text { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public string? Select1 { get; set; }
+        public IEnumerable<string>? Select2 { get; set; }
+    }
+}

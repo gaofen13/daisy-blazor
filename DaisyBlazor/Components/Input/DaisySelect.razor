@@ -2,6 +2,17 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<select @ref="@Element" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" value="@Value" @onchange="@OnSelectionChanged" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
-    @ChildContent
-</select>
+<CascadingValue Value="@this" IsFixed>
+    @if (Multiple)
+    {
+        <select @ref="@Element" required="@Required" multiple="multiple" size="@Height" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" value="@SelectedValues" @onchange="@OnMultipleSelectionChanged" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
+            @ChildContent
+        </select>
+    }
+    else
+    {
+        <select @ref="@Element" required="@Required" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" value="@Value" @onchange="@OnSelectionChanged" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
+            @ChildContent
+        </select>
+    }
+</CascadingValue>

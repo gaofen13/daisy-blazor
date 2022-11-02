@@ -21,6 +21,7 @@
 </DaisyField>
 <DaisyField Label="选择器">
     <DaisySelect @bind-Value=color>
+        <DaisySelectOption DefaultSelected Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
         <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
         <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
         <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
@@ -47,7 +48,7 @@
     private bool check;
     private string input = "";
     private int add;
-    private Color color = Color.Secondary;
+    private Color color = Color.Info;
 
     [Inject] private NavigationManager? Navigation { get; set; }
     [Inject] private ModalService? Modal { get; set; }

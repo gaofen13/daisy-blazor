@@ -15,6 +15,12 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
+        public string Type { get; set; } = "text";
+
+        [Parameter]
+        public string? Pattern { get; set; }
+
+        [Parameter]
         public bool Bordered { get; set; } = true;
 
         [Parameter]
