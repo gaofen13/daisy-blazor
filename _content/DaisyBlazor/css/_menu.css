@@ -37,7 +37,7 @@
         border-bottom-left-radius: inherit;
     }
 
-    .menu li:not(.menu-sub-collapsed) > ul {
+    .menu li > ul {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -222,11 +222,11 @@
         --tw-translate-y: -50%;
     }
 
-.menu:not(.menu-horizontal) .menu-sub-collapsed.menu-sub-arrow .menu-sub-title:after {
+.menu:not(.menu-horizontal) .menu-sub-arrow .menu-sub-title:after {
     --tw-rotate: -45deg;
 }
 
-.menu.menu-horizontal .menu-sub-collapsed.menu-sub-arrow .menu-sub-title:after {
+.menu.menu-horizontal .menu-sub-arrow .menu-sub-title:after {
     --tw-rotate: 45deg;
     --tw-translate-y: -100%;
 }
