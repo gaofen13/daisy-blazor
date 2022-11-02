@@ -1,10 +1,13 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyInputTextArea
+    public partial class DaisyTextArea
     {
+        public InputTextArea? Input { get; private set; }
+
         private string InputClass =>
           new ClassBuilder("textarea")
             .AddClass("textarea-bordered", Bordered)
@@ -24,24 +27,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public Color? Color { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender && AutoFocus)
-            {
-                await FocusAsync();
-            }
-        }
-
-        private void OnInputChanged(ChangeEventArgs args)
-        {
-            var value = args.Value as string;
-            if (Value != value)
-            {
-                Value = value;
-                ValueChanged.InvokeAsync(Value);
-            }
-        }
     }
 }

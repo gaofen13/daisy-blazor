@@ -1,11 +1,13 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Globalization;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyInputNumber<TValue>
     {
+        public InputNumber<TValue?> Input { get; private set; } = default!;
+
         private string InputClass =>
           new ClassBuilder("input")
             .AddClass("input-bordered", Bordered)
@@ -35,35 +37,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender && AutoFocus)
-            {
-                await FocusAsync();
-            }
-        }
-
-        private bool CheckCurrentValue(TValue? value)
-        {
-            if (Value == null && value == null)
-            {
-                return true;
-            }
-            return Value?.Equals(value) == true;
-        }
-
-        private void OnInputChanged(ChangeEventArgs args)
-        {
-            if (BindConverter.TryConvertTo(args.Value, CultureInfo.InvariantCulture, out TValue? res))
-            {
-                if (!CheckCurrentValue(res))
-                {
-                    Value = res;
-                    ValueChanged.InvokeAsync(Value);
-                }
-            }
-        }
     }
 }

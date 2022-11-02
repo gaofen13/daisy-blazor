@@ -1,10 +1,13 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyInputText
     {
+        public InputText? Input { get; private set; }
+
         private string InputClass =>
           new ClassBuilder("input")
             .AddClass("input-bordered", Bordered)
@@ -13,6 +16,9 @@ namespace DaisyBlazor
             .AddClass($"input-{Size.ToString()?.ToLower()}", Size != null)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public int MaxLength { get; set; }
 
         [Parameter]
         public string Type { get; set; } = "text";
@@ -31,24 +37,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public Size? Size { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            base.OnAfterRender(firstRender);
-            if (firstRender && AutoFocus)
-            {
-                await FocusAsync();
-            }
-        }
-
-        private void OnInputChanged(ChangeEventArgs args)
-        {
-            var value = args.Value as string;
-            if (Value != value)
-            {
-                Value = value;
-                ValueChanged.InvokeAsync(Value);
-            }
-        }
     }
 }

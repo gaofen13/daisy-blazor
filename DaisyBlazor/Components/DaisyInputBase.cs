@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using System.Linq.Expressions;
 
 namespace DaisyBlazor
 {
     public class DaisyInputBase<TValue> : DaisyComponentBase
     {
-        public ElementReference Element { get; protected set; }
-
         [Parameter]
         public string? Name { get; set; }
 
@@ -14,6 +14,9 @@ namespace DaisyBlazor
 
         [Parameter]
         public EventCallback<TValue> ValueChanged { get; set; }
+
+        [Parameter]
+        public Expression<Func<TValue>>? ValueExpression { get; set; }
 
         [Parameter]
         public bool Required { get; set; }
@@ -29,10 +32,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool AutoFocus { get; set; }
-
-        public ValueTask FocusAsync()
-        {
-            return Element.FocusAsync();
-        }
     }
 }

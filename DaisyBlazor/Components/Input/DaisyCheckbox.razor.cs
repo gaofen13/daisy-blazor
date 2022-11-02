@@ -1,10 +1,13 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyCheckbox
     {
+        public InputCheckbox? Input { get; private set; }
+
         private string CheckboxClass =>
           new ClassBuilder("checkbox")
             .AddClass($"checkbox-{Color.ToString()?.ToLower()}", Color != null)
@@ -31,27 +34,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender && AutoFocus)
-            {
-                await FocusAsync();
-            }
-        }
-
-        private void OnCheckedChanged(ChangeEventArgs args)
-        {
-            if (args.Value is not null)
-            {
-                var value = (bool)args.Value;
-                if (Value != value)
-                {
-                    Value = value;
-                    ValueChanged.InvokeAsync(Value);
-                }
-            }
-        }
     }
 }

@@ -5,14 +5,14 @@
 <CascadingValue Value="@this" IsFixed>
     @if (Multiple)
     {
-        <select @ref="@Element" required="@Required" multiple="multiple" size="@Height" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" value="@SelectedValues" @onchange="@OnMultipleSelectionChanged" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
+        <InputSelect @ref="@Input" required="@Required" multiple="multiple" size="@Height" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
             @ChildContent
-        </select>
+        </InputSelect>
     }
     else
     {
-        <select @ref="@Element" required="@Required" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" value="@Value" @onchange="@OnSelectionChanged" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
+        <InputSelect @ref="@Input" required="@Required" id="@Id" class="@SelectClass" style="@Style" @attributes="@Attributes" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" name="@Name" placeholder="@Placeholder" disabled="@Disabled">
             @ChildContent
-        </select>
+        </InputSelect>
     }
 </CascadingValue>

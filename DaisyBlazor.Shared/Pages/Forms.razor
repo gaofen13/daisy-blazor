@@ -1,4 +1,4 @@
-﻿@page "/form"
+﻿@page "/forms"
 
 <EditForm Model="@info" OnSubmit="@Submit">
     <DataAnnotationsValidator />
@@ -14,7 +14,7 @@
         </DaisySelect>
     </DaisyField>
     <DaisyField Label="选择2">
-        <DaisySelect Multiple @bind-SelectedValues="@info.Select2">
+        <DaisySelect Multiple @bind-Value="@info.Select2">
             <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
             <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
             <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
@@ -51,6 +51,6 @@
         public string? Text { get; set; }
         [System.ComponentModel.DataAnnotations.Required]
         public string? Select1 { get; set; }
-        public IEnumerable<string>? Select2 { get; set; }
+        public string[] Select2 { get; set; } = Array.Empty<string>();
     }
 }

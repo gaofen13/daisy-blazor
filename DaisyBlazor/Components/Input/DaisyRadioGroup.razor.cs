@@ -1,11 +1,14 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyRadioGroup<TValue>
     {
         private DaisyRadio<TValue>? _checkedRadio;
+
+        public InputRadioGroup<TValue?> Input { get; private set; } = default!;
 
         private string RadioGroupClass =>
           new ClassBuilder("radio-group")
