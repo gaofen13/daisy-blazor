@@ -5,7 +5,7 @@ namespace DaisyBlazor
     public partial class DaisySelectOption<TValue>
     {
         [Parameter]
-        public bool DefaultSelected { get; set; }
+        public bool Default { get; set; }
 
         [Parameter]
         public string? Text { get; set; }
