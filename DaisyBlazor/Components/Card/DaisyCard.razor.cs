@@ -41,8 +41,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Glass { get; set; }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@page "/"
 
-<DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary"></DaisyRadialProgress>
+<DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary">10%</DaisyRadialProgress>
 <DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
 
 <DaisyAlert Title="Info">
@@ -16,29 +16,21 @@
     <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
 </DaisyButtonGroup>
 
-<EditForm Model="string.Empty">
-    <DaisyField Label="输入框">
-        <DaisyInputText @ref="@_input" @bind-Value=input Bordered="@true" AutoFocus="@true" />
-    </DaisyField>
-    <DaisyField Label="选择器">
-        <DaisySelect @bind-Value=color>
-            <DaisySelectOption Default Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
-            <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-            <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
-        </DaisySelect>
-    </DaisyField>
-    <DaisyField Label="单选器">
-        <DaisyRadioGroup @bind-Value="@color">
-            <DaisyRadio Label="Primary" Value="Color.Primary" />
-            <DaisyRadio Label="Secondary" Value="Color.Secondary" />
-            <DaisyRadio Label="Accent" Value="Color.Accent" />
-        </DaisyRadioGroup>
-    </DaisyField>
-    <DaisyField Label="复选框">
-        <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
-    </DaisyField>
-</EditForm>
+<DaisyInputText @ref="@_input" Label="输入框" @bind-Value="@input" Bordered="@true" AutoFocus="@true" />
+<DaisySelect Label="选择器" @bind-Value=color>
+    <DaisySelectOption Default Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
+    <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+    <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+    <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
+</DaisySelect>
+<DaisyRadioGroup Label="单选器" @bind-Value="@color">
+    <DaisyRadio Label="Primary" Value="Color.Primary" />
+    <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+    <DaisyRadio Label="Accent" Value="Color.Accent" />
+</DaisyRadioGroup>
+<DaisyField Label="复选框">
+    <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
+</DaisyField>
 
 <DaisyModal @bind-Visible=check Options="new ModalOptions{ClickBackgroundCancel=true}">
     <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>
@@ -64,7 +56,7 @@
         var res = await reference!.Result;
         if (res.Data?.ToString() == "test")
         {
-            _input?.Input?.Element?.FocusAsync();
+            await _input!.FocusAsync();
         }
     }
 

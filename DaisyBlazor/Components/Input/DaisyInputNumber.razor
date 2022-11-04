@@ -2,4 +2,10 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<InputNumber @ref="@Input" required="@Required" min="@Min" max="@Max" step="@Step" inputmode="numeric" id="@Id" class="@InputClass" style="@Style" @attributes="@Attributes" name="@Name" placeholder="@Placeholder" disabled="@Disabled" readonly="@ReadOnly" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" />
+<DaisyField Label="@Label" Required="@Required" Breakpoint="@Breakpoint" LabelColspan="@LabelColspan">
+    <input @ref="@Element" type="number" required="@Required" autofocus="@AutoFocus" min="@Min" max="@Max" step="@Step" inputmode="numeric" id="@Id" name="@Name" class="@InputClass" style="@Style" @attributes="@AdditionalAttributes" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" value="@BindConverter.FormatValue(CurrentValue)" @onchange="@EventCallback.Factory.CreateBinder(this,__value=> CurrentValue = __value,CurrentValue)" />
+    @if (CascadedEditContext != null && !ValidationDisabled)
+    {
+        <ValidationMessage For="@ValueExpression" />
+    }
+</DaisyField>

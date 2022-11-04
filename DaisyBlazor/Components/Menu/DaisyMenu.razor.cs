@@ -37,8 +37,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Compact { get; set; }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

@@ -1,13 +1,10 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyTextArea
     {
-        public InputTextArea? Input { get; private set; }
-
         private string InputClass =>
           new ClassBuilder("textarea")
             .AddClass("textarea-bordered", Bordered)
@@ -15,6 +12,21 @@ namespace DaisyBlazor
             .AddClass($"textarea-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public string? Label { get; set; }
+
+        [Parameter]
+        public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
+
+        [Parameter]
+        public int LabelColspan { get; set; }
+
+        [Parameter]
+        public bool AutoFocus { get; set; }
+
+        [Parameter]
+        public string? Placeholder { get; set; }
 
         [Parameter]
         public int Rows { get; set; } = 5;

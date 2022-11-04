@@ -2,7 +2,7 @@
 @inherits DaisyComponentBase
 
 <DaisyOverlay Class="@_overlayClass" Visible="@Visible" OnBackgroundClick="@OnClickBackgroundAsync">
-    <div class="@ModalClass" style="@Style" @attributes="@Attributes" @onclick:stopPropagation="@true">
+    <div class="@ModalClass" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
         <CascadingValue Value="@this" IsFixed>
             @ChildContent
         </CascadingValue>

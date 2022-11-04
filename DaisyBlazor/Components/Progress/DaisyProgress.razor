@@ -3,9 +3,9 @@
 
 @if (!Indeterminate)
 {
-    <progress class="@ProgressClass" style="@Style" @attributes="@Attributes" value="@Value" max="@Max" />
+    <progress class="@ProgressClass" style="@Style" @attributes="@AdditionalAttributes" value="@Value" max="@Max" />
 }
 else
 {
-    <progress class="@ProgressClass" style="@Style" @attributes="@Attributes" max="@Max" />
+    <progress class="@ProgressClass" style="@Style" @attributes="@AdditionalAttributes" max="@Max" />
 }

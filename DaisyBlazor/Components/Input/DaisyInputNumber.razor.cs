@@ -1,13 +1,12 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace DaisyBlazor
 {
     public partial class DaisyInputNumber<TValue>
     {
-        public InputNumber<TValue?> Input { get; private set; } = default!;
-
         private string InputClass =>
           new ClassBuilder("input")
             .AddClass("input-bordered", Bordered)
@@ -18,13 +17,28 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
+        public string? Label { get; set; }
+
+        [Parameter]
+        public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
+
+        [Parameter]
+        public int LabelColspan { get; set; }
+
+        [Parameter]
+        public bool AutoFocus { get; set; }
+
+        [Parameter]
+        public string? Placeholder { get; set; }
+
+        [Parameter]
         public int Min { get; set; } = int.MinValue;
 
         [Parameter]
         public int Max { get; set; } = int.MaxValue;
 
         [Parameter]
-        public double Step { get; set; } = 1;
+        public TValue? Step { get; set; } 
 
         [Parameter]
         public bool Bordered { get; set; } = true;

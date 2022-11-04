@@ -18,8 +18,16 @@ namespace DaisyBlazor
             .AddStyle(Style)
             .Build();
 
+        private string FieldLabelClass =>
+            new ClassBuilder("form-field-label")
+            .AddClass("required", Required)
+            .Build();
+
         [Parameter]
         public string? Label { get; set; }
+
+        [Parameter]
+        public bool Required { get; set; }
 
         [Parameter]
         public Size Breakpoint { get; set; } = Size.Md;
@@ -36,8 +44,5 @@ namespace DaisyBlazor
                 }
             }
         }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

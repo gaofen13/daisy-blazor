@@ -1,7 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@CollapseClass" style="@Style" @attributes="@Attributes">
+<div class="@CollapseClass" style="@Style" @attributes="@AdditionalAttributes">
     <div class="collapse-title" @onclick="@OnClickTitleAsync">
         @if (TitleContent is not null)
         {

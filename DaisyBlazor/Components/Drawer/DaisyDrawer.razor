@@ -4,7 +4,7 @@
 
 @if (Show)
 {
-    <aside class="@DrawerClass" style="@DrawerStyle" @attributes="@Attributes">
+    <aside class="@DrawerClass" style="@DrawerStyle" @attributes="@AdditionalAttributes">
         @ChildContent
         <DaisyOverlay Visible="@OverlayVisible" OnBackgroundClick="@OnClickedOverlayAsync" />
     </aside>

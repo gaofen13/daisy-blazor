@@ -1,23 +1,31 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
     public partial class DaisyRadioGroup<TValue>
     {
+        private readonly string _defaultGroupName = Guid.NewGuid().ToString("N");
+
         private DaisyRadio<TValue>? _checkedRadio;
 
-        public InputRadioGroup<TValue?> Input { get; private set; } = default!;
+        public string RadioName => Name ?? _defaultGroupName;
 
         private string RadioGroupClass =>
           new ClassBuilder("radio-group")
             .AddClass($"radio-group-vertical", Vertical)
+            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
+        public string? Label { get; set; }
+
+        [Parameter]
+        public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
+
+        [Parameter]
+        public int LabelColspan { get; set; }
 
         [Parameter]
         public Position LabelPosition { get; set; } = Position.Right;
@@ -25,23 +33,10 @@ namespace DaisyBlazor
         [Parameter]
         public bool Vertical { get; set; }
 
-        public bool CheckCurrentValue(TValue? value)
-        {
-            if (Value == null && value == null)
-            {
-                return true;
-            }
-            return Value?.Equals(value) == true;
-        }
-
         public void OnCheckedRadioChanged(DaisyRadio<TValue> radio)
         {
             _checkedRadio = radio;
-            if (!CheckCurrentValue(radio.Value))
-            {
-                Value = radio.Value;
-                ValueChanged.InvokeAsync(Value);
-            }
+            CurrentValue = radio.Value;
         }
     }
 }

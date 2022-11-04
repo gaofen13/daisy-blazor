@@ -17,7 +17,6 @@ namespace DaisyBlazor
         [CascadingParameter] private DaisyModalContainer? ModalContainer { get; set; }
 
         [Parameter] public ModalOptions Options { get; set; } = new();
-        [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public bool Visible { get; set; }
         [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
         [Parameter] public Guid InstanceId { get; set; }

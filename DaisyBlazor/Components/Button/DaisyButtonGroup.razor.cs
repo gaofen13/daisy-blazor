@@ -12,9 +12,6 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
         public bool Vertical { get; set; }
     }
 }

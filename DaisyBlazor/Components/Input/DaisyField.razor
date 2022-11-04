@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@FieldClass" style="@FieldStyle" @attributes="@Attributes">
-    <label class="form-field-label">@Label</label>
+<div class="@FieldClass" style="@FieldStyle" @attributes="@AdditionalAttributes">
+    <label class="@FieldLabelClass">@Label</label>
     <div class="form-field-input">
         @ChildContent
     </div>

@@ -1,5 +1,5 @@
 ﻿@namespace DaisyBlazor
-@inherits DaisyInputBase<TValue>
+@inherits DaisyComponentBase
 @typeparam TValue
 
 <label class="@ContainerClass">
@@ -11,5 +11,5 @@
     {
         <span>@Label</span>
     }
-    <InputRadio class="@RadioClass" style="@Style" @attributes="@Attributes" name="@Name" checked="@Checked" disabled="@Disabled" Value="@Value" />
+    <input type="radio" class="@RadioClass" style="@Style" @attributes="@AdditionalAttributes" disabled="@Disabled" name="@RadioGroup?.RadioName" checked="@Checked" value="@Value" @onchange="@OnInputChanged" />
 </label>

@@ -31,9 +31,6 @@ namespace DaisyBlazor
         public NavLinkMatch Match { get; set; } = NavLinkMatch.Prefix;
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
         public bool Disabled { get; set; }
     }
 }

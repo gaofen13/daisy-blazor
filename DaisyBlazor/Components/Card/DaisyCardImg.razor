@@ -4,7 +4,7 @@
 @if (!string.IsNullOrWhiteSpace(ImgSource))
 {
     <figure>
-        <img class="@Class" style="@Style" @attributes="@Attributes" src="@ImgSource" alt="@ImgAlt" />
+        <img class="@Class" style="@Style" @attributes="@AdditionalAttributes" src="@ImgSource" alt="@ImgAlt" />
     </figure>
 }
 

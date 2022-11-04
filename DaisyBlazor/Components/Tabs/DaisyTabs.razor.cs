@@ -13,9 +13,6 @@ namespace DaisyBlazor
             .AddClass(Class)
             .Build();
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
         public void AddTab(DaisyTab tab)
         {
             if (!_tabs.Contains(tab))

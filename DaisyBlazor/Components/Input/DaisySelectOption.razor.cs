@@ -11,6 +11,9 @@ namespace DaisyBlazor
         public string? Text { get; set; }
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
+        public TValue? Value { get; set; }
+
+        [Parameter]
+        public bool Disabled { get; set; }
     }
 }

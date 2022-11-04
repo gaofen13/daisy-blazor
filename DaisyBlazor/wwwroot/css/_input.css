@@ -9,7 +9,7 @@
 
     .form-field .form-field-input {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         width: 100%
     }
 
@@ -75,6 +75,25 @@
             text-align: right;
             margin-right: 0.5rem;
         }
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+    font-size: 80%;
+    padding: 0.25rem 0.25rem 0 0.25rem;
+}
+
+label.required:before {
+    content: '* ';
+    color: red;
 }
 
 .checkbox {

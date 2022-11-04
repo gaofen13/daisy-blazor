@@ -16,9 +16,6 @@ namespace DaisyBlazor
         [Parameter]
         public RenderFragment? TitleTemplate { get; set; }
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
         public enum RenderMode
         {
             Head,

@@ -37,12 +37,9 @@ namespace DaisyBlazor
         public RenderFragment? TitleContent { get; set; }
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
         public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
 
-        private async Task OnHandlerClickTilte(MouseEventArgs args)
+        private async Task OnClickTilte(MouseEventArgs args)
         {
             if (OnTitleClicked.HasDelegate)
             {

@@ -15,8 +15,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public string? CodeText { get; set; }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

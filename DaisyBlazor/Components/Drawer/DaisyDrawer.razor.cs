@@ -82,9 +82,6 @@ namespace DaisyBlazor
             }
         }
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
         protected override void OnInitialized()
         {
             _breakpointWidth = GetBreakpointWidth(_breakpoint);

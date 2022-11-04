@@ -32,8 +32,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public float Size { get; set; } = 4;
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

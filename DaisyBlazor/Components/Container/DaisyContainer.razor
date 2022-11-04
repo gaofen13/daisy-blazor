@@ -2,7 +2,7 @@
 @inherits DaisyComponentBase
 @using DaisyBlazor.Utilities
 
-<div class="@ContainerClass" style="@Style" @attributes="@Attributes">
+<div class="@ContainerClass" style="@Style" @attributes="@AdditionalAttributes">
     @ChildContent
 </div>
 
@@ -11,7 +11,4 @@
         new ClassBuilder("container")
         .AddClass(Class)
         .Build();
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 }

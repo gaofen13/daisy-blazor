@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace DaisyBlazor
 {
-    public partial class DaisySelect<TValue>
+    public partial class DaisyMultipleSelect<TValue>
     {
         private string SelectClass =>
           new ClassBuilder("select")
@@ -12,7 +12,6 @@ namespace DaisyBlazor
             .AddClass("select-ghost ", Ghost)
             .AddClass($"select-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"select-{Size.ToString()?.ToLower()}", Size != null)
-            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
@@ -27,9 +26,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool AutoFocus { get; set; }
-
-        [Parameter]
-        public bool Multiple { get; set; }
 
         [Parameter]
         public string? Placeholder { get; set; }
@@ -48,5 +44,11 @@ namespace DaisyBlazor
 
         [Parameter]
         public int Height { get; set; }
+
+        private void SetCurrentValueAsStringArray(string?[]? value)
+        {
+            CurrentValue = BindConverter.TryConvertTo<TValue>(value, CultureInfo.CurrentCulture, out var result)
+                ? result : default;
+        }
     }
 }

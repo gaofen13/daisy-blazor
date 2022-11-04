@@ -1,0 +1,13 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyInputBase<TValue>
+@typeparam TValue
+
+<DaisyField Label="@Label" Required="@Required" Breakpoint="@Breakpoint" LabelColspan="@LabelColspan">
+    <select @ref="@Element" required="@Required" autofocus="@AutoFocus" multiple size="@Height" id="@Id" name="@Name" class="@SelectClass" style="@Style" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValue)?.ToString()" @onchange="@(EventCallback.Factory.CreateBinder<string?[]?>(this, SetCurrentValueAsStringArray, default))" placeholder="@Placeholder" disabled="@Disabled">
+        @ChildContent
+    </select>
+    @if (CascadedEditContext != null && !ValidationDisabled)
+    {
+        <ValidationMessage For="@ValueExpression" />
+    }
+</DaisyField>

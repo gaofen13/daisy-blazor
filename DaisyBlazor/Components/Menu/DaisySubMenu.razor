@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<li class="@SubClass" style="@Style" @attributes="@Attributes">
-    <span class="menu-sub-title" @onclick="@OnHandlerClickTilte">
+<li class="@SubClass" style="@Style" @attributes="@AdditionalAttributes">
+    <span class="menu-sub-title" @onclick="@OnClickTilte">
         @if (TitleContent is not null)
         {
             @TitleContent

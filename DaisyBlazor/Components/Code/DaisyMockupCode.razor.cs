@@ -9,8 +9,5 @@ namespace DaisyBlazor
             new ClassBuilder("mockup-code")
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

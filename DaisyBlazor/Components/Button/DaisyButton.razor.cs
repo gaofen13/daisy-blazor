@@ -6,8 +6,6 @@ namespace DaisyBlazor
 {
     public partial class DaisyButton
     {
-        public ElementReference Element { get; protected set; }
-
         private string BtnClass =>
           new ClassBuilder("btn")
             .AddClass($"btn-{Color.ToString()?.ToLower()}", Color != null)
@@ -24,9 +22,6 @@ namespace DaisyBlazor
             .AddClass("no-animation", NoAnimation)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }

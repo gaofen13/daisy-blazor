@@ -1,5 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace DaisyBlazor
 {
@@ -14,9 +15,6 @@ namespace DaisyBlazor
         public bool Visible { get; set; }
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
-        public EventCallback OnBackgroundClick { get; set; }
+        public EventCallback<MouseEventArgs> OnBackgroundClick { get; set; }
     }
 }

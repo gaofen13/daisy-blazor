@@ -12,9 +12,6 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
 
         [Parameter]

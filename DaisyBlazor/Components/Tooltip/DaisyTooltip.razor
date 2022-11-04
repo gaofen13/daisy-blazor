@@ -1,6 +1,6 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@TooltipClass" style="@Style" data-tip="@Text">
+<div class="@TooltipClass" style="@Style" @attributes="@AdditionalAttributes" data-tip="@Text">
     @ChildContent
 </div>

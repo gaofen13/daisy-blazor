@@ -17,8 +17,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Shadow { get; set; }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

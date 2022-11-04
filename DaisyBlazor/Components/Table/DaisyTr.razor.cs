@@ -44,9 +44,6 @@ namespace DaisyBlazor
         [NotNull]
         public TItem? Item { get; set; }
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
         private void OnCheckedChanged(bool @checked)
         {
             if (@checked)

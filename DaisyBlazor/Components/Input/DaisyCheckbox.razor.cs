@@ -1,17 +1,16 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
 {
     public partial class DaisyCheckbox
     {
-        public InputCheckbox? Input { get; private set; }
-
         private string CheckboxClass =>
           new ClassBuilder("checkbox")
             .AddClass($"checkbox-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"checkbox-{Size.ToString()?.ToLower()}", Size != null)
+            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
@@ -32,7 +31,9 @@ namespace DaisyBlazor
         [Parameter]
         public Position LabelPosition { get; set; } = Position.Right;
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
+        private void OnInputChanged(ChangeEventArgs args)
+        {
+            CurrentValue = Convert.ToBoolean(args.Value);
+        }
     }
 }

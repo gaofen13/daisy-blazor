@@ -23,8 +23,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool UnderlineOnHover { get; set; }
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
     }
 }

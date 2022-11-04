@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace DaisyBlazor
 {
@@ -18,10 +17,17 @@ namespace DaisyBlazor
             .AddClass($"label-{LabelPosition.ToString()?.ToLower()}")
             .Build();
 
-        private bool Checked => RadioGroup?.CheckCurrentValue(Value) == true;
-
         [CascadingParameter]
         private DaisyRadioGroup<TValue>? RadioGroup { get; set; }
+
+        [Parameter]
+        public bool Checked { get; set; }
+
+        [Parameter]
+        public TValue? Value { get; set; }
+
+        [Parameter]
+        public bool Disabled { get; set; }
 
         [Parameter]
         public Color? Color { get; set; }
@@ -35,17 +41,28 @@ namespace DaisyBlazor
         [Parameter]
         public Position? LabelPosition { get; set; }
 
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
         protected override void OnInitialized()
         {
             LabelPosition ??= RadioGroup?.LabelPosition;
+            if (RadioGroup is not null)
+            {
+                Checked = EqualityComparer<TValue>.Default.Equals(RadioGroup.Value, Value);
+            }
             base.OnInitialized();
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            if (RadioGroup is not null)
+            {
+                Checked = EqualityComparer<TValue>.Default.Equals(RadioGroup.Value, Value);
+            }
         }
 
         private void OnInputChanged(ChangeEventArgs args)
         {
+            Checked = true;
             RadioGroup?.OnCheckedRadioChanged(this);
         }
     }

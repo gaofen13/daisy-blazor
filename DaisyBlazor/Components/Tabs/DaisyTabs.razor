@@ -1,7 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@TabsClass" style="@Style" @attributes="@Attributes">
+<div class="@TabsClass" style="@Style" @attributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>

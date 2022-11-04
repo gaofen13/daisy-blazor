@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
-@inherits DaisyInputBase<TValue>
+@inherits DaisyComponentBase
 @typeparam TValue
 
-<option role="option" class="@Class" style="@Style" @attributes="@Attributes" selected="@Default" value="@Value" disabled="@Disabled">
+<option role="option" class="@Class" style="@Style" @attributes="@AdditionalAttributes" selected="@Default" value="@Value" disabled="@Disabled">
     @if (ChildContent != null)
     {
         @ChildContent

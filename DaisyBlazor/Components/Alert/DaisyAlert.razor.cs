@@ -39,9 +39,6 @@ namespace DaisyBlazor
         public bool Filled { get; set; }
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-        [Parameter]
         public RenderFragment? ActionContent { get; set; }
 
         [Parameter]
