@@ -599,13 +599,13 @@ body[dir="rtl"] .checkbox {
 
     .input-container.label-left {
         flex-direction: row;
-        justify-content: right;
+        justify-content: flex-start;
         margin: 0 0.25rem;
     }
 
     .input-container.label-right {
         flex-direction: row-reverse;
-        justify-content: left;
+        justify-content: flex-end;
         margin: 0 0.25rem;
     }
 
