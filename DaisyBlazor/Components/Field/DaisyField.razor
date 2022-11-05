@@ -2,7 +2,10 @@
 @inherits DaisyComponentBase
 
 <div class="@FieldClass" style="@FieldStyle" @attributes="@AdditionalAttributes">
-    <label class="@FieldLabelClass">@Label</label>
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <label class="@FieldLabelClass">@Label</label>
+    }
     <div class="form-field-input">
         @ChildContent
     </div>
