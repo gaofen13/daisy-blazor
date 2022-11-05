@@ -14,7 +14,7 @@ namespace DaisyBlazor
             .Build();
 
         private string FieldStyle =>
-            new StyleBuilder("--label-width", (_colspan * 100 / 12) + "%")
+            new StyleBuilder("--label-width", (_colspan * 100.00 / 12) + "%")
             .AddStyle(Style)
             .Build();
 
