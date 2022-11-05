@@ -22,7 +22,7 @@ namespace DaisyBlazor
         public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
 
         [Parameter]
-        public int LabelColspan { get; set; }
+        public int LabelColspan { get; set; } = 2;
 
         [Parameter]
         public bool AutoFocus { get; set; }

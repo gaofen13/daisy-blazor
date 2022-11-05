@@ -38,7 +38,7 @@ namespace DaisyBlazor
             get => _colspan;
             set
             {
-                if (value > 0 && value < 12 && value != _colspan)
+                if (value >= 0 && value <= 12 && value != _colspan)
                 {
                     _colspan = value;
                 }

@@ -2,7 +2,7 @@
 @inherits DaisyComponentBase
 
 <div class="@FieldClass" style="@FieldStyle" @attributes="@AdditionalAttributes">
-    @if (!string.IsNullOrWhiteSpace(Label))
+    @if (LabelColspan > 0)
     {
         <label class="@FieldLabelClass">@Label</label>
     }

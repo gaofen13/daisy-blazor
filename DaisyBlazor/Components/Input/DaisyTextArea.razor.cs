@@ -17,10 +17,10 @@ namespace DaisyBlazor
         public string? Label { get; set; }
 
         [Parameter]
-        public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
+        public Size Breakpoint { get; set; } = Size.Md;
 
         [Parameter]
-        public int LabelColspan { get; set; }
+        public int LabelColspan { get; set; } = 2;
 
         [Parameter]
         public bool AutoFocus { get; set; }
