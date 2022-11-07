@@ -3,6 +3,12 @@
 <EditForm Model="@info" OnValidSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
     <DaisyInputText Required Label="文本1" @bind-Value="@info.Text" />
+    <DaisySelect Required Label="选择0" @bind-Value="@info.Select0">
+        <DaisySelectOption Default Disabled TValue="SubInfo" Value="default">请选择</DaisySelectOption>
+        <DaisySelectOption Value="@(new SubInfo{Name="S1"})">S1</DaisySelectOption>
+        <DaisySelectOption Value="@(new SubInfo{Name="S2"})">S2</DaisySelectOption>
+        <DaisySelectOption Value="@(new SubInfo{Name="S3"})">S3</DaisySelectOption>
+    </DaisySelect>
     <DaisySelect Required Label="选择1" @bind-Value="@info.Select1">
         <DaisySelectOption Default Disabled TValue="string" Value="default">请选择</DaisySelectOption>
         <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
@@ -31,8 +37,18 @@
     {
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Text是必须的")]
         public string? Text { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required]
+        public SubInfo? Select0 { get; set; } = new SubInfo { Name = "S1" } ;
+
         [System.ComponentModel.DataAnnotations.Required]
         public string? Select1 { get; set; }
-        public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
+        public IEnumerable<string>? Select2 { get; set; } = new string[] { "s1", "s2" };
+    }
+
+    class SubInfo
+    {
+        public string? Text { get; set; }
+        public string? Name { get; set; }
     }
 }

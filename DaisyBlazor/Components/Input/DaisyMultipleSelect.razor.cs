@@ -1,6 +1,7 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using System.Globalization;
+using System.Text.Json;
 
 namespace DaisyBlazor
 {
@@ -45,10 +46,19 @@ namespace DaisyBlazor
         [Parameter]
         public int Height { get; set; }
 
-        private void SetCurrentValueAsStringArray(string?[]? value)
+        private string? CurrentValueAsString => JsonSerializer.Serialize(Value);
+
+        private void OnChanged(ChangeEventArgs args)
         {
-            CurrentValue = BindConverter.TryConvertTo<TValue>(value, CultureInfo.CurrentCulture, out var result)
-                ? result : default;
+            var jsonValue = JsonSerializer.Serialize(args.Value);
+            if (jsonValue != null)
+            {
+                CurrentValue = JsonSerializer.Deserialize<IEnumerable<TValue>>(jsonValue);
+            }
+            else
+            {
+                CurrentValue = default;
+            }
         }
     }
 }

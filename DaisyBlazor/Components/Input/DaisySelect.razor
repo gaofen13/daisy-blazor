@@ -3,7 +3,7 @@
 @typeparam TValue
 
 <DaisyField Label="@Label" Required="@Required" Breakpoint="@Breakpoint" LabelColspan="@LabelColspan">
-    <select @ref="@Element" required="@Required" autofocus="@AutoFocus" id="@Id" name="@Name" class="@SelectClass" style="@Style" @attributes="@AdditionalAttributes" value="@CurrentValue" @onchange="@EventCallback.Factory.CreateBinder(this, __value => CurrentValue = __value, CurrentValue)" placeholder="@Placeholder" disabled="@Disabled">
+    <select @ref="@Element" required="@Required" autofocus="@AutoFocus" id="@Id" name="@Name" class="@SelectClass" style="@Style" @attributes="@AdditionalAttributes" value="@CurrentValueAsString" @onchange="@OnChanged" placeholder="@Placeholder" disabled="@Disabled">
         @ChildContent
     </select>
     @if (CascadedEditContext != null && !ValidationDisabled)

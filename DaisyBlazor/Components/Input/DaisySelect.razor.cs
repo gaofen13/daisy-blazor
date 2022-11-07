@@ -1,6 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Globalization;
+using System.Text.Json;
 
 namespace DaisyBlazor
 {
@@ -29,9 +29,6 @@ namespace DaisyBlazor
         public bool AutoFocus { get; set; }
 
         [Parameter]
-        public bool Multiple { get; set; }
-
-        [Parameter]
         public string? Placeholder { get; set; }
 
         [Parameter]
@@ -48,5 +45,20 @@ namespace DaisyBlazor
 
         [Parameter]
         public int Height { get; set; }
+
+        private string? CurrentValueAsString => JsonSerializer.Serialize(Value);
+
+        private void OnChanged(ChangeEventArgs args)
+        {
+            var jsonValue = args.Value?.ToString();
+            if (jsonValue != null)
+            {
+                CurrentValue = JsonSerializer.Deserialize<TValue>(jsonValue);
+            }
+            else
+            {
+                CurrentValue = default;
+            }
+        }
     }
 }
