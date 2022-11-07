@@ -14,15 +14,6 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public string? Label { get; set; }
-
-        [Parameter]
-        public Size Breakpoint { get; set; } = Size.Md;
-
-        [Parameter]
-        public int LabelColspan { get; set; } = 2;
-
-        [Parameter]
         public bool AutoFocus { get; set; }
 
         [Parameter]

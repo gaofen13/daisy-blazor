@@ -6,7 +6,7 @@
     {
         <div class="pager-sizeoption">
             <h6>@SizeOptionLabel</h6>
-            <DaisySelect LabelColspan="0" @bind-Value="@PageSize" Style="max-width:max-content">
+            <DaisySelect @bind-Value="@PageSize" Style="max-width:max-content">
                 @foreach (var option in SizeOption)
                 {
                     <DaisySelectOption Value="@option">@option</DaisySelectOption>

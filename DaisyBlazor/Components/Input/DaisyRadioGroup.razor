@@ -2,14 +2,8 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<DaisyField Label="@Label" Required="@Required" Breakpoint="@Breakpoint" LabelColspan="@LabelColspan">
-    <div @ref="@Element" class="@RadioGroupClass" style="@Style" @attributes="@AdditionalAttributes">
-        <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
-    </div>
-    @if (CascadedEditContext != null && !ValidationDisabled)
-    {
-            <ValidationMessage For="@ValueExpression" />
-    }
-</DaisyField>
+<div @ref="@Element" class="@RadioGroupClass" style="@Style" @attributes="@AdditionalAttributes">
+    <CascadingValue Value="@this" IsFixed>
+        @ChildContent
+    </CascadingValue>
+</div>

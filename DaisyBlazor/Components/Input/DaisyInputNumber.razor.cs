@@ -1,7 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 
 namespace DaisyBlazor
 {
@@ -15,15 +13,6 @@ namespace DaisyBlazor
             .AddClass($"input-{Size.ToString()?.ToLower()}", Size != null)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public string? Label { get; set; }
-
-        [Parameter]
-        public Size Breakpoint { get; set; } = DaisyBlazor.Size.Md;
-
-        [Parameter]
-        public int LabelColspan { get; set; } = 2;
 
         [Parameter]
         public bool AutoFocus { get; set; }

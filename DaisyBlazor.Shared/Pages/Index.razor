@@ -16,21 +16,27 @@
     <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
 </DaisyButtonGroup>
 
-<DaisyInputText @ref="@_input" Label="输入框" @bind-Value="@input" Bordered="@true" AutoFocus="@true" />
-<DaisySelect Label="选择器" @bind-Value=color>
-    <DaisySelectOption Default Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
-    <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-    <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-    <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
-</DaisySelect>
-<DaisyRadioGroup Label="单选器" @bind-Value="@color">
-    <DaisyRadio Label="Primary" Value="Color.Primary" />
-    <DaisyRadio Label="Secondary" Value="Color.Secondary" />
-    <DaisyRadio Label="Accent" Value="Color.Accent" />
-</DaisyRadioGroup>
-<DaisyField Label="复选框">
+<DaisyFormField Label="输入框">
+    <DaisyInputText @ref="@_input" @bind-Value="@input" Bordered="@true" AutoFocus="@true" />
+</DaisyFormField>
+<DaisyFormField Label="选择器">
+    <DaisySelect @bind-Value=color>
+        <DaisySelectOption Default Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
+        <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
+        <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
+        <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
+    </DaisySelect>
+</DaisyFormField>
+<DaisyFormField Label="单选器">
+    <DaisyRadioGroup @bind-Value="@color">
+        <DaisyRadio Label="Primary" Value="Color.Primary" />
+        <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+        <DaisyRadio Label="Accent" Value="Color.Accent" />
+    </DaisyRadioGroup>
+</DaisyFormField>
+<DaisyFormField Label="复选框">
     <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
-</DaisyField>
+</DaisyFormField>
 
 <DaisyModal @bind-Visible=check Options="new ModalOptions{ClickBackgroundCancel=true}">
     <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>

@@ -1,10 +1,4 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyInputBase<string>
 
-<DaisyField Label="@Label" Required="@Required" Breakpoint="@Breakpoint" LabelColspan="@LabelColspan">
-    <textarea @ref="@Element" required="@Required" autofocus="@AutoFocus" rows="@Rows" id="@Id" name="@Name" class="@InputClass" style="@Style" @attributes="@AdditionalAttributes" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" value="@BindConverter.FormatValue(CurrentValue)" @onchange="@EventCallback.Factory.CreateBinder(this, __value => CurrentValue = __value, CurrentValue??string.Empty)" />
-    @if (CascadedEditContext != null && !ValidationDisabled)
-    {
-        <ValidationMessage For="@ValueExpression" />
-    }
-</DaisyField>
+<textarea @ref="@Element" required="@Required" autofocus="@AutoFocus" rows="@Rows" id="@Id" name="@Name" class="@InputClass" style="@Style" @attributes="@AdditionalAttributes" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" value="@BindConverter.FormatValue(CurrentValue)" @onchange="@EventCallback.Factory.CreateBinder(this, __value => CurrentValue = __value, CurrentValue??string.Empty)" />

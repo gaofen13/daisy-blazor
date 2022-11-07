@@ -19,15 +19,6 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public string? Label { get; set; }
-
-        [Parameter]
-        public Size Breakpoint { get; set; } = Size.Md;
-
-        [Parameter]
-        public int LabelColspan { get; set; } = 2;
-
-        [Parameter]
         public Position LabelPosition { get; set; } = Position.Right;
 
         [Parameter]

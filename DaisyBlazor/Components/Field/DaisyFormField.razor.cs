@@ -1,9 +1,11 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using System.Linq.Expressions;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyField
+    public partial class DaisyFormField
     {
         private int _colspan = 2;
 
@@ -20,14 +22,20 @@ namespace DaisyBlazor
 
         private string FieldLabelClass =>
             new ClassBuilder("form-field-label")
-            .AddClass("required", Required)
+            .AddClass("required", LabelRequired)
             .Build();
+
+        [CascadingParameter]
+        protected EditContext? CascadedEditContext { get; set; }
+
+        [Parameter]
+        public Expression<Func<object>>? For { get; set; }
 
         [Parameter]
         public string? Label { get; set; }
 
         [Parameter]
-        public bool Required { get; set; }
+        public bool LabelRequired { get; set; }
 
         [Parameter]
         public Size Breakpoint { get; set; } = Size.Md;

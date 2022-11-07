@@ -6,23 +6,25 @@
     <DaisyButton Color="@Color.Accent" Outline=@outline>按钮3</DaisyButton>
 </DaisyButtonGroup>
 
-<DaisyField Label="Vertical">
+<DaisyFormField Label="Vertical">
     <DaisyCheckbox Label="Vertical" @bind-Value=@vertical />
-</DaisyField>
-<DaisyField Label="Outline">
+</DaisyFormField>
+<DaisyFormField Label="Outline">
     <DaisyCheckbox Label="Outline" @bind-Value=@outline />
-</DaisyField>
-<DaisyRadioGroup Label="按钮1Color" @bind-Value=@color>
-    <DaisyRadio Label="Primary" Value="Color.Primary" />
-    <DaisyRadio Label="Secondary" Value="Color.Secondary" />
-    <DaisyRadio Label="Accent" Value="Color.Accent" />
-    <DaisyRadio Label="Ghost" Value="Color.Ghost" />
-    <DaisyRadio Label="Link" Value="Color.Link" />
-    <DaisyRadio Label="Info" Value="Color.Info" />
-    <DaisyRadio Label="Success" Value="Color.Success" />
-    <DaisyRadio Label="Warning" Value="Color.Warning" />
-    <DaisyRadio Label="Error" Value="Color.Error" />
-</DaisyRadioGroup>
+</DaisyFormField>
+<DaisyFormField Label="按钮1Color">
+    <DaisyRadioGroup @bind-Value=@color>
+        <DaisyRadio Label="Primary" Value="Color.Primary" />
+        <DaisyRadio Label="Secondary" Value="Color.Secondary" />
+        <DaisyRadio Label="Accent" Value="Color.Accent" />
+        <DaisyRadio Label="Ghost" Value="Color.Ghost" />
+        <DaisyRadio Label="Link" Value="Color.Link" />
+        <DaisyRadio Label="Info" Value="Color.Info" />
+        <DaisyRadio Label="Success" Value="Color.Success" />
+        <DaisyRadio Label="Warning" Value="Color.Warning" />
+        <DaisyRadio Label="Error" Value="Color.Error" />
+    </DaisyRadioGroup>
+</DaisyFormField>
 
 @code {
     bool vertical;

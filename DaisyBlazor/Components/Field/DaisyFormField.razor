@@ -8,5 +8,9 @@
     }
     <div class="form-field-input">
         @ChildContent
+        @if (CascadedEditContext != null && For != null)
+        {
+            <ValidationMessage For="@For" />
+        }
     </div>
 </div>

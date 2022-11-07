@@ -12,9 +12,6 @@ namespace DaisyBlazor
         protected EditContext? CascadedEditContext { get; set; }
 
         [Parameter]
-        public bool ValidationDisabled { get; set; }
-
-        [Parameter]
         public TValue? Value { get; set; }
 
         [Parameter]
@@ -65,35 +62,32 @@ namespace DaisyBlazor
         {
             parameters.SetParameterProperties(this);
 
-            if (!ValidationDisabled)
+            if (EditContext == null)
             {
-                if (EditContext == null)
+                // This is the first run
+                if (CascadedEditContext != null)
                 {
-                    // This is the first run
-                    if (CascadedEditContext != null)
+                    if (ValueExpression == null)
                     {
-                        if (ValueExpression == null)
-                        {
-                            throw new InvalidOperationException(
-                                $"{GetType()} requires a value for the 'ValueExpression' " +
-                                $"parameter. Normally this is provided automatically when using 'bind-Value'.");
-                        }
-
-                        EditContext = CascadedEditContext;
-                        FieldIdentifier = FieldIdentifier.Create(ValueExpression);
-                        _nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
+                        throw new InvalidOperationException(
+                            $"{GetType()} requires a value for the 'ValueExpression' " +
+                            $"parameter. Normally this is provided automatically when using 'bind-Value'.");
                     }
-                }
-                else if (CascadedEditContext != EditContext)
-                {
-                    // Not the first run
 
-                    // We don't support changing EditContext because it's messy to be clearing up state and event
-                    // handlers for the previous one, and there's no strong use case. If a strong use case
-                    // emerges, we can consider changing this.
-                    throw new InvalidOperationException($"{GetType()} does not support changing the " +
-                                                        $"{nameof(EditContext)} dynamically.");
+                    EditContext = CascadedEditContext;
+                    FieldIdentifier = FieldIdentifier.Create(ValueExpression);
+                    _nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
                 }
+            }
+            else if (CascadedEditContext != EditContext)
+            {
+                // Not the first run
+
+                // We don't support changing EditContext because it's messy to be clearing up state and event
+                // handlers for the previous one, and there's no strong use case. If a strong use case
+                // emerges, we can consider changing this.
+                throw new InvalidOperationException($"{GetType()} does not support changing the " +
+                                                    $"{nameof(EditContext)} dynamically.");
             }
 
             // For derived components, retain the usual lifecycle with OnInit/OnParametersSet/etc.
