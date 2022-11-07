@@ -58,7 +58,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add("Test", "Dialog");
-        var reference = Modal?.Show<DailogTest>(parameters, new ModalOptions { ClickBackgroundCancel = true });
+        var reference = Modal?.Show<DailogTest>(parameters);
         var res = await reference!.Result;
         if (res.Data?.ToString() == "test")
         {
