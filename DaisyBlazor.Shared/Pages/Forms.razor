@@ -5,8 +5,10 @@
     <DaisyInputText Required Label="文本1" @bind-Value="@info.Text" />
     <DaisySelect Required Label="选择0" @bind-Value="@info.Select0">
         <DaisySelectOption Default Disabled TValue="SubInfo" Value="default">请选择</DaisySelectOption>
-        <DaisySelectOption Value="@(new SubInfo{Name="S1"})">S1</DaisySelectOption>
-        <DaisySelectOption Value="@(new SubInfo{Name="S2"})">S2</DaisySelectOption>
+        <DaisySelectGroup Label="Group1">
+            <DaisySelectOption Value="@(new SubInfo{Name="S1"})">S1</DaisySelectOption>
+            <DaisySelectOption Value="@(new SubInfo{Name="S2"})">S2</DaisySelectOption>
+        </DaisySelectGroup>
         <DaisySelectOption Value="@(new SubInfo{Name="S3"})">S3</DaisySelectOption>
     </DaisySelect>
     <DaisySelect Required Label="选择1" @bind-Value="@info.Select1">
@@ -16,8 +18,10 @@
         <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
     </DaisySelect>
     <DaisyMultipleSelect Label="选择2" @bind-Value="@info.Select2">
-        <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
-        <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
+        <DaisySelectGroup Label="Group1">
+            <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
+            <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
+        </DaisySelectGroup>
         <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
     </DaisyMultipleSelect>
     <DaisyField>
@@ -39,7 +43,7 @@
         public string? Text { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
-        public SubInfo? Select0 { get; set; } = new SubInfo { Name = "S1" } ;
+        public SubInfo? Select0 { get; set; } = new SubInfo { Name = "S1" };
 
         [System.ComponentModel.DataAnnotations.Required]
         public string? Select1 { get; set; }
