@@ -1,4 +1,5 @@
-﻿.loading {
+﻿
+.loading {
     z-index: 2;
     color: #88a;
     font-size: 18px;
@@ -28,6 +29,16 @@
         margin: auto;
         animation: rotation 1.5s linear 0s infinite;
     }
+
+@keyframes rotation {
+    0% {
+        transform: rotate(45deg)
+    }
+
+    100% {
+        transform: rotate(405deg)
+    }
+}
 
 .flex {
     display: flex;
