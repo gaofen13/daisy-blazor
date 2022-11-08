@@ -7,10 +7,10 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "DaisyBlazor.Client.dll": "sha256-GE80N+0jiU1KMLb+MpZnDQW4U5wtmmDFt5535w5WH\/8=",
-      "DaisyBlazor.dll": "sha256-gz7zRbcgjXsg1xmp\/CswN9izVEL+hH1qclH0B+f6NDo=",
-      "DaisyBlazor.Shared.dll": "sha256-WC2zpa9WGFPlDDZmUITK9bAqBJdLzzVSTJe1W\/YDkr4=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-3ziDAMv1pqZKTs+MaTyi2qdjIshoaxHaOVy3Wux+pCA=",
+      "DaisyBlazor.Client.dll": "sha256-jcVNHRAQUkAWtVTdNcSV3xEvngiYVwj7Y1V4QdsLMTk=",
+      "DaisyBlazor.dll": "sha256-KJBuYTbc+LfX1r\/pqIbgVPOC6BP9fA1TbxXso6wehio=",
+      "DaisyBlazor.Shared.dll": "sha256-RJEJPT2ju8+\/yrmv8d3GhaDDuGX8bJNL14UQbeTq+3o=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-9sK2z+vejFkahOwe6qnQILohQV2IJLxg03ld8PBEqlY=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-NOdT4u+7Kn13Arz4gXiMBARrv6cEgE+Dk2vgEuwNj4c=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-oSiLtE8q70TGVW6pwzcyjc7PyFgR+sQxa+jmokZIBzs=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-sb0DolbvM\/tJsdKlHV3imVsl9zpBvZK91h5SWU8V+i4=",
