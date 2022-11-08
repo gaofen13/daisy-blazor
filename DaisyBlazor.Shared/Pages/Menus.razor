@@ -1,37 +1,39 @@
 ﻿@page "/menus"
 
-<DaisyMenu Rounded Bordered=false>
-    <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
-    <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
-    <DaisySubMenu Title="SubMenu">
-        <DaisyMenuItem>Item3</DaisyMenuItem>
-    </DaisySubMenu>
-</DaisyMenu>
-
-<DaisyMenu>
-    <DaisyMenuItemGroup Title="Group">
+<div style="position:absolute;">
+    <DaisyMenu Rounded Bordered=false>
         <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
         <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
-    </DaisyMenuItemGroup>
-    <DaisyMenuItem>Item3</DaisyMenuItem>
-</DaisyMenu>
+        <DaisySubMenu Title="SubMenu">
+            <DaisyMenuItem>Item3</DaisyMenuItem>
+        </DaisySubMenu>
+    </DaisyMenu>
 
-<DaisyMenu>
-    <DaisySubMenu Title="SubMenu">
-        <DaisySubMenu Title="Level2">
+    <DaisyMenu>
+        <DaisyMenuItemGroup Title="Group">
             <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
             <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
-        </DaisySubMenu>
-    </DaisySubMenu>
-    <DaisyMenuItem>Item3</DaisyMenuItem>
-</DaisyMenu>
+        </DaisyMenuItemGroup>
+        <DaisyMenuItem>Item3</DaisyMenuItem>
+    </DaisyMenu>
 
-<DaisyMenu Compact Horizontal>
-    <DaisyMenuItem Href="buttons">Item1</DaisyMenuItem>
-    <DaisySubMenu Title="Level1">
-        <DaisySubMenu Title="Level2">
-            <DaisyMenuItem>Item2</DaisyMenuItem>
+    <DaisyMenu>
+        <DaisySubMenu Title="SubMenu">
+            <DaisySubMenu Title="Level2">
+                <DaisyMenuItem Href="menus">Item1</DaisyMenuItem>
+                <DaisyMenuItem Disabled>Item2</DaisyMenuItem>
+            </DaisySubMenu>
         </DaisySubMenu>
         <DaisyMenuItem>Item3</DaisyMenuItem>
-    </DaisySubMenu>
-</DaisyMenu>
+    </DaisyMenu>
+
+    <DaisyMenu Compact Horizontal>
+        <DaisyMenuItem Href="buttons">Item1</DaisyMenuItem>
+        <DaisySubMenu Title="Level1">
+            <DaisySubMenu Title="Level2">
+                <DaisyMenuItem>Item2</DaisyMenuItem>
+            </DaisySubMenu>
+            <DaisyMenuItem>Item3</DaisyMenuItem>
+        </DaisySubMenu>
+    </DaisyMenu>
+</div>
