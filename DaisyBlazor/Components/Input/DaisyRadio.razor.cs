@@ -1,5 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using System.Text.Json;
 
 namespace DaisyBlazor
 {
@@ -41,13 +42,11 @@ namespace DaisyBlazor
         [Parameter]
         public Position? LabelPosition { get; set; }
 
+        private string? StringValue => JsonSerializer.Serialize(Value);
+
         protected override void OnInitialized()
         {
             LabelPosition ??= RadioGroup?.LabelPosition;
-            if (RadioGroup is not null)
-            {
-                Checked = EqualityComparer<TValue>.Default.Equals(RadioGroup.Value, Value);
-            }
             base.OnInitialized();
         }
 
@@ -56,14 +55,14 @@ namespace DaisyBlazor
             base.OnParametersSet();
             if (RadioGroup is not null)
             {
-                Checked = EqualityComparer<TValue>.Default.Equals(RadioGroup.Value, Value);
+                Checked = JsonSerializer.Serialize(RadioGroup.Value) == StringValue;
             }
         }
 
         private void OnInputChanged(ChangeEventArgs args)
         {
             Checked = true;
-            RadioGroup?.OnCheckedRadioChanged(this);
+            RadioGroup?.OnCheckedRadioChanged(args.Value?.ToString());
         }
     }
 }

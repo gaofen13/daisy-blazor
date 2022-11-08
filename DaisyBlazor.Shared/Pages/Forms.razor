@@ -2,6 +2,19 @@
 
 <EditForm Model="@info" OnValidSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
+    <DaisyFormField Label="Radio">
+        <DaisyRadioGroup @bind-Value="@info.Radio">
+            <DaisyRadio Value="@(new SubInfo{Name="S1"})">S1</DaisyRadio>
+            <DaisyRadio Value="@(new SubInfo{Name="S2"})">S2</DaisyRadio>
+            <DaisyRadio Value="@(new SubInfo{Name="S3"})">S3</DaisyRadio>
+        </DaisyRadioGroup>
+    </DaisyFormField>
+    <DaisyFormField Label="数值1">
+        <DaisyInputNumber Step="10" @bind-Value="@info.Number1" />
+    </DaisyFormField>
+    <DaisyFormField Label="数值2">
+        <DaisyInputNumber Step="0.1" @bind-Value="@info.Number2" />
+    </DaisyFormField>
     <DaisyFormField Label="文本1" LabelRequired For="()=>info.Text">
         <DaisyInputText Required @bind-Value="@info.Text" />
     </DaisyFormField>
@@ -32,9 +45,18 @@
             <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
         </DaisyMultipleSelect>
     </DaisyFormField>
+    <DaisyFormField Label="选择3">
+        <DaisySelect @bind-Value="@info.select3">
+            <DaisySelectOption Default Disabled TValue="int" Value="default">请选择</DaisySelectOption>
+            <DaisySelectOption Value="1">1</DaisySelectOption>
+            <DaisySelectOption Value="2">2</DaisySelectOption>
+            <DaisySelectOption Value="3">3</DaisySelectOption>
+        </DaisySelect>
+    </DaisyFormField>
     <DaisyFormField>
         <div>
-            <DaisyButton Type="submit">确定</DaisyButton>
+            <DaisyButton Color="@Color.Primary" Type="submit">确定</DaisyButton>
+            <DaisyButton Color="@Color.Secondary" Type="reset">重置</DaisyButton>
         </div>
     </DaisyFormField>
 </EditForm>
@@ -47,6 +69,11 @@
     }
     class InputInfo
     {
+        [System.ComponentModel.DataAnnotations.Required]
+        public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1" };
+        public int Number1 { get; set; }
+        public double Number2 { get; set; }
+
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Text是必须的")]
         public string? Text { get; set; }
 
@@ -56,6 +83,7 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string? Select1 { get; set; }
         public IEnumerable<string>? Select2 { get; set; } = new string[] { "s1", "s2" };
+        public int? select3;
     }
 
     class SubInfo

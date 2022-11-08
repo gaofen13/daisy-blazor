@@ -11,6 +11,7 @@ namespace DaisyBlazor
             .AddClass("input-ghost ", Ghost)
             .AddClass($"input-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"input-{Size.ToString()?.ToLower()}", Size != null)
+            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
@@ -19,12 +20,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public string? Placeholder { get; set; }
-
-        [Parameter]
-        public int Min { get; set; } = int.MinValue;
-
-        [Parameter]
-        public int Max { get; set; } = int.MaxValue;
 
         [Parameter]
         public TValue? Step { get; set; } 

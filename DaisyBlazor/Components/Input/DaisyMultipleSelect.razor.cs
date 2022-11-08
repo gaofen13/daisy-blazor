@@ -13,6 +13,7 @@ namespace DaisyBlazor
             .AddClass("select-ghost ", Ghost)
             .AddClass($"select-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"select-{Size.ToString()?.ToLower()}", Size != null)
+            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 

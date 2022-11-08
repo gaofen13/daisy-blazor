@@ -10,6 +10,7 @@ namespace DaisyBlazor
             .AddClass("textarea-bordered", Bordered)
             .AddClass("textarea-ghost ", Ghost)
             .AddClass($"textarea-{Color.ToString()?.ToLower()}", Color != null)
+            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
