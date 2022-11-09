@@ -1,5 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
 {
@@ -45,14 +46,18 @@ namespace DaisyBlazor
         [Parameter]
         public Size? Size { get; set; }
 
-        private void OnInputChanged(ChangeEventArgs args)
+        protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
-            var value = $"{args.Value}";
             if (Trim)
             {
-                value = value.Trim();
+                result = value?.Trim();
             }
-            CurrentValue = value;
+            else
+            {
+                result = value;
+            }
+            validationErrorMessage = null;
+            return true;
         }
     }
 }

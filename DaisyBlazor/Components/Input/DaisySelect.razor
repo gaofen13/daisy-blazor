@@ -2,6 +2,6 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<select @ref="@Element" required="@Required" autofocus="@AutoFocus" id="@Id" name="@Name" class="@SelectClass" style="@Style" @attributes="@AdditionalAttributes" value="@CurrentValueAsString" @onchange="@OnChanged" placeholder="@Placeholder" disabled="@Disabled">
+<select @ref="@Element" id="@Id" name="@Name" class="@SelectClass" style="@Style" required="@Required" autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@CurrentValueAsString" @onchange="@(EventCallback.Factory.CreateBinder<string?>(this,__value=>CurrentValueAsString=__value,default))">
     @ChildContent
 </select>

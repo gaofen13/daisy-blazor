@@ -16,41 +16,29 @@
         <DaisyInputNumber Step="0.1" @bind-Value="@info.Number2" />
     </DaisyFormField>
     <DaisyFormField Label="文本1" LabelRequired For="()=>info.Text">
-        <DaisyInputText Required @bind-Value="@info.Text" />
-    </DaisyFormField>
-    <DaisyFormField Label="选择0" LabelRequired For="()=>info.Select0">
-        <DaisySelect Required @bind-Value="@info.Select0">
-            <DaisySelectOption Default Disabled TValue="SubInfo" Value="default">请选择</DaisySelectOption>
-            <DaisySelectGroup Label="Group1">
-                <DaisySelectOption Value="@(new SubInfo{Name="S1"})">S1</DaisySelectOption>
-                <DaisySelectOption Value="@(new SubInfo{Name="S2"})">S2</DaisySelectOption>
-            </DaisySelectGroup>
-            <DaisySelectOption Value="@(new SubInfo{Name="S3"})">S3</DaisySelectOption>
-        </DaisySelect>
+        <DaisyInputText @bind-Value="@info.Text" />
     </DaisyFormField>
     <DaisyFormField Label="选择1" LabelRequired For="()=>info.Select1">
         <DaisySelect Required @bind-Value="@info.Select1">
-            <DaisySelectOption Default Disabled TValue="string" Value="default">请选择</DaisySelectOption>
-            <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
-            <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
-            <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
+            <option value="s1">S1</option>
+            <option value="s2">S2</option>
+            <option value="s3">S3</option>
         </DaisySelect>
     </DaisyFormField>
     <DaisyFormField Label="选择2" For="()=>info.Select2">
-        <DaisyMultipleSelect @bind-Value="@info.Select2">
-            <DaisySelectGroup Label="Group1">
-                <DaisySelectOption Value="@("s1")">S1</DaisySelectOption>
-                <DaisySelectOption Value="@("s2")">S2</DaisySelectOption>
-            </DaisySelectGroup>
-            <DaisySelectOption Value="@("s3")">S3</DaisySelectOption>
-        </DaisyMultipleSelect>
+        <DaisyMultiSelect @bind-Value="@info.Select2">
+            <optgroup label="Group1">
+                <option value="s1">S1</option>
+                <option value="s2">S2</option>
+            </optgroup>
+            <option value="s3">S3</option>
+        </DaisyMultiSelect>
     </DaisyFormField>
     <DaisyFormField Label="选择3">
         <DaisySelect @bind-Value="@info.select3">
-            <DaisySelectOption Default Disabled TValue="int" Value="default">请选择</DaisySelectOption>
-            <DaisySelectOption Value="1">1</DaisySelectOption>
-            <DaisySelectOption Value="2">2</DaisySelectOption>
-            <DaisySelectOption Value="3">3</DaisySelectOption>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
         </DaisySelect>
     </DaisyFormField>
     <DaisyFormField>
@@ -81,9 +69,9 @@
         public SubInfo? Select0 { get; set; } = new SubInfo { Name = "S1" };
 
         [System.ComponentModel.DataAnnotations.Required]
-        public string? Select1 { get; set; }
-        public IEnumerable<string>? Select2 { get; set; } = new string[] { "s1", "s2" };
-        public int? select3;
+        public string Select1 { get; set; } = "";
+        public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
+        public int? select3 = 2;
     }
 
     class SubInfo

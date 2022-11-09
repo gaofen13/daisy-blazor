@@ -1,7 +1,0 @@
-﻿@namespace DaisyBlazor
-@inherits DaisyInputBase<IEnumerable<TValue>>
-@typeparam TValue
-
-<select @ref="@Element" required="@Required" autofocus="@AutoFocus" multiple size="@Height" id="@Id" name="@Name" class="@SelectClass" style="@Style" @attributes="@AdditionalAttributes" value="@CurrentValueAsString" @onchange="@OnChanged" placeholder="@Placeholder" disabled="@Disabled">
-    @ChildContent
-</select>

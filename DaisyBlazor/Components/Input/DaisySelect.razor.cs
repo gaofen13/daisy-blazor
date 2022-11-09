@@ -1,6 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Text.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
 {
@@ -34,22 +34,22 @@ namespace DaisyBlazor
         [Parameter]
         public Size? Size { get; set; }
 
-        [Parameter]
-        public int Height { get; set; }
+        protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+            => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 
-        private string? CurrentValueAsString => JsonSerializer.Serialize(Value);
-
-        private void OnChanged(ChangeEventArgs args)
+        protected override string? FormatValueAsString(TValue? value)
         {
-            var jsonValue = args.Value?.ToString();
-            if (jsonValue != null)
+            // We special-case bool values because BindConverter reserves bool conversion for conditional attributes.
+            if (typeof(TValue) == typeof(bool))
             {
-                CurrentValue = JsonSerializer.Deserialize<TValue>(jsonValue);
+                return (bool)(object)value! ? "true" : "false";
             }
-            else
+            else if (typeof(TValue) == typeof(bool?))
             {
-                CurrentValue = default;
+                return value is not null && (bool)(object)value ? "true" : "false";
             }
+
+            return base.FormatValueAsString(value);
         }
     }
 }

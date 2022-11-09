@@ -1,5 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
@@ -31,9 +32,6 @@ namespace DaisyBlazor
         [Parameter]
         public Position LabelPosition { get; set; } = Position.Right;
 
-        private void OnInputChanged(ChangeEventArgs args)
-        {
-            CurrentValue = Convert.ToBoolean(args.Value);
-        }
+        protected override bool TryParseValueFromString(string? value, out bool result, [NotNullWhen(false)] out string? validationErrorMessage) => throw new NotSupportedException($"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
     }
 }

@@ -1,11 +1,11 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Text.Json;
 
 namespace DaisyBlazor
 {
-    public partial class DaisyMultipleSelect<TValue>
+    public partial class DaisyMultiSelect<TValue>
     {
         private string SelectClass =>
           new ClassBuilder("select")
@@ -16,6 +16,9 @@ namespace DaisyBlazor
             .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public int Height { get; set; }
 
         [Parameter]
         public bool AutoFocus { get; set; }
@@ -35,22 +38,14 @@ namespace DaisyBlazor
         [Parameter]
         public Size? Size { get; set; }
 
-        [Parameter]
-        public int Height { get; set; }
+        protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+            => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 
-        private string? CurrentValueAsString => JsonSerializer.Serialize(Value);
-
-        private void OnChanged(ChangeEventArgs args)
+        private void SetCurrentValueAsStringArray(string?[]? value)
         {
-            var jsonValue = JsonSerializer.Serialize(args.Value);
-            if (jsonValue != null)
-            {
-                CurrentValue = JsonSerializer.Deserialize<IEnumerable<TValue>>(jsonValue);
-            }
-            else
-            {
-                CurrentValue = default;
-            }
+            CurrentValue = BindConverter.TryConvertTo<TValue>(value, CultureInfo.CurrentCulture, out var result)
+                ? result
+                : default;
         }
     }
 }

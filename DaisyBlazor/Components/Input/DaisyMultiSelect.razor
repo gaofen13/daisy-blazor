@@ -1,0 +1,7 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyInputBase<TValue>
+@typeparam TValue
+
+<select @ref="@Element" multiple="multiple" size="@Height" id="@Id" name="@Name" class="@SelectClass" style="@Style" required="@Required" autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValue)?.ToString()" @onchange="@(EventCallback.Factory.CreateBinder<string[]?>(this,SetCurrentValueAsStringArray,default))">
+    @ChildContent
+</select>

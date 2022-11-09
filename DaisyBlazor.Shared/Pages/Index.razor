@@ -21,10 +21,9 @@
 </DaisyFormField>
 <DaisyFormField Label="选择器">
     <DaisySelect @bind-Value=color>
-        <DaisySelectOption Default Disabled TValue="Color?" Value="null">请选择</DaisySelectOption>
-        <DaisySelectOption Value="Color.Primary">Primary</DaisySelectOption>
-        <DaisySelectOption Value="Color.Secondary">Secondary</DaisySelectOption>
-        <DaisySelectOption Value="Color.Accent">Accent</DaisySelectOption>
+        <option value="@Color.Primary">Primary</option>
+        <option value="@Color.Secondary">Secondary</option>
+        <option value="@Color.Accent">Accent</option>
     </DaisySelect>
 </DaisyFormField>
 <DaisyFormField Label="单选器">

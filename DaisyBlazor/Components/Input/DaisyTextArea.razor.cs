@@ -1,5 +1,6 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
 {
@@ -31,5 +32,12 @@ namespace DaisyBlazor
 
         [Parameter]
         public Color? Color { get; set; }
+
+        protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+        {
+            result = value;
+            validationErrorMessage = null;
+            return true;
+        }
     }
 }

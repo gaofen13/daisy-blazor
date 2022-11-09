@@ -2,4 +2,4 @@
 @inherits DaisyInputBase<TValue>
 @typeparam TValue
 
-<input @ref="@Element" type="number" required="@Required" autofocus="@AutoFocus" step="@Step" inputmode="numeric" id="@Id" name="@Name" class="@InputClass" style="@Style" @attributes="@AdditionalAttributes" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" @bind="@CurrentValue" />
+<input @ref="@Element" type="number" step="@Step" inputmode="numeric" id="@Id" name="@Name" class="@InputClass" style="@Style" required="@Required" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)" @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />

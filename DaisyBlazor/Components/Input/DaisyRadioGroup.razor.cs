@@ -1,11 +1,13 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Text.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor
 {
     public partial class DaisyRadioGroup<TValue>
     {
+        private DaisyRadio<TValue>? _checkedRadio;
+
         private readonly string _defaultGroupName = Guid.NewGuid().ToString("N");
 
         public string RadioName => Name ?? _defaultGroupName;
@@ -23,15 +25,15 @@ namespace DaisyBlazor
         [Parameter]
         public bool Vertical { get; set; }
 
-        public void OnCheckedRadioChanged(string? value)
+        protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+            => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
+
+        public void OnCheckedRadioChanged(DaisyRadio<TValue> radio)
         {
-            if (value == null)
+            _checkedRadio = radio;
+            if (!EqualityComparer<TValue>.Default.Equals(radio.Value, CurrentValue))
             {
-                CurrentValue = default;
-            }
-            else
-            {
-                CurrentValue = JsonSerializer.Deserialize<TValue>(value);
+                CurrentValue = radio.Value;
             }
         }
     }

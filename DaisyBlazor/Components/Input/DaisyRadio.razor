@@ -11,5 +11,5 @@
     {
         <span>@Label</span>
     }
-    <input type="radio" class="@RadioClass" style="@Style" @attributes="@AdditionalAttributes" disabled="@Disabled" name="@RadioGroup?.RadioName" checked="@Checked" value="@StringValue" @onchange="@OnInputChanged" />
+    <input type="radio" id="@Id" name="@(Name??RadioGroup?.RadioName)" class="@RadioClass" style="@Style" disabled="@Disabled" @attributes="@AdditionalAttributes" checked="@Checked" value="@Value" @onchange="@OnRadioChanged" />
 </label>

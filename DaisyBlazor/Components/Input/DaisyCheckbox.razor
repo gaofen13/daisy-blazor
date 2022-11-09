@@ -10,5 +10,5 @@
     {
         <span>@Label</span>
     }
-    <input @ref="@Element" type="checkbox" required="@Required" id="@Id" name="@Name" class="@CheckboxClass" style="@Style" @attributes="@AdditionalAttributes" disabled="@Disabled" readonly="@Readonly" checked="@CurrentValue" @onchange="@OnInputChanged" />
+    <input @ref="@Element" type="checkbox" id="@Id" name="@Name" class="@CheckboxClass" style="@Style" required="@Required" disabled="@Disabled" readonly="@Readonly" @attributes="@AdditionalAttributes" checked="@BindConverter.FormatValue(CurrentValue)" @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))" />
 </label>

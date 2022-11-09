@@ -1,4 +1,4 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyInputBase<string>
 
-<input @ref="@Element" type="@Type" required="@Required" pattern="@Pattern" maxlength="@MaxLength" id="@Id" class="@InputClass" style="@Style" @attributes="@AdditionalAttributes" name="@Name" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" value="@CurrentValue" @onchange="@OnInputChanged" />
+<input @ref="@Element" type="@Type" id="@Id" class="@InputClass" style="@Style" name="@Name" required="@Required" pattern="@Pattern" maxlength="@MaxLength" autofocus="@AutoFocus" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)" @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
