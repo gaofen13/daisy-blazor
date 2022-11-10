@@ -14,23 +14,6 @@ namespace DaisyBlazor
 
         private bool Checked => SelectedItems?.Contains(Item) == true;
 
-        //    set
-        //    {
-        //        if (_checked != value)
-        //        {
-        //            _checked = value;
-        //            if (Checked)
-        //            {
-        //                Table?.AddSelectedItem(Item);
-        //            }
-        //            else
-        //            {
-        //                Table?.RemoveSelectedItem(Item);
-        //            }
-        //        }
-        //    }
-        //}
-
         [CascadingParameter]
         public IDataTable<TItem>? Table { get; set; }
 

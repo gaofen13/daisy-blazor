@@ -24,7 +24,7 @@ namespace DaisyBlazor
         public string? Placeholder { get; set; }
 
         [Parameter]
-        public TValue? Step { get; set; } 
+        public TValue? Step { get; set; }
 
         [Parameter]
         public bool Bordered { get; set; } = true;
@@ -38,7 +38,7 @@ namespace DaisyBlazor
         [Parameter]
         public Size? Size { get; set; }
 
-        [Parameter] 
+        [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";
 
         protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)

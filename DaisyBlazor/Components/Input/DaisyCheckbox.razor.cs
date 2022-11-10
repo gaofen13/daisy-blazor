@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DaisyBlazor

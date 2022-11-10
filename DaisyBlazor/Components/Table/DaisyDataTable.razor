@@ -12,7 +12,7 @@
     <table class="@TableClass" style="@Style" @attributes="@AdditionalAttributes">
         <CascadingValue Value="@this" IsFixed>
             <thead>
-                <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
+                <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_currentPageItems" SelectedItems="@SelectedItems">
                     @if (HeadTemplate is not null)
                     {
                         @HeadTemplate
@@ -20,16 +20,16 @@
                     else if (Columns is not null)
                     {
                         <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
-                            @Columns(DefaultValue)
+                            @Columns(DaisyDataTable<TItem>.DefaultValue)
                         </CascadingValue>
                     }
                 </DaisyHeadTr>
             </thead>
             <tbody>
-                @if (_items.Any() && Columns != null)
+                @if (_currentPageItems.Any() && Columns != null)
                 {
                     <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Body" IsFixed>
-                        @foreach (var item in _items)
+                        @foreach (var item in _currentPageItems)
                         {
                             <DaisyTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
                                 @Columns(item)
@@ -57,7 +57,7 @@
             }
             else
             {
-                <DaisyPagination Total="@TotalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" Outline="@OutlinePager" />
+                <DaisyPagination Total="@_totalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSzie" Outline="@OutlinePager" />
             }
         </div>
     }

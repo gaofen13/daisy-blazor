@@ -3,13 +3,9 @@
 @inject WeatherForecastService ForecastService
 
 <DaisyDataTable Items="@_forecasts"
-                MultiSelection ShowPager TotalPager="25"
+                MultiSelection ShowPager
                 PagePosition="PositionX.End"
-                PageIndex="@_index"
-                PageSzie="@_size"
-                PageSizeOption="@(new int[]{5,10,30,100})"
-                PageSizeChanged="(size)=>GetWeaterForecastAsync(_index,size)"
-                PageIndexChanged="(index)=>GetWeaterForecastAsync(index,_size)">
+                PageSizeOption="@(new int[]{5,10,30,100})">
     <ToolbarTemplate>
         <DaisyButtonGroup>
             <DaisyButton Color="Color.Primary">Add</DaisyButton>
@@ -23,22 +19,43 @@
         <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
         <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
     </Columns>
+    <FootTemplate><th colspan="100">这是客户端分页</th></FootTemplate>
+</DaisyDataTable>
+
+<DaisyDataTable TItem="@WeatherForecast"
+                ServerDataFunc="@(pagerState => GetWeaterForecastAsync(pagerState.PageIndex,pagerState.PageSize))"
+                MultiSelection 
+                ShowPager
+                PageSzie="5"
+                PagePosition="PositionX.End">
+    <ToolbarTemplate>
+        <DaisyButtonGroup>
+            <DaisyButton Color="Color.Primary">Add</DaisyButton>
+            <DaisyButton Color="Color.Accent">Edit</DaisyButton>
+            <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
+        </DaisyButtonGroup>
+    </ToolbarTemplate>
+    <Columns>
+        <DaisyColumn Title="Data">@context.Date</DaisyColumn>
+        <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
+        <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
+        <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
+    </Columns>
+    <FootTemplate><th colspan="100">这是服务端分页</th></FootTemplate>
 </DaisyDataTable>
 
 @code {
-    private int _index = 1;
-    private int _size = 5;
-    private WeatherForecast[]? _forecasts;
+    private IEnumerable<WeatherForecast>? _forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        await GetWeaterForecastAsync(_index, _size);
+        var res = await GetWeaterForecastAsync(1, 50);
+        _forecasts = res.Data;
     }
 
-    private async Task GetWeaterForecastAsync(int index, int size)
+    private async Task<TableData<WeatherForecast>> GetWeaterForecastAsync(int index, int size)
     {
-        _index = index;
-        _size = size;
-        _forecasts = await ForecastService.GetForecastAsync(DateTime.Now, _index, _size);
+        var data = await ForecastService.GetForecastAsync(DateTime.Now, index, size);
+        return new TableData<WeatherForecast> { Data = data, Total = 200 };
     }
 }

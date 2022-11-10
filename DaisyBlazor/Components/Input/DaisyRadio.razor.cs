@@ -1,6 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Globalization;
 
 namespace DaisyBlazor
 {

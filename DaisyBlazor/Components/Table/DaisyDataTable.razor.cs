@@ -6,9 +6,10 @@ namespace DaisyBlazor
     public partial class DaisyDataTable<TItem> : IDataTable<TItem>
     {
         private IEnumerable<TItem> _items = Enumerable.Empty<TItem>();
+        private IEnumerable<TItem> _currentPageItems = Enumerable.Empty<TItem>();
+        private readonly PagerState _pagerState = new(1, 10);
         private List<TItem> _selectedItems = new();
-        private int _pageIndex = 1;
-        private int _pageSize = 10;
+        private int _totalPager;
 
         private string TableClass =>
             new ClassBuilder("table")
@@ -24,7 +25,21 @@ namespace DaisyBlazor
             .AddClass($"pager-{PagePosition.ToString().ToLower()}")
             .Build();
 
-        private TItem DefaultValue => Activator.CreateInstance<TItem>();
+        private static TItem DefaultValue
+        {
+            get
+            {
+                TItem? item = default;
+                if (item == null)
+                {
+                    return Activator.CreateInstance<TItem>();
+                }
+                else
+                {
+                    return item;
+                }
+            }
+        }
 
         [Parameter]
         public IEnumerable<TItem>? Items
@@ -47,6 +62,9 @@ namespace DaisyBlazor
                 }
             }
         }
+
+        [Parameter]
+        public Func<PagerState, Task<TableData<TItem>>>? ServerDataFunc { get; set; }
 
         [Parameter]
         public IEnumerable<TItem> SelectedItems
@@ -95,41 +113,36 @@ namespace DaisyBlazor
         public bool OutlinePager { get; set; }
 
         [Parameter]
-        public int TotalPager { get; set; }
-
-        [Parameter]
         public int PageSzie
         {
-            get => _pageSize;
+            get => _pagerState.PageSize;
             set
             {
-                if (_pageSize != value && value > 0)
+                if (_pagerState.PageSize != value && value > 0)
                 {
-                    _pageSize = value;
-                    PageSizeChanged.InvokeAsync(value);
+                    _pagerState.PageSize = value;
+                    if (_totalPager < _pagerState.PageIndex)
+                    {
+                        PageIndex = _totalPager;
+                    }
+                    InvokeAsync(SetCurrentPageDataAsync);
                 }
             }
         }
-
-        [Parameter]
-        public EventCallback<int> PageSizeChanged { get; set; }
 
         [Parameter]
         public int PageIndex
         {
-            get => _pageIndex;
+            get => _pagerState.PageIndex;
             set
             {
-                if (_pageIndex != value && value > 0)
+                if (_pagerState.PageIndex != value && value > 0)
                 {
-                    _pageIndex = value;
-                    PageIndexChanged.InvokeAsync(value);
+                    _pagerState.PageIndex = value;
+                    InvokeAsync(SetCurrentPageDataAsync);
                 }
             }
         }
-
-        [Parameter]
-        public EventCallback<int> PageIndexChanged { get; set; }
 
         [Parameter]
         public int[] PageSizeOption { get; set; } = { 10, 20, 50, 100 };
@@ -140,13 +153,31 @@ namespace DaisyBlazor
         [Parameter]
         public RenderFragment? PagerTemplate { get; set; }
 
+        protected override async Task OnInitializedAsync()
+        {
+            if (ServerDataFunc == null)
+            {
+                await SetCurrentPageDataAsync();
+            }
+            await base.OnInitializedAsync();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender && ServerDataFunc != null)
+            {
+                await SetCurrentPageDataAsync();
+            }
+            await base.OnAfterRenderAsync(firstRender);
+        }
+
         public void AddSelectedItem(TItem item)
         {
             if (!_selectedItems.Contains(item))
             {
                 _selectedItems.Add(item);
                 SelectedItemsChanged.InvokeAsync(_selectedItems);
-                if (_selectedItems.Count == Items?.Count())
+                if (_selectedItems.Count == _currentPageItems?.Count())
                 {
                     StateHasChanged();
                 }
@@ -159,7 +190,7 @@ namespace DaisyBlazor
             {
                 _selectedItems.Remove(item);
                 SelectedItemsChanged.InvokeAsync(_selectedItems);
-                if (_selectedItems.Count + 1 == Items?.Count())
+                if (_selectedItems.Count + 1 == _currentPageItems?.Count())
                 {
                     StateHasChanged();
                 }
@@ -168,16 +199,45 @@ namespace DaisyBlazor
 
         public void SelectAllItems()
         {
-            SelectedItems = _items;
-            SelectedItemsChanged.InvokeAsync(_items);
+            SelectedItems = _currentPageItems;
+            SelectedItemsChanged.InvokeAsync(SelectedItems);
             StateHasChanged();
         }
 
         public void ClearSelectedItems()
         {
             _selectedItems.Clear();
-            SelectedItemsChanged.InvokeAsync(_selectedItems);
+            SelectedItemsChanged.InvokeAsync(SelectedItems);
             StateHasChanged();
+        }
+
+        private async Task SetCurrentPageDataAsync()
+        {
+            var items = Enumerable.Empty<TItem>();
+            if (ShowPager)
+            {
+                if (ServerDataFunc != null)
+                {
+                    var res = await ServerDataFunc.Invoke(_pagerState);
+                    if (res.Data != null)
+                    {
+                        items = res.Data;
+                    }
+                    _totalPager = GetTotalPageCount(res.Total, _pagerState.PageSize);
+                }
+                else
+                {
+                    items = _items.Skip((_pagerState.PageIndex - 1) * _pagerState.PageSize).Take(_pagerState.PageSize);
+                    _totalPager = GetTotalPageCount(_items.Count(), _pagerState.PageSize);
+                }
+            }
+            _currentPageItems = items;
+        }
+
+        private static int GetTotalPageCount(int total, int size)
+        {
+            var pageCount = total / size;
+            return total % size == 0 ? pageCount : pageCount + 1;
         }
     }
 }
