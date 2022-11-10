@@ -1,26 +1,32 @@
 ﻿using DaisyBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {
     public partial class DaisyTabs
     {
-        private List<DaisyTab> _tabs = new();
+        private readonly List<DaisyTab> _tabs = new();
         private DaisyTab? _activeTab;
 
         private string TabsClass =>
             new ClassBuilder("tabs")
+            .AddClass("tabs-boxed", Boxed)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public bool Boxed { get; set; }
 
         public void AddTab(DaisyTab tab)
         {
             if (!_tabs.Contains(tab))
             {
                 _tabs.Add(tab);
-                if (_activeTab == null)
+                if (tab.Default)
                 {
-                    tab.ActiveTab();
+                    OnActiveTabChanged(tab);
                 }
+                StateHasChanged();
             }
         }
 
@@ -31,16 +37,23 @@ namespace DaisyBlazor
                 _tabs.Remove(tab);
                 if (_activeTab == tab)
                 {
-                    _tabs.FirstOrDefault()?.ActiveTab();
+                    var activeTab = _tabs.FirstOrDefault();
+                    if (activeTab != null)
+                    {
+                        OnActiveTabChanged(activeTab);
+                    }
                 }
+                StateHasChanged();
             }
         }
 
-        public void OnActiveTabChanged(DaisyTab tab)
+        private void OnActiveTabChanged(DaisyTab tab)
         {
             if (_activeTab != tab)
             {
+                _activeTab?.ActiveTab(false);
                 _activeTab = tab;
+                _activeTab.ActiveTab(true);
             }
         }
     }

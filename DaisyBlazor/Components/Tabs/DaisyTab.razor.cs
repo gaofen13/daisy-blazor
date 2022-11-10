@@ -5,42 +5,44 @@ namespace DaisyBlazor
 {
     public partial class DaisyTab
     {
-        private string TabClass =>
-          new ClassBuilder("tab")
-            .AddClass("tab-active", Active)
-            .AddClass($"tab-{TabType.ToString()?.ToLower()}", TabType != null)
-            .AddClass($"tab-{TabSize.ToString()?.ToLower()}", TabSize != null)
-            .AddClass(Class)
+        private bool _active;
+
+        public string TabClass =>
+            new ClassBuilder("tab")
+            .AddClass($"tab-{Size.ToString().ToLower()}")
+            .AddClass("tab-bordered", Bordered && !Lifted)
+            .AddClass("tab-lifted", Lifted && !Bordered)
+            .AddClass("tab-active", _active)
             .Build();
 
         [CascadingParameter]
         private DaisyTabs DaisyTabs { get; set; } = default!;
 
         [Parameter]
-        public string? TabName { get; set; }
+        public bool Bordered { get; set; }
 
         [Parameter]
-        public RenderFragment? TabTemplate { get; set; }
+        public bool Lifted { get; set; }
 
         [Parameter]
-        public bool Active { get; set; }
+        public Size Size { get; set; } = Size.Md;
 
         [Parameter]
-        public Size? TabSize { get; set; }
+        public string? Title { get; set; }
 
         [Parameter]
-        public TabType? TabType { get; set; }
+        public bool Default { get; set; }
 
         protected override void OnInitialized()
         {
+            _active = Default;
             DaisyTabs.AddTab(this);
             base.OnInitialized();
         }
 
-        public void ActiveTab()
+        public void ActiveTab(bool active)
         {
-            Active = true;
-            DaisyTabs.OnActiveTabChanged(this);
+            _active = active;
         }
 
         void IDisposable.Dispose()

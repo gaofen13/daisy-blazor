@@ -2,6 +2,12 @@
 @inherits DaisyComponentBase
 
 <div class="@TabsClass" style="@Style" @attributes="@AdditionalAttributes">
+    <div class="tabs-title">
+        @foreach (var item in _tabs)
+        {
+            <a class="@item.TabClass" @onclick="@(_=>OnActiveTabChanged(item))">@item.Title</a>
+        }
+    </div>
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>
