@@ -38,6 +38,7 @@
         border-top-right-radius: inherit;
         border-bottom-right-radius: inherit;
         border-bottom-left-radius: inherit;
+        z-index: 1000;
     }
 
     .menu li > ul {
@@ -222,10 +223,10 @@
     padding-right: 2.5rem;
 }
 
-    .menu.menu-horizontal > .menu-sub-arrow > .menu-sub-title:after {
-        --tw-rotate: 225deg;
-        --tw-translate-y: -50%;
-    }
+.menu.menu-horizontal > .menu-sub-arrow > .menu-sub-title:after {
+    --tw-rotate: 225deg;
+    --tw-translate-y: -50%;
+}
 
 .menu.menu-horizontal > .menu-sub-arrow.menu-sub-collapsed > .menu-sub-title:after {
     --tw-rotate: 45deg;
