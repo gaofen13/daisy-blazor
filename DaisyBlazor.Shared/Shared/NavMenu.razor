@@ -1,4 +1,4 @@
-﻿<DaisyMenu Style="height:100%;overflow-y:auto;z-index:1051;background-color:#fafafa;">
+﻿<DaisyNavMenu Style="height:100%;overflow-y:auto;z-index:1051;background-color:#fafafa;">
     <DaisyButton OnClick="OnCloseBtnClicked" Class="close-btn" Style="margin:1rem 1rem 1rem auto;" Size="@Size.Sm" Color="@Color.Ghost" Circle>✕</DaisyButton>
     <DaisyMenuItem Href="buttons">
         <span class="oi oi-plus" aria-hidden="true"></span> Buttons
@@ -21,19 +21,29 @@
     <DaisyMenuItem Href="tabs">
         <span class="oi oi-plus" aria-hidden="true"></span> Tabs
     </DaisyMenuItem>
-    <DaisyMenuItem Href="menus">
-        <span class="oi oi-plus" aria-hidden="true"></span> Menus
-    </DaisyMenuItem>
     <DaisyMenuItem Href="navbar">
         <span class="oi oi-plus" aria-hidden="true"></span> Navbar
     </DaisyMenuItem>
+    <DaisyNavMenuGroup>
+        <TitleContent>
+            <span class="oi oi-plus" aria-hidden="true"></span> Menus
+        </TitleContent>
+        <ChildContent>
+            <DaisyMenuItem Href="menu">
+                <span class="oi oi-plus" aria-hidden="true"></span> Menu
+            </DaisyMenuItem>
+            <DaisyMenuItem Href="navmenu">
+                <span class="oi oi-plus" aria-hidden="true"></span> NavMenu
+            </DaisyMenuItem>
+        </ChildContent>
+    </DaisyNavMenuGroup>
     <DaisyMenuItem Href="pager">
         <span class="oi oi-plus" aria-hidden="true"></span> Pagination
     </DaisyMenuItem>
     <DaisyMenuItem Href="fetchdata">
         <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
     </DaisyMenuItem>
-</DaisyMenu>
+</DaisyNavMenu>
 
 @code {
     [Parameter]

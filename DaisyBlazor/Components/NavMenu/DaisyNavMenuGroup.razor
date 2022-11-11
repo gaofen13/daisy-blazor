@@ -1,0 +1,21 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<li class="@GroupClass" style="@Style" @attributes="@AdditionalAttributes">
+    <span class="menu-group-title" @onclick="@OnClickTitleAsync">
+        @if (TitleContent is not null)
+        {
+            @TitleContent
+        }
+        else
+        {
+            @Title
+        }
+    </span>
+    @if (!Collapsed)
+    {
+        <ul class="menu-group-content">
+            @ChildContent
+        </ul>
+    }
+</li>

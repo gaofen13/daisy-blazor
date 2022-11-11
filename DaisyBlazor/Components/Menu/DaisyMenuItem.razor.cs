@@ -9,17 +9,17 @@ namespace DaisyBlazor
         private string MenuItemClass =>
             new ClassBuilder()
             .AddClass("disabled", Disabled)
-            .AddClass("bordered", Root?.Bordered == true)
+            .AddClass("bordered", NavMenu?.Bordered == true || Menu?.Bordered == true)
             .AddClass(Class)
             .Build();
 
         private Dictionary<string, object>? NavLinkAttributes => Disabled || string.IsNullOrWhiteSpace(Href) ? null : new Dictionary<string, object> { { "href", Href } };
 
         [CascadingParameter]
-        private DaisyMenu? Root { get; set; }
+        private DaisyMenu? Menu { get; set; }
 
         [CascadingParameter]
-        private DaisySubMenu? Parent { get; set; }
+        private DaisyNavMenu? NavMenu { get; set; }
 
         [Parameter]
         public string? Href { get; set; }
