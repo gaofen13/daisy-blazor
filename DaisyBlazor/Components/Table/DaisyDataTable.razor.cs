@@ -121,10 +121,7 @@ namespace DaisyBlazor
                 if (_pagerState.PageSize != value && value > 0)
                 {
                     _pagerState.PageSize = value;
-                    if (_totalPager < _pagerState.PageIndex)
-                    {
-                        PageIndex = _totalPager;
-                    }
+                    PageIndex = 1;
                     InvokeAsync(SetCurrentPageDataAsync);
                 }
             }
