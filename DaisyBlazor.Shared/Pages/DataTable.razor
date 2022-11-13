@@ -4,6 +4,7 @@
 
 <DaisyDataTable Items="@_forecasts"
                 MultiSelection ShowPager
+                DefaultPageIndex="2"
                 PagePosition="PositionX.End"
                 PageSizeOption="@(new int[]{5,10,30,100})">
     <ToolbarTemplate>
@@ -26,7 +27,7 @@
                 ServerDataFunc="@(pagerState => GetWeaterForecastAsync(pagerState.PageIndex,pagerState.PageSize))"
                 MultiSelection 
                 ShowPager
-                PageSzie="5"
+                DefaultPageSize="5"
                 PagePosition="PositionX.End">
     <ToolbarTemplate>
         <DaisyButtonGroup>

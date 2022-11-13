@@ -113,7 +113,9 @@ namespace DaisyBlazor
         public bool OutlinePager { get; set; }
 
         [Parameter]
-        public int PageSzie
+        public int DefaultPageSize { get; set; }
+
+        private int PageSize
         {
             get => _pagerState.PageSize;
             set
@@ -128,7 +130,9 @@ namespace DaisyBlazor
         }
 
         [Parameter]
-        public int PageIndex
+        public int DefaultPageIndex { get; set; }
+
+        private int PageIndex
         {
             get => _pagerState.PageIndex;
             set
@@ -152,6 +156,10 @@ namespace DaisyBlazor
 
         protected override async Task OnInitializedAsync()
         {
+            if (DefaultPageIndex > 0)
+                PageIndex = DefaultPageIndex;
+            if (DefaultPageSize > 0)
+                PageSize = DefaultPageSize;
             if (ServerDataFunc == null)
             {
                 await SetCurrentPageDataAsync();
