@@ -1,0 +1,14 @@
+﻿<DaisyButtonGroup Vertical="@vertical">
+    <DaisyButton Color="@Color.Primary">按钮1</DaisyButton>
+    <DaisyButton Color="@Color.Secondary">按钮2</DaisyButton>
+    <DaisyButton Color="@Color.Accent">按钮3</DaisyButton>
+</DaisyButtonGroup>
+
+<DaisyRadioGroup Style="margin-top:1rem;" @bind-Value="@vertical">
+    <DaisyRadio Label="横向" Value="@false" />
+    <DaisyRadio Label="纵向" Value="@true" />
+</DaisyRadioGroup>    
+
+@code{
+    bool vertical;
+}

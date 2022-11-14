@@ -1,0 +1,25 @@
+﻿@if (!string.IsNullOrEmpty(Title))
+{
+    <h5>@Title</h5>
+}
+
+@if (Description != null)
+{
+    <div class="demo-section-description">
+        @Description
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ExampleFile))
+{
+    <DaisyTabs>
+        <DaisyTab Lifted Default Title="Preview">
+            <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))"></DynamicComponent>
+        </DaisyTab>
+        <DaisyTab Lifted Title="Code">
+            <DaisyMockupCode>
+                <DaisyPreCode>@CodeContents</DaisyPreCode>
+            </DaisyMockupCode>
+        </DaisyTab>
+    </DaisyTabs>
+}

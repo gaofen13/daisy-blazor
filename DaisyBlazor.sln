@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyBlazor.Generators", "DaisyBlazor.Generators\DaisyBlazor.Generators.csproj", "{125FAB63-0200-45EF-9CF6-B8BD894BC483}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{FD0FFC17-C3E5-493D-B153-C9A9A1528BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD0FFC17-C3E5-493D-B153-C9A9A1528BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD0FFC17-C3E5-493D-B153-C9A9A1528BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125FAB63-0200-45EF-9CF6-B8BD894BC483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125FAB63-0200-45EF-9CF6-B8BD894BC483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125FAB63-0200-45EF-9CF6-B8BD894BC483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125FAB63-0200-45EF-9CF6-B8BD894BC483}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
