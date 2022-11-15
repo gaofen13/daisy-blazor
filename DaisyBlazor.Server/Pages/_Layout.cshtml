@@ -8,12 +8,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="DaisyBlazor.Server.styles.css" rel="stylesheet" />
-    <link href="_content/DaisyBlazor/css/daisy.css" rel="stylesheet" />
-    <link href="_content/DaisyBlazor.Shared/css/site.css" rel="stylesheet" />
-    <link href="_content/DaisyBlazor.Shared/DaisyBlazor.Shared.bundle.scp.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="DaisyBlazor.Server.styles.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor/css/daisy.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/site.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/DaisyBlazor.Shared.bundle.scp.css" />
+    <!-- highlight -->
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/vs.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/highlightjs-copy.css" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+    <script>
+        window.HighlightCode = (id) => {
+            var element = document.getElementById(id);
+            if (typeof hljs != "undefined" && hljs != null && element != null)
+                hljs.highlightElement(element);
+        }
+    </script>
 </head>
 <body>
     @RenderBody()
@@ -31,5 +41,14 @@
 
     <script src="_framework/blazor.server.js"></script>
     <script src="_content/DaisyBlazor/js/daisy.js"></script>
+    <!-- highlight -->
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/highlight.js"></script>
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/cshtml-razor.js"></script>
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/highlightjs-copy.js"></script>
+    <script>
+        if (hljs != null) {
+            hljs.addPlugin(new CopyButtonPlugin());
+        }
+    </script>
 </body>
 </html>

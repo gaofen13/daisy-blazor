@@ -14,10 +14,10 @@
 {
     <DaisyTabs>
         <DaisyTab Lifted Default Title="Preview">
-            <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))"></DynamicComponent>
+            <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
         </DaisyTab>
         <DaisyTab Lifted Title="Code">
-            <DaisyMockupCode>
+            <DaisyMockupCode Id="@Id" OnShowCode="@OnActivedCode">
                 @CodeContents
             </DaisyMockupCode>
         </DaisyTab>

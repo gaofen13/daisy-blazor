@@ -33,9 +33,12 @@ namespace DaisyBlazor
         [Parameter]
         public bool Default { get; set; }
 
+        [Parameter]
+        public EventCallback<bool> OnActived { get; set; }
+
         protected override void OnInitialized()
         {
-            _active = Default;
+            ActiveTab(Default);
             DaisyTabs.AddTab(this);
             base.OnInitialized();
         }
@@ -43,6 +46,7 @@ namespace DaisyBlazor
         public void ActiveTab(bool active)
         {
             _active = active;
+            OnActived.InvokeAsync(active);
         }
 
         void IDisposable.Dispose()

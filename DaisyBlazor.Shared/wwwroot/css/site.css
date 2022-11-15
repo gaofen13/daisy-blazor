@@ -29,3 +29,8 @@ w-full {
         display: none;
     }
 }
+
+pre code.hljs {
+    background: inherit;
+    color: inherit;
+}
