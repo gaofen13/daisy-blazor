@@ -33,4 +33,6 @@ w-full {
 pre code.hljs {
     background: inherit;
     color: inherit;
+    font-family: 'Microsoft YaHei';
+    font-size: 0.85rem;
 }
