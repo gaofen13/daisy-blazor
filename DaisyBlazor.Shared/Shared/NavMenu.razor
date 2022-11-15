@@ -1,8 +1,18 @@
 ﻿<DaisyNavMenu Style="height:100%;overflow-y:auto;z-index:1051;background-color:#fafafa;">
     <DaisyButton OnClick="OnCloseBtnClicked" Class="close-btn" Style="margin:1rem 1rem 1rem auto;" Size="@Size.Sm" Color="@Color.Ghost" Circle>✕</DaisyButton>
-    <DaisyMenuItem Href="buttons">
-        <span class="oi oi-plus" aria-hidden="true"></span> Buttons
-    </DaisyMenuItem>
+    <DaisyNavMenuGroup>
+        <TitleContent>
+            <span class="oi oi-plus" aria-hidden="true"></span> Buttons
+        </TitleContent>
+        <ChildContent>
+            <DaisyMenuItem Href="buttongroup">
+                <span class="oi oi-plus" aria-hidden="true"></span> ButtonGroup
+            </DaisyMenuItem>
+            <DaisyMenuItem Href="button">
+                <span class="oi oi-plus" aria-hidden="true"></span> Button
+            </DaisyMenuItem>
+        </ChildContent>
+    </DaisyNavMenuGroup>
     <DaisyMenuItem Href="code">
         <span class="oi oi-plus" aria-hidden="true"></span> Code
     </DaisyMenuItem>
