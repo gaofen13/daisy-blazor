@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/vs.css" />
     <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/highlightjs-copy.css" />
     <script>
-        window.HighlightCode = (id) => {
-            var element = document.getElementById(id);
-            if (typeof hljs != "undefined" && hljs != null && element != null)
-                hljs.highlightElement(element);
+        function HighlightCode(code) {
+            if (typeof hljs != "undefined" && hljs != null && code != null) {
+                res = hljs.highlightAuto(code);
+            }
+            return res.value ?? "";
         }
     </script>
 </head>
