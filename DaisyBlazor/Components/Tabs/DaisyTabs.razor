@@ -5,7 +5,7 @@
     <div class="tabs-title">
         @foreach (var item in _tabs)
         {
-            <a class="@item.TabClass" @onclick="@(_=>OnActiveTabChanged(item))">@item.Title</a>
+            <a class="@item.TitleClass" @onclick="@(_=>OnActiveTabChanged(item))">@item.Title</a>
         }
     </div>
     <CascadingValue Value="@this" IsFixed>

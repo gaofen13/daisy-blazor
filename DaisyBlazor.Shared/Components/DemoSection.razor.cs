@@ -7,6 +7,9 @@ namespace DaisyBlazor.Shared.Components
 {
     public partial class DemoSection
     {
+        private ElementReference _button;
+        private string? _codeString;
+
         [Inject]
         private IJSRuntime JSRuntime { get; set; } = default!;
 
@@ -38,8 +41,8 @@ namespace DaisyBlazor.Shared.Components
         {
             try
             {
-                var razorText = DemoSnippets.GetRazor($"{ExampleFile}");
-                var res = await JSRuntime.InvokeAsync<string>("HighlightCode", razorText);
+                _codeString = DemoSnippets.GetRazor($"{ExampleFile}");
+                var res = await JSRuntime.InvokeAsync<string>("HighlightCode", _codeString);
                 if (!string.IsNullOrWhiteSpace(res))
                 {
                     CodeContents = new MarkupString(res);
@@ -50,6 +53,11 @@ namespace DaisyBlazor.Shared.Components
             {
                 //Do Nothing
             }
+        }
+
+        private async Task CopyCode()
+        {
+            await JSRuntime.InvokeVoidAsync("copyCode", _button, _codeString);
         }
     }
 }

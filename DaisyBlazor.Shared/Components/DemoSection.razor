@@ -16,10 +16,11 @@
         <DaisyTab Lifted Default Title="Preview">
             <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
         </DaisyTab>
-        <DaisyTab Lifted Title="Code">
-            <DaisyMockupCode>
+        <DaisyTab Lifted Title="Code" Class="hljs-copy-wrapper">
+            <DaisyMockupCode Class="hljs">
                 @CodeContents
             </DaisyMockupCode>
+            <button @ref="@_button" class="hljs-copy-button" data-copied="false" @onclick="@CopyCode">Copied!</button>
         </DaisyTab>
     </DaisyTabs>
 }

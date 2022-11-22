@@ -7,7 +7,12 @@ namespace DaisyBlazor
     {
         private bool _active;
 
-        public string TabClass =>
+        private string TabClass =>
+            new ClassBuilder("tab-content")
+            .AddClass(Class)
+            .Build();
+
+        public string TitleClass =>
             new ClassBuilder("tab")
             .AddClass($"tab-{Size.ToString().ToLower()}")
             .AddClass("tab-bordered", Bordered && !Lifted)
