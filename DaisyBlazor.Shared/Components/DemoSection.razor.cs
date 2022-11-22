@@ -19,9 +19,7 @@ namespace DaisyBlazor.Shared.Components
         [Parameter, EditorRequired]
         public string ExampleFile { get; set; } = string.Empty;
 
-        private string? CodeContents { get; set; }
-
-        public string Id { get; } = Guid.NewGuid().ToString("N");
+        private MarkupString? CodeContents { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -36,22 +34,22 @@ namespace DaisyBlazor.Shared.Components
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        protected void SetCodeContents()
+        protected async void SetCodeContents()
         {
             try
             {
-                CodeContents = DemoSnippets.GetRazor($"{ExampleFile}");
+                var razorText = DemoSnippets.GetRazor($"{ExampleFile}");
+                var res = await JSRuntime.InvokeAsync<string>("HighlightCode", razorText);
+                if (!string.IsNullOrWhiteSpace(res))
+                {
+                    CodeContents = new MarkupString(res);
+                }
                 StateHasChanged();
             }
             catch
             {
                 //Do Nothing
             }
-        }
-
-        private async Task OnActivedCode()
-        {
-            await JSRuntime.InvokeVoidAsync("HighlightCode", Id);
         }
     }
 }

@@ -18,17 +18,5 @@ namespace DaisyBlazor
 
         [Parameter]
         public string? CodeText { get; set; }
-
-        [Parameter]
-        public EventCallback OnShowCode { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender)
-            {
-                await OnShowCode.InvokeAsync();
-            }
-        }
     }
 }

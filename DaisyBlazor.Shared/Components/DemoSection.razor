@@ -17,7 +17,7 @@
             <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
         </DaisyTab>
         <DaisyTab Lifted Title="Code">
-            <DaisyMockupCode Id="@Id" OnShowCode="@OnActivedCode">
+            <DaisyMockupCode>
                 @CodeContents
             </DaisyMockupCode>
         </DaisyTab>

@@ -51,9 +51,9 @@ namespace DaisyBlazor
         {
             if (_activeTab != tab)
             {
-                _activeTab?.ActiveTab(false);
+                _activeTab?.DisactiveTab();
                 _activeTab = tab;
-                _activeTab.ActiveTab(true);
+                _activeTab.ActiveTab();
             }
         }
     }
