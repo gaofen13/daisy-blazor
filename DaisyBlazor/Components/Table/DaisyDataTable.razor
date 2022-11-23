@@ -15,9 +15,7 @@
                 <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_currentPageItems" SelectedItems="@SelectedItems">
                     @if (HeadContent is not null)
                     {
-                        <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
-                            @HeadContent
-                        </CascadingValue>
+                        @HeadContent
                     }
                     else if (Columns is not null)
                     {

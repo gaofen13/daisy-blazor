@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    overflow-x: auto;
 }
 
     .table-container > .table-toolbar {
