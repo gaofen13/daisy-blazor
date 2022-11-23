@@ -98,13 +98,13 @@ namespace DaisyBlazor
         public RenderFragment<TItem>? Columns { get; set; }
 
         [Parameter]
-        public RenderFragment? ToolbarTemplate { get; set; }
+        public RenderFragment? ToolbarContent { get; set; }
 
         [Parameter]
-        public RenderFragment? HeadTemplate { get; set; }
+        public RenderFragment? HeadContent { get; set; }
 
         [Parameter]
-        public RenderFragment? FootTemplate { get; set; }
+        public RenderFragment? FootContent { get; set; }
 
         [Parameter]
         public bool ShowPager { get; set; }
@@ -152,7 +152,7 @@ namespace DaisyBlazor
         public PositionX PagePosition { get; set; }
 
         [Parameter]
-        public RenderFragment? PagerTemplate { get; set; }
+        public RenderFragment? PagerContent { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

@@ -19,19 +19,16 @@ namespace DaisyBlazor
         public string? Title { get; set; }
 
         [Parameter]
-        public RenderFragment? TitleTemplate { get; set; }
+        public RenderFragment? TitleContent { get; set; }
 
         [Parameter]
-        public RenderFragment? ImgTemplate { get; set; }
+        public RenderFragment? ImgContent { get; set; }
 
         [Parameter]
         public Position ImgPostion { get; set; }
 
         [Parameter]
-        public RenderFragment? ActionTemplate { get; set; }
-
-        [Parameter]
-        public RenderFragment? ContentTemplate { get; set; }
+        public RenderFragment? ActionContent { get; set; }
 
         [Parameter]
         public bool Compact { get; set; }

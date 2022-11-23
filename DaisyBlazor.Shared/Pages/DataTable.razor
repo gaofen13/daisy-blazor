@@ -7,20 +7,20 @@
                 DefaultPageIndex="2"
                 PagePosition="PositionX.End"
                 PageSizeOption="@(new int[]{5,10,30,100})">
-    <ToolbarTemplate>
+    <ToolbarContent>
         <DaisyButtonGroup>
             <DaisyButton Color="Color.Primary">Add</DaisyButton>
             <DaisyButton Color="Color.Accent">Edit</DaisyButton>
             <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
         </DaisyButtonGroup>
-    </ToolbarTemplate>
+    </ToolbarContent>
     <Columns>
         <DaisyColumn Title="Data">@context.Date</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
         <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
         <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
     </Columns>
-    <FootTemplate><th colspan="100">这是客户端分页</th></FootTemplate>
+    <FootContent><th colspan="100">这是客户端分页</th></FootContent>
 </DaisyDataTable>
 
 <DaisyDataTable TItem="@WeatherForecast"
@@ -29,20 +29,20 @@
                 ShowPager
                 DefaultPageSize="5"
                 PagePosition="PositionX.End">
-    <ToolbarTemplate>
+    <ToolbarContent>
         <DaisyButtonGroup>
             <DaisyButton Color="Color.Primary">Add</DaisyButton>
             <DaisyButton Color="Color.Accent">Edit</DaisyButton>
             <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
         </DaisyButtonGroup>
-    </ToolbarTemplate>
+    </ToolbarContent>
     <Columns>
         <DaisyColumn Title="Data">@context.Date</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
         <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
         <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
     </Columns>
-    <FootTemplate><th colspan="100">这是服务端分页</th></FootTemplate>
+    <FootContent><th colspan="100">这是服务端分页</th></FootContent>
 </DaisyDataTable>
 
 @code {

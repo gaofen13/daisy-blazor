@@ -1,9 +1,9 @@
 ﻿<DaisyCard Title="Card">
-    <ContentTemplate>@Test</ContentTemplate>
-    <ActionTemplate>
+    <ChildContent>@Test</ChildContent>
+    <ActionContent>
         <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
         <DaisyButton Color="Color.Secondary" OnClick="NavigateTo">跳转</DaisyButton>
-    </ActionTemplate>
+    </ActionContent>
 </DaisyCard>
 
 @code {

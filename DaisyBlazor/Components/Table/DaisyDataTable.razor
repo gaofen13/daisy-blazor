@@ -3,19 +3,21 @@
 @typeparam TItem
 
 <div class="table-container">
-    @if (ToolbarTemplate is not null)
+    @if (ToolbarContent is not null)
     {
         <div class="table-toolbar">
-            @ToolbarTemplate
+            @ToolbarContent
         </div>
     }
     <table class="@TableClass" style="@Style" @attributes="@AdditionalAttributes">
         <CascadingValue Value="@this" IsFixed>
             <thead>
                 <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_currentPageItems" SelectedItems="@SelectedItems">
-                    @if (HeadTemplate is not null)
+                    @if (HeadContent is not null)
                     {
-                        @HeadTemplate
+                        <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
+                            @HeadContent
+                        </CascadingValue>
                     }
                     else if (Columns is not null)
                     {
@@ -42,18 +44,18 @@
                     <tr><td colspan="1000" align="center">Empty Table</td></tr>
                 }
             </tbody>
-            @if (FootTemplate is not null)
+            @if (FootContent is not null)
             {
-                <tfoot><tr>@FootTemplate</tr></tfoot>
+                <tfoot><tr>@FootContent</tr></tfoot>
             }
         </CascadingValue>
     </table>
     @if (ShowPager)
     {
         <div class="@PagerClass">
-            @if (PagerTemplate is not null)
+            @if (PagerContent is not null)
             {
-                @PagerTemplate
+                @PagerContent
             }
             else
             {

@@ -27,9 +27,6 @@ namespace DaisyBlazor
         public string? Message { get; set; }
 
         [Parameter]
-        public RenderFragment? MessageContent { get; set; }
-
-        [Parameter]
         public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
 
         private async Task OnClickTitleAsync(MouseEventArgs args)

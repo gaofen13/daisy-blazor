@@ -9,15 +9,6 @@
     }
     else if (Mode == RenderMode.Head)
     {
-        <th>
-            @if (TitleTemplate is not null)
-            {
-                @TitleTemplate
-            }
-            else
-            {
-                @Title
-            }
-        </th>
+        <th>@ChildContent</th>
     }
 }

@@ -10,12 +10,6 @@ namespace DaisyBlazor
         [Parameter]
         public bool Visible { get; set; } = true;
 
-        [Parameter]
-        public string? Title { get; set; }
-
-        [Parameter]
-        public RenderFragment? TitleTemplate { get; set; }
-
         public enum RenderMode
         {
             Head,

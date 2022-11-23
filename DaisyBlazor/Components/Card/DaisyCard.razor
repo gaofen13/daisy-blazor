@@ -2,41 +2,34 @@
 @inherits DaisyComponentBase
 
 <div class="@CardClass" style="@Style" @attributes="@AdditionalAttributes">
-    @if (ChildContent is not null)
+    @if (ImgContent is not null)
     {
-        @ChildContent
-    }
-    else
-    {
-        @if (ImgTemplate is not null)
-        {
-            <div class="card-img">
-                @ImgTemplate
-            </div>
-        }
-        <div class="card-body">
-            @if (TitleTemplate != null)
-            {
-                @TitleTemplate
-            }
-            else
-            {
-                <div class="card-title">
-                    @Title
-                </div>
-            }
-            @if (ContentTemplate is not null)
-            {
-                <div class="card-content">
-                    @ContentTemplate
-                </div>
-            }
-            @if (ActionTemplate != null)
-            {
-                <div class="card-actions">
-                    @ActionTemplate
-                </div>
-            }
+        <div class="card-img">
+            @ImgContent
         </div>
     }
+    <div class="card-body">
+        @if (TitleContent != null)
+        {
+            @TitleContent
+        }
+        else
+        {
+            <div class="card-title">
+                @Title
+            </div>
+        }
+        @if (ChildContent is not null)
+        {
+            <div class="card-content">
+                @ChildContent
+            </div>
+        }
+        @if (ActionContent != null)
+        {
+            <div class="card-actions">
+                @ActionContent
+            </div>
+        }
+    </div>
 </div>
