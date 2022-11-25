@@ -1,8 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+<div class="page" data-theme="@theme">
     <nav class="top-row">
-        <DaisyNavbar Style="background-color:#f0f0f0" Class="navbar-fixed" Rounded Shadow>
+        <DaisyNavbar Class="navbar-fixed" Shadow>
             <DaisyButton OnClick="_=>showSidebar=!showSidebar" Square Color="Color.Ghost">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="width: 1.5rem;height: 1.5rem;stroke: black;">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -10,6 +10,13 @@
             </DaisyButton>
             <DaisyLink UnderlineOnHover Href=""><h4>DaisyBlazor</h4></DaisyLink>
             <div style="margin-left:auto">
+                <DaisySelect Style="max-width:10rem;" @bind-Value="@theme">
+                    @for (int i = 0; i < daisyTheme.Length; i++)
+                    {
+                        <option>@daisyTheme[i]</option>
+                    }
+                </DaisySelect>
+                <DaisyDivider Horizontal />
                 <DaisyLink UnderlineOnHover Color="Color.Primary" Href="https://github.com/gaofen13/daisy-blazor/" Target="_blank">Github</DaisyLink>
                 <DaisyDivider Horizontal />
                 <DaisyLink UnderlineOnHover Color="Color.Secondary" Href="https://gitee.com/gaofen13/daisy-blazor/" Target="_blank">Gitee</DaisyLink>

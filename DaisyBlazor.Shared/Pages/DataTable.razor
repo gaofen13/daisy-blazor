@@ -15,7 +15,7 @@
         </DaisyButtonGroup>
     </ToolbarContent>
     <Columns>
-        <DaisyColumn Title="Data">@context.Date</DaisyColumn>
+        <DaisyColumn Title="Date">@context.Date.ToString("yyyy-MM-dd")</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
         <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
         <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
