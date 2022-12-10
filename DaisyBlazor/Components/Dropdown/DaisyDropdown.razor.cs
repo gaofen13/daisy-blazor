@@ -1,11 +1,5 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaisyBlazor
 {
@@ -13,7 +7,6 @@ namespace DaisyBlazor
     {
         private string DropdownClass =>
           new ClassBuilder("dropdown")
-            .AddClass("dropdown-open", Open)
             .AddClass("dropdown-end", AlignsToEnd)
             .AddClass($"dropdown-{DropPosition.ToString().ToLower()}")
             .AddClass(Class)
@@ -37,9 +30,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public RenderFragment? TitleContent { get; set; }
-
-        [Parameter]
-        public bool Open { get; set; }
 
         [Parameter]
         public Position DropPosition { get; set; } = Position.Bottom;

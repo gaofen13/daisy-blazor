@@ -81,14 +81,11 @@
 
     .tab-lifted.tab-active {
         background-color: var(--tab-bg);
-        border-width: var(--tab-border,1px) var(--tab-border,1px) 0;
-        border-left-color: var(--tab-border-color);
-        border-right-color: var(--tab-border-color);
-        border-top-color: var(--tab-border-color);
         padding-left: calc(var(--tab-padding,1rem) - var(--tab-border,1px));
         padding-right: calc(var(--tab-padding,1rem) - var(--tab-border,1px));
         padding-bottom: var(--tab-border,1px);
         padding-top: 0;
+        border: none;
     }
 
 .tab-xs {
