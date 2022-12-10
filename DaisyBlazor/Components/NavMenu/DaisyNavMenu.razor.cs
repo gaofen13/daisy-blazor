@@ -19,7 +19,7 @@ namespace DaisyBlazor
             .Build();
 
         [Parameter]
-        public string Width { get; set; } = "14rem";
+        public string Width { get; set; } = "16rem";
 
         [Parameter]
         public bool Bordered { get; set; } = true;

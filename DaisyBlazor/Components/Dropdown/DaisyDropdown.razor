@@ -1,0 +1,18 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<div class="@DropdownClass" style="@Style">
+    <label tabindex="0" style="margin:0.25rem" class="@TitleClass">
+        @if (TitleContent is not null)
+        {
+            @TitleContent
+        }
+        else
+        {
+            <DaisyButton>@Title</DaisyButton>
+        }
+    </label>
+    <ul tabindex="0" class="@DropdownContentClass">
+        @ChildContent
+    </ul>
+</div>

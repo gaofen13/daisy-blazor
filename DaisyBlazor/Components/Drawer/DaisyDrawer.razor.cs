@@ -45,7 +45,7 @@ namespace DaisyBlazor
         public bool RightSide { get; set; }
 
         [Parameter]
-        public string Width { get; set; } = "14rem";
+        public string Width { get; set; } = "16rem";
 
         [Parameter]
         public DrawerVariant Variant

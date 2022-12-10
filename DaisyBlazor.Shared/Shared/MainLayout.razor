@@ -23,7 +23,7 @@
         </DaisyNavbar>
     </nav>
     <main>
-        <DaisyDrawer @bind-Show="@showSidebar">
+        <DaisyDrawer Class="drawer-margin" @bind-Show="@showSidebar">
             <NavMenu OnCloseBtnClicked="(_=>showSidebar=false)" />
         </DaisyDrawer>
         <article>
