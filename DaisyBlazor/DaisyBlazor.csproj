@@ -15,6 +15,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Components\Drawer\DaisyDrawer.razor.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Components\Drawer\DaisyDrawer.razor.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 

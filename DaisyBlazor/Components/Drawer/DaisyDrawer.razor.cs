@@ -7,6 +7,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyDrawer
     {
+        private IJSObjectReference? _jsModule;
         private DotNetObjectReference<DaisyDrawer>? _objectReference;
         private Size _breakpoint = Size.Md;
         private int _windowWidth;
@@ -33,7 +34,7 @@ namespace DaisyBlazor
         private NavigationManager? Navigation { get; set; }
 
         [Inject]
-        private IJSRuntime? JSRuntime { get; set; }
+        private IJSRuntime JSRuntime { get; set; } = default!;
 
         [Parameter]
         public bool Show { get; set; }
@@ -93,8 +94,10 @@ namespace DaisyBlazor
             if (firstRender)
             {
                 _objectReference = DotNetObjectReference.Create(this);
-                await JSRuntime!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
-                var width = await JSRuntime!.InvokeAsync<int>("GetWindowWidth");
+                _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
+                     "./_content/DaisyBlazor/Components/Drawer/DaisyDrawer.razor.js");
+                await _jsModule!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
+                var width = await _jsModule!.InvokeAsync<int>("GetWindowWidth");
                 UpdateWindowWidth(width);
                 StateHasChanged();
             }
@@ -157,7 +160,7 @@ namespace DaisyBlazor
             {
                 if (_objectReference is not null)
                 {
-                    await JSRuntime!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
+                    await _jsModule!.InvokeVoidAsync("RemoveWindowWidthListener", _objectReference);
                     _objectReference.Dispose();
                 }
                 GC.SuppressFinalize(this);
