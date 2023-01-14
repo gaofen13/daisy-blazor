@@ -25,10 +25,10 @@ namespace DaisyBlazor
         public RenderFragment? ImgContent { get; set; }
 
         [Parameter]
-        public Position ImgPostion { get; set; }
+        public RenderFragment? ActionContent { get; set; }
 
         [Parameter]
-        public RenderFragment? ActionContent { get; set; }
+        public Position ImgPostion { get; set; }
 
         [Parameter]
         public bool Compact { get; set; }

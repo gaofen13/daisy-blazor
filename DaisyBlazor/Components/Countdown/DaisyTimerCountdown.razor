@@ -1,0 +1,42 @@
+﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
+@implements IDisposable
+
+<div class="@TimerCountdownClass" style="@Style">
+    @if (ShowDays)
+    {
+        <DaisyCountdown Value="@_days" Label="@DaysLabel" UnderLabel="@UnderLabel" Inbox="@Inbox">
+            @if (DaysLabelContent is not null)
+            {
+                @DaysLabelContent
+            }
+        </DaisyCountdown>
+    }
+    @if (ShowHours)
+    {
+        <DaisyCountdown Value="@_hours" Label="@HoursLabel" UnderLabel="@UnderLabel" Inbox="@Inbox">
+            @if (HoursLabelContent is not null)
+            {
+                @HoursLabelContent
+            }
+        </DaisyCountdown>
+    }
+    @if (ShowMinutes)
+    {
+        <DaisyCountdown Value="@_minutes" Label="@MinutesLabel" UnderLabel="@UnderLabel" Inbox="@Inbox">
+            @if (MinutesLabelContent is not null)
+            {
+                @MinutesLabelContent
+            }
+        </DaisyCountdown>
+    }
+    @if (ShowSeconds)
+    {
+        <DaisyCountdown Value="@_seconds" Label="@SecondsLabel" UnderLabel="@UnderLabel" Inbox="@Inbox">
+            @if (SecondsLabelContent is not null)
+            {
+                @SecondsLabelContent
+            }
+        </DaisyCountdown>
+    }
+</div>
