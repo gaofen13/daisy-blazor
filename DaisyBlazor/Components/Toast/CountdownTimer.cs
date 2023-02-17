@@ -3,7 +3,6 @@
     internal class CountdownTimer : IDisposable
     {
         private readonly PeriodicTimer _timer;
-        private readonly int _ticksToTimeout;
         private readonly CancellationToken _cancellationToken;
         private int _percentComplete;
 
@@ -12,7 +11,6 @@
 
         internal CountdownTimer(int timeout, CancellationToken cancellationToken = default)
         {
-            _ticksToTimeout = 100;
             _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(timeout / 100));
             _cancellationToken = cancellationToken;
         }
@@ -42,7 +40,7 @@
                 _percentComplete++;
                 await _tickDelegate?.Invoke(_percentComplete)!;
 
-                if (_percentComplete == _ticksToTimeout)
+                if (_percentComplete == 100)
                 {
                     _elapsedDelegate?.Invoke();
                 }
