@@ -1,7 +1,6 @@
 ﻿.tabs {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    flex-direction: column;
 }
 
 .tabs-title {
