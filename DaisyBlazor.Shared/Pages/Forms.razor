@@ -4,9 +4,16 @@
     <DataAnnotationsValidator />
     <DaisyFormField Label="Radio">
         <DaisyRadioGroup @bind-Value="@info.Radio">
-            <DaisyRadio Value="@(new SubInfo{Name="S1"})">S1</DaisyRadio>
-            <DaisyRadio Value="@(new SubInfo{Name="S2"})">S2</DaisyRadio>
-            <DaisyRadio Value="@(new SubInfo{Name="S3"})">S3</DaisyRadio>
+            <DaisyRadio Value="@("S1")">S1</DaisyRadio>
+            <DaisyRadio Value="@("S2")">S2</DaisyRadio>
+            <DaisyRadio Value="@("S3")">S3</DaisyRadio>
+        </DaisyRadioGroup>
+    </DaisyFormField>
+    <DaisyFormField Label="VerticalRadio">
+        <DaisyRadioGroup Vertical @bind-Value="@info.Radio">
+            <DaisyRadio Value="@("S1")">S1</DaisyRadio>
+            <DaisyRadio Value="@("S2")">S2</DaisyRadio>
+            <DaisyRadio Value="@("S3")">S3</DaisyRadio>
         </DaisyRadioGroup>
     </DaisyFormField>
     <DaisyFormField Label="数值1">
@@ -14,6 +21,9 @@
     </DaisyFormField>
     <DaisyFormField Label="数值2">
         <DaisyInputNumber Step="0.1" @bind-Value="@info.Number2" />
+    </DaisyFormField>
+    <DaisyFormField Label="文本1" LabelRequired For="()=>info.Text">
+        <DaisyInputText @bind-Value="@info.Text" />
     </DaisyFormField>
     <DaisyFormField Label="文本1" LabelRequired For="()=>info.Text">
         <DaisyInputText @bind-Value="@info.Text" />
@@ -58,7 +68,7 @@
     class InputInfo
     {
         [System.ComponentModel.DataAnnotations.Required]
-        public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1" };
+        public string? Radio { get; set; }
         public int Number1 { get; set; }
         public double Number2 { get; set; }
 

@@ -601,7 +601,6 @@ body[dir="rtl"] .checkbox {
 .radio-group {
     display: flex;
     flex-wrap: wrap;
-    width: fit-content;
 }
 
     .radio-group.radio-group-vertical {
