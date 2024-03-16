@@ -15,28 +15,3 @@
     [b-hv6vwdxtd4] .hljs-copy-button:active {
         border-color: #c7c7c766;
     }
-/* _content/DaisyBlazor.Shared/Shared/MainLayout.razor.rz.scp.css */
-.page[b-f8y9nve1bd] {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-}
-
-main[b-f8y9nve1bd] {
-    display: flex;
-    position: relative;
-}
-
-.top-row[b-f8y9nve1bd] {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-}
-
-article[b-f8y9nve1bd] {
-    width: 100%;
-    padding: 1rem;
-}
