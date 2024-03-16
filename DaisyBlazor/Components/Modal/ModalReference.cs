@@ -8,21 +8,16 @@ namespace DaisyBlazor
         private readonly Action<ModalResult> _closed;
         private readonly ModalService _modalService;
 
-        internal Guid InstanceId { get; }
-        internal RenderFragment ModalInstance { get; }
-        internal DaisyModal? ModalInstanceRef { get; set; }
+        internal RenderFragment ModalContent { get; }
 
-        public ModalReference(Guid modalInstanceId, RenderFragment modalInstance, ModalService modalService)
+        public ModalReference(RenderFragment modalContent, ModalService modalService)
         {
-            InstanceId = modalInstanceId;
-            ModalInstance = modalInstance;
+            ModalContent = modalContent;
             _closed = HandleClosed;
             _modalService = modalService;
         }
 
-        public void Close() => _modalService.Close(this);
-
-        public void Close(ModalResult result) => _modalService.Close(this, result);
+        public void Close(ModalResult result) => _modalService.Close(result);
 
         public Task<ModalResult> Result => _resultCompletion.Task;
 

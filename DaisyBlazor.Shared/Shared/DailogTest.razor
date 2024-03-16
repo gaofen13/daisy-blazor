@@ -1,30 +1,20 @@
-﻿<DaisyCard Title="Card">
+﻿<DaisyModal>
     <ChildContent>@Test</ChildContent>
     <ActionContent>
-        <DaisyButton @ref="@btn" Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
+        <DaisyButton Color="Color.Primary" OnClick="Close">关闭</DaisyButton>
         <DaisyButton Color="Color.Secondary" OnClick="NavigateTo">跳转</DaisyButton>
     </ActionContent>
-</DaisyCard>
+</DaisyModal>
 
 @code {
-    private DaisyButton? btn;
-
     [Inject]
     private NavigationManager? Navigation { get; set; }
 
-    [CascadingParameter]
-    private DaisyModal ModalInstance { get; set; } = default!;
+    [Inject]
+    private ModalService ModalService { get; set; } = default!;
 
     [Parameter]
     public string? Test { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (btn is not null)
-        {
-            await btn.FocusAsync();
-        }
-    }
 
     private void NavigateTo()
     {
@@ -33,6 +23,6 @@
 
     private void Close()
     {
-        ModalInstance.Close(ModalResult.Ok<string>("test"));
+        ModalService.Close(ModalResult.Ok<string>("test"));
     }
 }

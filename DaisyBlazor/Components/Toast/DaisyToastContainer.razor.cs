@@ -1,5 +1,4 @@
-﻿using DaisyBlazor.Components.Toast;
-using DaisyBlazor.Utilities;
+﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
@@ -7,16 +6,11 @@ namespace DaisyBlazor
 {
     public partial class DaisyToastContainer
     {
-        private string ContainerClass =>
-          new ClassBuilder("toast")
+        private string Classname =>
+          new ClassBuilder("toast max-w-full w-96")
             .AddClass($"toast-{PositionX.ToString().ToLower()}")
             .AddClass($"toast-{PositionY.ToString().ToLower()}")
             .AddClass(Class)
-            .Build();
-
-        private string ContainerStyle =>
-            new StyleBuilder("min-width", "300px")
-            .AddStyle(Style)
             .Build();
 
         [Inject]
@@ -40,13 +34,12 @@ namespace DaisyBlazor
         [Parameter]
         public ToastOptions GlobalOptions { get; set; } = new();
 
-        private List<ToastInstance> ToastList { get; set; } = new();
+        private List<ToastReference> ToastList { get; set; } = [];
 
-        private Queue<ToastInstance> ToastWaitingQueue { get; set; } = new();
+        private Queue<ToastReference> ToastWaitingQueue { get; set; } = new();
 
         protected override void OnInitialized()
         {
-            ToastService.OnShow += ShowToast;
             ToastService.OnShowComponent += ShowToast;
             ToastService.OnClearAll += ClearAll;
 
@@ -68,7 +61,7 @@ namespace DaisyBlazor
                     StateHasChanged();
                 }
 
-                if (ToastWaitingQueue.Any())
+                if (ToastWaitingQueue.Count > 0)
                 {
                     ShowEnqueuedToast();
                 }
@@ -82,37 +75,17 @@ namespace DaisyBlazor
                 ToastList.Clear();
                 StateHasChanged();
 
-                if (ToastWaitingQueue.Any())
+                if (ToastWaitingQueue.Count > 0)
                 {
                     ShowEnqueuedToast();
                 }
             });
         }
-
-        private void ShowToast(Level level, RenderFragment message, string? title, ToastOptions? options)
+        private void ShowToast(Type contentComponent, ComponentParameters? parameters, ToastOptions? options)
         {
             InvokeAsync(() =>
             {
-                var toast = new ToastInstance(options ?? GlobalOptions) { ToastLevel = level, MessageContent = message, Title = title };
-
-                if (ToastList.Count < MaxItemsShown)
-                {
-                    ToastList.Add(toast);
-                    StateHasChanged();
-                }
-                else
-                {
-                    ToastWaitingQueue.Enqueue(toast);
-                }
-            });
-
-        }
-
-        private void ShowToast(Type contentComponent, Level level, ToastParameters? parameters, ToastOptions? options)
-        {
-            InvokeAsync(() =>
-            {
-                var childContent = new RenderFragment(builder =>
+                var toastContent = new RenderFragment(builder =>
                 {
                     var i = 0;
                     builder.OpenComponent(i++, contentComponent);
@@ -126,16 +99,16 @@ namespace DaisyBlazor
                     builder.CloseComponent();
                 });
 
-                var toast = new ToastInstance(childContent, options ?? GlobalOptions) { ToastLevel = level };
+                var toastReference = new ToastReference(toastContent, options);
 
                 if (ToastList.Count < MaxItemsShown)
                 {
-                    ToastList.Add(toast);
+                    ToastList.Add(toastReference);
                     StateHasChanged();
                 }
                 else
                 {
-                    ToastWaitingQueue.Enqueue(toast);
+                    ToastWaitingQueue.Enqueue(toastReference);
                 }
             });
         }

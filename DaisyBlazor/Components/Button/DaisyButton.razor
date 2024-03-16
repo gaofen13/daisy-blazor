@@ -1,4 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<button @ref="@Element" type="@Type" role="button" class="@BtnClass" style="@Style" @attributes="@AdditionalAttributes" @onclick="@Click" @onclick:stopPropagation="@StopPropagation">@ChildContent</button>
+<DaisyElement @bind-Ref="@Element" HtmlTag="@HtmlTag" href="@Href" Class="@Classname" Style="@Style" disabled="@Disabled"
+    @attributes="@AdditionalAttributes" @onclick="@Click">
+    @ChildContent
+</DaisyElement>

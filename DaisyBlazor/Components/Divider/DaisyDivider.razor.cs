@@ -5,13 +5,21 @@ namespace DaisyBlazor
 {
     public partial class DaisyDivider
     {
-        private string DividerClass =>
+        private string Classname =>
             new ClassBuilder("divider")
-            .AddClass("divider-horizontal", Horizontal)
+            .AddClass("divider-horizontal", Vertical)
+            .AddClass($"divider-{Color.ToString()?.ToLower()}", Color is not null)
+            .AddClass($"divider-{Position.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public bool Horizontal { get; set; }
+        public bool Vertical { get; set; }
+
+        [Parameter]
+        public Color? Color { get; set; }
+
+        [Parameter]
+        public PositionX Position { get; set; } = PositionX.Center;
     }
 }

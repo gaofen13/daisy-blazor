@@ -1,55 +1,27 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace DaisyBlazor
 {
     public partial class DaisySubMenu
     {
-        private string SubClass =>
-            new ClassBuilder("menu-sub")
-            .AddClass("menu-sub-collapsed", Collapsed)
-            .AddClass("menu-sub-arrow")
-            .AddClass(Class)
+        private string TitleClassname =>
+            new ClassBuilder("menu-dropdown-toggle")
+            .AddClass("menu-dropdown-show", Open)
             .Build();
 
-        private string SubContentClass =>
-            new ClassBuilder()
-            .AddClass("rounded-box", Root?.Rounded == true)
+        private string ContentClassname =>
+            new ClassBuilder("menu-dropdown")
+            .AddClass("menu-dropdown-show", Open)
             .Build();
 
-        [CascadingParameter]
-        private DaisyMenu? Root { get; set; }
-
-        [CascadingParameter]
-        private DaisySubMenu? Parent { get; set; }
-
         [Parameter]
-        public bool Collapsed { get; set; } = true;
-
-        [Parameter]
-        public EventCallback<bool> CollapsedChanged { get; set; }
+        public bool Open { get; set; }
 
         [Parameter]
         public string? Title { get; set; }
 
         [Parameter]
         public RenderFragment? TitleContent { get; set; }
-
-        [Parameter]
-        public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
-
-        private async Task OnClickTilte(MouseEventArgs args)
-        {
-            if (OnTitleClicked.HasDelegate)
-            {
-                await OnTitleClicked.InvokeAsync(args);
-            }
-            else
-            {
-                Collapsed = !Collapsed;
-                await CollapsedChanged.InvokeAsync(Collapsed);
-            }
-        }
     }
 }

@@ -1,45 +1,32 @@
 ﻿using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace DaisyBlazor
 {
     public partial class DaisyCollapse
     {
-        private string CollapseClass =>
-            new ClassBuilder("collapse collapse-arrow")
-            .AddClass("collapse-open", !Collapsed)
+        private string Classname =>
+            new ClassBuilder("collapse")
+            .AddClass("collapse-arrow", HasArrow && ArrowIcon == ArrowIcon.Default)
+            .AddClass("collapse-plus", HasArrow && ArrowIcon == ArrowIcon.PlusMinus)
             .Build();
 
         [Parameter]
-        public bool Collapsed { get; set; } = true;
+        public bool Open { get; set; }
 
         [Parameter]
-        public EventCallback<bool> CollapsedChanged { get; set; }
+        public bool HasArrow { get; set; }
 
         [Parameter]
-        public string? Title { get; set; }
+        public ArrowIcon ArrowIcon { get; set; } = ArrowIcon.Default;
 
         [Parameter]
         public RenderFragment? TitleContent { get; set; }
+    }
 
-        [Parameter]
-        public string? Message { get; set; }
-
-        [Parameter]
-        public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
-
-        private async Task OnClickTitleAsync(MouseEventArgs args)
-        {
-            if (OnTitleClicked.HasDelegate)
-            {
-                await OnTitleClicked.InvokeAsync(args);
-            }
-            else
-            {
-                Collapsed = !Collapsed;
-                await CollapsedChanged.InvokeAsync(Collapsed);
-            }
-        }
+    public enum ArrowIcon
+    {
+        Default,
+        PlusMinus
     }
 }

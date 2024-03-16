@@ -6,27 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DaisyBlazor.Generators\DaisyBlazor.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\DaisyBlazor\DaisyBlazor.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="$(ProjectDir)\Pages\Examples\*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\js\highlightjs-copy.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Update="wwwroot\js\cshtml-razor.js">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
 
 </Project>

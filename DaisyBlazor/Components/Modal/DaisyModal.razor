@@ -1,10 +1,18 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<DaisyOverlay Class="@_overlayClass" Visible="@Visible" OnBackgroundClick="@OnClickBackgroundAsync">
-    <div class="@ModalClass" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
-        <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
-    </div>
-</DaisyOverlay>
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @if (_options?.ShowCloseButton == true)
+    {
+        <DaisyButton Size="@Size.Sm" Circle Ghost Class="absolute right-2 top-2" OnClick="@Cancel">✕</DaisyButton>
+    }
+    @ChildContent
+    @if (ActionContent is not null)
+    {
+        <div class="modal-action">@ActionContent</div>
+    }
+</div>
+@if (_options?.StaticBackdrop != true)
+{
+    <div class="modal-backdrop" @onclick="@Cancel"></div>
+}

@@ -1,10 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-@if (Menu?.Horizontal == false)
-{
-    <li class="@MenuGroupClass" style="@Style" @attributes="@AdditionalAttributes">
-        <span>@Title</span>
-    </li>
-}
-@ChildContent
+<li class="@Class" style="@Style" @attributes="@AdditionalAttributes">
+    <span class="menu-title">@Title</span>
+    @ChildContent
+</li>

@@ -1,13 +1,10 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
-@implements IAsyncDisposable
 
-@if (Show)
-{
-    <aside class="@DrawerClass" style="@DrawerStyle" @attributes="@AdditionalAttributes">
-        <div class="drawer-content">
-            @ChildContent
-        </div>
-        <DaisyOverlay Visible="@OverlayVisible" OnBackgroundClick="@OnClickedOverlayAsync" />
-    </aside>
-}
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <input type="checkbox" class="drawer-toggle" checked="@CurrentOpened" @onchange="@OnOpenChanged" />
+    <div class="drawer-side">
+        <div class="drawer-overlay" @onclick="_=>CurrentOpened=!CurrentOpened"></div>
+        @ChildContent
+    </div>
+</div>

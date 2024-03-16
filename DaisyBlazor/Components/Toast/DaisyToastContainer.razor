@@ -1,27 +1,16 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
+    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+        <CascadingValue Value="@this" IsFixed>
 @if (ToastList.Any())
 {
-    <div class="@ContainerClass" style="@ContainerStyle" @attributes="@AdditionalAttributes">
-        <CascadingValue Value="@this" IsFixed>
             @foreach (var toast in ToastList.OrderBy(x => x.TimeStamp))
             {
-                @if (toast.ToastContent is not null)
-                {
-                    <DaisyToast @key="toast" Options="toast.Options" ToastId="@toast.Id" ToastLevel="@toast.ToastLevel">
-                        @toast.ToastContent
-                    </DaisyToast>
-                }
-                else
-                {
-                    <DaisyToast @key="toast" Options="toast.Options" ToastId="@toast.Id" ToastLevel="@toast.ToastLevel" Title="@toast.Title">
-                        <MessageContent>
-                            @toast.MessageContent
-                        </MessageContent>
-                    </DaisyToast>
-                }
+                <ToastInstance @key="@toast" Id="@toast.Id" Options="@toast.Options">
+                    @toast.ToastContent
+                </ToastInstance>
             }
+}
         </CascadingValue>
     </div>
-}

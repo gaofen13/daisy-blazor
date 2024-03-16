@@ -5,32 +5,24 @@ namespace DaisyBlazor
 {
     public partial class DaisyRadialProgress
     {
-        private string RadialProgressClass =>
+        private string Classname =>
           new ClassBuilder("radial-progress")
-            .AddClass($"progress-text-{Color.ToString()?.ToLower()}", Color != null)
-            .AddClass($"progress-bg-{BgColor.ToString()?.ToLower()}", BgColor != null)
-            .AddClass($"progress-border-{BorderColor.ToString()?.ToLower()}", BorderColor != null)
             .AddClass(Class)
             .Build();
 
-        private string RadialProgressStyle =>
+        private string Stylelist =>
             new StyleBuilder("--value", Value.ToString())
-            .AddStyle("--size", $"{Size}rem")
+            .AddStyle("--size", Size!, !string.IsNullOrWhiteSpace(Size))
+            .AddStyle("--thickness", Thickness!, !string.IsNullOrWhiteSpace(Thickness))
             .Build();
 
         [Parameter]
         public int Value { get; set; }
 
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Size { get; set; }
 
         [Parameter]
-        public Color? BgColor { get; set; }
-
-        [Parameter]
-        public Color? BorderColor { get; set; }
-
-        [Parameter]
-        public float Size { get; set; } = 4;
+        public string? Thickness { get; set; }
     }
 }

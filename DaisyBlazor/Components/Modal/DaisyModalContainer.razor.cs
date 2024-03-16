@@ -1,17 +1,28 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using DaisyBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
-using System.Collections.ObjectModel;
 
 namespace DaisyBlazor
 {
     public partial class DaisyModalContainer
     {
-        [Inject] private NavigationManager? NavigationManager { get; set; }
-        [Inject] private ModalService ModalService { get; set; } = default!;
-        [Parameter] public ModalOptions GlobalOptions { get; set; } = new();
+        private string Classname =>
+            new ClassBuilder("modal")
+            .AddClass("modal-open", _currentModal is not null)
+            .AddClass($"modal-{GlobalOptions.Position.ToString().ToLower()}")
+            .AddClass(Class)
+            .Build();
 
-        private readonly Collection<ModalReference> _modals = new();
-        private bool _haveActiveModals;
+        [Inject] 
+        private NavigationManager? NavigationManager { get; set; }
+
+        [Inject] 
+        private ModalService ModalService { get; set; } = default!;
+
+        [Parameter] 
+        public ModalOptions GlobalOptions { get; set; } = new();
+
+        private ModalReference? _currentModal;
 
         protected override void OnInitialized()
         {
@@ -20,77 +31,28 @@ namespace DaisyBlazor
                 throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type {nameof(DaisyBlazor.ModalService)}.");
             }
 
-            ModalService.OnModalInstanceAdded += Update;
+            ModalService.OnModalInstanceShow += Show;
             ModalService.OnModalCloseRequested += CloseInstance;
-            NavigationManager!.LocationChanged += CancelModals;
+            NavigationManager!.LocationChanged += CancelModal;
         }
 
-        internal void CloseInstance(ModalReference? modal, ModalResult result)
+        internal void CloseInstance(ModalResult result)
         {
-            if (modal?.ModalInstanceRef != null)
-            {
-                // Gracefully close the modal
-                modal.ModalInstanceRef.Close(result);
-                if (!_modals.Any())
-                {
-                    ClearBodyStyles();
-                }
-            }
-            else
-            {
-                DismissInstance(modal, result);
-            }
-        }
-
-        internal void DismissInstance(Guid id, ModalResult result)
-        {
-            var reference = GetModalReference(id);
-            DismissInstance(reference, result);
-        }
-
-        internal void DismissInstance(ModalReference? modal, ModalResult result)
-        {
-            if (modal != null)
-            {
-                modal.Dismiss(result);
-                _modals.Remove(modal);
-                if (!_modals.Any())
-                {
-                    ClearBodyStyles();
-                }
-                StateHasChanged();
-            }
-        }
-
-        private void CancelModals(object? sender, LocationChangedEventArgs e)
-        {
-            foreach (var modalReference in _modals.ToList())
-            {
-                modalReference.Dismiss(ModalResult.Cancel());
-            }
-
-            _modals.Clear();
-            ClearBodyStyles();
+            _currentModal?.Dismiss(result);
+            _currentModal = null;
             StateHasChanged();
         }
 
-        private void Update(ModalReference modalReference)
+        private void CancelModal(object? sender, LocationChangedEventArgs e)
         {
-            _modals.Add(modalReference);
-
-            if (!_haveActiveModals)
-            {
-                _haveActiveModals = true;
-            }
-
-            StateHasChanged();
+            CloseInstance(ModalResult.Cancel());
         }
 
-        private ModalReference? GetModalReference(Guid id) => _modals.SingleOrDefault(x => x.InstanceId == id);
-
-        private void ClearBodyStyles()
+        internal void Show(ModalReference modalReference)
         {
-            _haveActiveModals = false;
+            _currentModal = modalReference;
+
+            StateHasChanged();
         }
     }
 }

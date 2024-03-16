@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyProgress
     {
-        private string ProgressClass =>
+        private string Classname =>
           new ClassBuilder("progress")
             .AddClass($"progress-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass(Class)

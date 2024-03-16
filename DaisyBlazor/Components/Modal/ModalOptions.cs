@@ -2,8 +2,8 @@
 {
     public class ModalOptions
     {
-        public Size MaxWidth { get; set; } = Size.Md;
-        public string? OverlayClass { get; set; }
-        public bool ClickBackgroundCancel { get; set; }
+        public PositionY Position { get; set; } = PositionY.Middle;
+        public bool ShowCloseButton { get; set; }
+        public bool StaticBackdrop { get; set; }
     }
 }

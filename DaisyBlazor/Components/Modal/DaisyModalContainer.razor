@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
+@inherits DaisyComponentBase
 
-<CascadingValue Value="@this" IsFixed>
-    @foreach (var modal in _modals)
-    {
-        @modal.ModalInstance
-    }
-</CascadingValue>
+<dialog class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <CascadingValue Value="@this" IsFixed>
+        @_currentModal?.ModalContent
+    </CascadingValue>
+</dialog>

@@ -1,11 +1,11 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-@if (!Indeterminate)
+@if (Indeterminate)
 {
-    <progress class="@ProgressClass" style="@Style" @attributes="@AdditionalAttributes" value="@Value" max="@Max" />
+    <progress class="@Classname" style="@Style" @attributes="@AdditionalAttributes" />
 }
 else
 {
-    <progress class="@ProgressClass" style="@Style" @attributes="@AdditionalAttributes" max="@Max" />
+    <progress class="@Classname" style="@Style" @attributes="@AdditionalAttributes" value="@Value" max="@Max" />
 }

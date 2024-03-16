@@ -1,0 +1,12 @@
+@namespace DaisyBlazor
+@inherits DaisyComponentBase
+
+<label class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <input type="checkbox" />
+    <div class="swap-on">
+        @OnContent
+    </div>
+    <div class="swap-off">
+        @OffContent
+    </div>
+</label>

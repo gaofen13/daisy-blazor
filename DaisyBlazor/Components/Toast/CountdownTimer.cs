@@ -2,23 +2,19 @@
 {
     internal class CountdownTimer : IDisposable
     {
-        private readonly PeriodicTimer _timer;
-        private readonly CancellationToken _cancellationToken;
-        private int _percentComplete;
-
-        private Func<int, Task>? _tickDelegate;
+        private readonly int _timeout;
+        private readonly Timer _timer;
         private Action? _elapsedDelegate;
 
-        internal CountdownTimer(int timeout, CancellationToken cancellationToken = default)
+        internal CountdownTimer(int timeout)
         {
-            _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(timeout / 100));
-            _cancellationToken = cancellationToken;
+            _timeout = timeout;
+            _timer = new Timer(TimerElapsed);
         }
 
-        internal CountdownTimer OnTick(Func<int, Task> updateProgressDelegate)
+        private void TimerElapsed(object? state)
         {
-            _tickDelegate = updateProgressDelegate;
-            return this;
+            _elapsedDelegate?.Invoke();
         }
 
         internal CountdownTimer OnElapsed(Action elapsedDelegate)
@@ -27,26 +23,20 @@
             return this;
         }
 
-        internal async Task StartAsync()
+        internal void Start()
         {
-            _percentComplete = 0;
-            await DoWorkAsync();
+            _timer?.Change(_timeout, Timeout.Infinite);
         }
 
-        private async Task DoWorkAsync()
+        internal void Stop()
         {
-            while (await _timer.WaitForNextTickAsync(_cancellationToken) && !_cancellationToken.IsCancellationRequested)
-            {
-                _percentComplete++;
-                await _tickDelegate?.Invoke(_percentComplete)!;
-
-                if (_percentComplete == 100)
-                {
-                    _elapsedDelegate?.Invoke();
-                }
-            }
+            _timer?.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
-        public void Dispose() => _timer.Dispose();
+        public void Dispose()
+        {
+            Stop();
+            _timer.Dispose();
+        }
     }
 }

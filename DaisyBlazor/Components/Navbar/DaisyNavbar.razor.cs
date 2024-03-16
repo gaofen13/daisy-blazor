@@ -5,17 +5,25 @@ namespace DaisyBlazor
 {
     public partial class DaisyNavbar
     {
-        private string NavbarClass =>
-            new ClassBuilder("navbar")
-            .AddClass("navbar-rounded-box", Rounded)
-            .AddClass("navbar-shadow-xl", Shadow)
+        private string Classname =>
+            new ClassBuilder("navbar bg-base-200")
+            .AddClass($"shadow-{ShadowSize.ToString().ToLower()}", !DisabledShadow)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public bool Rounded { get; set; }
+        public bool DisabledShadow { get; set; }
 
         [Parameter]
-        public bool Shadow { get; set; }
+        public Size ShadowSize { get; set; } = Size.Md;
+
+        [Parameter]
+        public RenderFragment? StartContent { get; set; }
+
+        [Parameter]
+        public RenderFragment? CenterContent { get; set; }
+
+        [Parameter]
+        public RenderFragment? EndContent { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyLink
     {
-        private string LinkClass =>
+        private string Classname =>
             new ClassBuilder("link")
             .AddClass($"link-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass("link-hover", UnderlineOnHover)

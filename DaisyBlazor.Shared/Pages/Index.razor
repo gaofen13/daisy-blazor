@@ -37,11 +37,6 @@
     <DaisyCheckbox Label="开启Modal" @bind-Value="check" />
 </DaisyFormField>
 
-<DaisyModal @bind-Visible=check Options="new ModalOptions{ClickBackgroundCancel=true}">
-    <DaisyButton OnClick="_=>check=false">关闭</DaisyButton>
-    <DaisyButton OnClick="@(_=>Navigation?.NavigateTo("code"))">跳转</DaisyButton>
-</DaisyModal>
-
 @code {
     private DaisyInputText? _input;
     private bool check;
@@ -55,7 +50,7 @@
 
     private async Task Toggle()
     {
-        var parameters = new ModalParameters();
+        var parameters = new ComponentParameters();
         parameters.Add("Test", "Dialog");
         var reference = Modal?.Show<DailogTest>(parameters);
         var res = await reference!.Result;
@@ -69,7 +64,7 @@
     {
         add++;
         Toast?.ShowError(add.ToString(), "Error", new ToastOptions { TimeOut = 3000 });
-        Toast?.ShowToast<ToastTest>(Level.Info, new ToastOptions { TimeOut = 4000 });
+        Toast?.ShowToast<ToastTest>(new ToastOptions { TimeOut = 4000 });
         Toast?.ShowSuccess(add.ToString(), "Success");
     }
 }

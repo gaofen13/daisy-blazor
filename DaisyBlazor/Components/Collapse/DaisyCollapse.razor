@@ -1,25 +1,15 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@CollapseClass" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="collapse-title" @onclick="@OnClickTitleAsync">
-        @if (TitleContent is not null)
-        {
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <input type="checkbox" checked="@Open" />
+    @if (TitleContent is not null)
+    {
+        <div class="collapse-title" @onclick="_=>Open=!Open">
             @TitleContent
-        }
-        else
-        {
-            @Title
-        }
-    </div>
+        </div>
+    }
     <div class="collapse-content">
-        @if (ChildContent is not null)
-        {
-            @ChildContent
-        }
-        else
-        {
-            @Message
-        }
+        @ChildContent
     </div>
 </div>

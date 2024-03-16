@@ -5,52 +5,26 @@ namespace DaisyBlazor
 {
     public partial class DaisyAlert
     {
-        private string AlertClass =>
+        private string Classname =>
           new ClassBuilder("alert")
-            .AddClass($"alert-{AlertLevel.ToString().ToLower()}", Filled)
+            .AddClass($"alert-{Level.ToString()?.ToLower()}", Level is not null)
+            .AddClass($"shadow-{ShadowSize.ToString().ToLower()}", !DisabledShadow)
             .AddClass(Class)
             .Build();
 
-        private string BodyClass =>
-            new ClassBuilder("alert-body")
-            .AddClass("alert-text-filled", Filled)
-            .AddClass($"alert-text-{AlertLevel.ToString().ToLower()}", !Filled)
-            .Build();
-
-        private string IconClass =>
-            new ClassBuilder()
-            .AddClass("alert-icon-size")
-            .AddClass(Filled ? "alert-icon-filled" : $"alert-icon-{AlertLevel.ToString().ToLower()}")
-            .Build();
+        [Parameter]
+        public Level? Level { get; set; }
 
         [Parameter]
-        public string? Title { get; set; }
+        public bool DisabledShadow { get; set; }
 
         [Parameter]
-        public string? Message { get; set; }
+        public Size ShadowSize { get; set; } = Size.Md;
 
         [Parameter]
-        public Level AlertLevel { get; set; }
-
-        [Parameter]
-        public bool ShowIcon { get; set; } = true;
-
-        [Parameter]
-        public bool Filled { get; set; }
+        public RenderFragment? IconContent { get; set; }
 
         [Parameter]
         public RenderFragment? ActionContent { get; set; }
-
-        [Parameter]
-        public RenderFragment? InfoIconTemplate { get; set; }
-
-        [Parameter]
-        public RenderFragment? SuccessIconTemplate { get; set; }
-
-        [Parameter]
-        public RenderFragment? WarningIconTemplate { get; set; }
-
-        [Parameter]
-        public RenderFragment? ErrorIconTemplate { get; set; }
     }
 }

@@ -1,7 +1,11 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<ul class="@MenuClass" style="@MenuStyle" @attributes="@AdditionalAttributes">
+<ul class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @if (!string.IsNullOrWhiteSpace(Title))
+    {
+        <li class="menu-title">@Title</li>
+    }
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>

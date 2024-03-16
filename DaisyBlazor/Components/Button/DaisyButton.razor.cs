@@ -6,31 +6,32 @@ namespace DaisyBlazor
 {
     public partial class DaisyButton
     {
-        private string BtnClass =>
+        private string Classname =>
           new ClassBuilder("btn")
             .AddClass($"btn-{Color.ToString()?.ToLower()}", Color != null)
             .AddClass($"btn-{Size.ToString()?.ToLower()}", Size != null)
+            .AddClass("btn-ghost", Ghost)
+            .AddClass("btn-link", Href is not null)
+            .AddClass("btn-outline", Outline)
             .AddClass("btn-active", Active)
             .AddClass("btn-disabled", Disabled)
-            .AddClass("btn-outline", Outline)
-            .AddClass("btn-glass", Glass)
-            .AddClass("btn-wide", Wide)
-            .AddClass("btn-square", Square)
-            .AddClass("btn-circle", Circle)
-            .AddClass("btn-block", Block)
-            .AddClass("btn-loading", Loading)
+            .AddClass("glass", Glass)
             .AddClass("no-animation", NoAnimation)
+            .AddClass("btn-wide", Wide)
+            .AddClass("btn-block", Block)
+            .AddClass("btn-circle", Circle)
+            .AddClass("btn-square", Square)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public bool Disabled { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
 
         [Parameter]
-        public bool StopPropagation { get; set; } = true;
-
-        [Parameter]
-        public string Type { get; set; } = "button";
+        public string HtmlTag { get; set; } = "button";
 
         [Parameter]
         public Color? Color { get; set; }
@@ -40,9 +41,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Active { get; set; }
-
-        [Parameter]
-        public bool Disabled { get; set; }
 
         [Parameter]
         public bool Outline { get; set; }
@@ -60,17 +58,24 @@ namespace DaisyBlazor
         public bool Circle { get; set; }
 
         [Parameter]
+        public bool Ghost { get; set; }
+
+        [Parameter]
         public bool Block { get; set; }
 
         [Parameter]
-        public bool Loading { get; set; }
+        public string? Href { get; set; }
 
         [Parameter]
         public bool NoAnimation { get; set; }
 
-        public ValueTask FocusAsync()
+        protected override void OnInitialized()
         {
-            return Element.FocusAsync();
+            if (Href is not null)
+            {
+                HtmlTag = "a";
+            }
+            base.OnInitialized();
         }
 
         private async Task Click(MouseEventArgs args)

@@ -1,23 +1,128 @@
 ﻿@page "/button"
 
-<DaisyFormField Label="Outline">
-    <DaisyCheckbox Label="Outline" @bind-Value=@outline />
-</DaisyFormField>
-<DaisyFormField Label="按钮1Color">
-    <DaisyRadioGroup @bind-Value=@color>
-        <DaisyRadio Label="Primary" Value="Color.Primary" />
-        <DaisyRadio Label="Secondary" Value="Color.Secondary" />
-        <DaisyRadio Label="Accent" Value="Color.Accent" />
-        <DaisyRadio Label="Ghost" Value="Color.Ghost" />
-        <DaisyRadio Label="Link" Value="Color.Link" />
-        <DaisyRadio Label="Info" Value="Color.Info" />
-        <DaisyRadio Label="Success" Value="Color.Success" />
-        <DaisyRadio Label="Warning" Value="Color.Warning" />
-        <DaisyRadio Label="Error" Value="Color.Error" />
-    </DaisyRadioGroup>
-</DaisyFormField>
+<h3>Button按钮</h3>
+<div>
+    <DaisyButton>Button</DaisyButton>
+</div>
 
-@code {
-    bool outline;
-    Color color;
-}
+<h3>按钮类型和颜色</h3>
+<div>
+    <DaisyButton Color="@Color.Primary">Primary</DaisyButton>
+    <DaisyButton Color="@Color.Secondary">Secondary</DaisyButton>
+    <DaisyButton Color="@Color.Accent">Accent</DaisyButton>
+    <DaisyButton Neutral>Neutral</DaisyButton>
+    <DaisyButton Ghost>Ghost</DaisyButton>
+    <DaisyButton Link>Link</DaisyButton>
+</div>
+
+<h3>不同的状态对应的按钮颜色</h3>
+<div>
+    <DaisyButton Color="@Color.Info">Info</DaisyButton>
+    <DaisyButton Color="@Color.Success">Success</DaisyButton>
+    <DaisyButton Color="@Color.Warning">Warning</DaisyButton>
+    <DaisyButton Color="@Color.Error">Error</DaisyButton>
+</div>
+
+<h3>边框按钮</h3>
+<div>
+    <DaisyButton Outline>Default</DaisyButton>
+    <DaisyButton Outline Color="@Color.Primary">Primary</DaisyButton>
+    <DaisyButton Outline Color="@Color.Secondary">Secondary</DaisyButton>
+    <DaisyButton Outline Color="@Color.Accent">Accent</DaisyButton>
+</div>
+
+<h3>不同的状态对应的边框按钮颜色</h3>
+<div>
+    <DaisyButton Outline Color="@Color.Info">Info</DaisyButton>
+    <DaisyButton Outline Color="@Color.Success">Success</DaisyButton>
+    <DaisyButton Outline Color="@Color.Warning">Warning</DaisyButton>
+    <DaisyButton Outline Color="@Color.Error">Error</DaisyButton>
+</div>
+
+<h3>按钮尺寸</h3>
+<div>
+    <DaisyButton Size="@Size.Lg">Large</DaisyButton>
+    <DaisyButton Size="@Size.Md">Normal</DaisyButton>
+    <DaisyButton Size="@Size.Sm">Small</DaisyButton>
+    <DaisyButton Size="@Size.Xs">Tiny</DaisyButton>
+</div>
+
+<h3>响应式按钮</h3>
+<DaisyButton Size="@Size.Xs" Class="sm:btn-sm md:btn-md lg:btn-lg">Responsive</DaisyButton>
+
+<h3>宽按钮</h3>
+<DaisyButton Wide>Wide</DaisyButton>
+
+<h3>玻璃效果</h3>
+<DaisyButton Glass>Glass button</DaisyButton>
+
+<h3>Button可以用不同的HTML标签实现</h3>
+<div>
+    <DaisyButton HtmlTag="a">Link</DaisyButton>
+    <DaisyButton type="submit" Size="@Size.Md">Button</DaisyButton>
+    <DaisyButton HtmlTag="input" type="button" value="Input" />
+    <DaisyButton HtmlTag="input" type="submit" value="Submit" />
+    <DaisyButton HtmlTag="input" type="reset" value="Reset" />
+    <DaisyButton HtmlTag="input" type="radio" aria-label="Radio" />
+    <DaisyButton HtmlTag="input" type="checkbox" aria-label="Checkbox" />
+</div>
+
+<h3>禁用状态</h3>
+<DaisyButton Disabled>Disabled button</DaisyButton>
+
+<h3>矩形圆角按钮</h3>
+<div>
+    <DaisyButton Square>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </DaisyButton>
+    <DaisyButton Square Outline>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </DaisyButton>
+</div>
+
+<h3>圆形按钮</h3>
+<div>
+    <DaisyButton Circle>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </DaisyButton>
+    <DaisyButton Circle Outline>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </DaisyButton>
+</div>
+
+<h3>图标按钮</h3>
+<div>
+    <DaisyButton>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        Button
+    </DaisyButton>
+    <DaisyButton Outline>
+        Button
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+    </DaisyButton>
+</div>
+
+<h3>Block 按钮</h3>
+<DaisyButton Block>Block button</DaisyButton>
+
+<h3>加载状态</h3>
+<DaisyButton>
+    <span class="loading loading-spinner"></span>loading
+</DaisyButton>
+
+<h3>没有点击动画的按钮</h3>
+<DaisyButton NoAnimation>I don't have click animation</DaisyButton>

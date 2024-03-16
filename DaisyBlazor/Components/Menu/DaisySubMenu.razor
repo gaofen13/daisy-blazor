@@ -1,8 +1,8 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<li class="@SubClass" style="@Style" @attributes="@AdditionalAttributes">
-    <span class="menu-sub-title" @onclick="@OnClickTilte">
+<li class="@Class" style="@Style" @attributes="@AdditionalAttributes">
+    <span class="@TitleClassname" @onclick="_=>Open=!Open">
         @if (TitleContent is not null)
         {
             @TitleContent
@@ -12,12 +12,9 @@
             @Title
         }
     </span>
-    @if (!Collapsed)
-    {
-        <ul class="@SubContentClass">
-            <CascadingValue Value="@this" IsFixed>
-                @ChildContent
-            </CascadingValue>
-        </ul>
-    }
+    <ul class="@ContentClassname">
+        <CascadingValue Value="@this" IsFixed>
+            @ChildContent
+        </CascadingValue>
+    </ul>
 </li>

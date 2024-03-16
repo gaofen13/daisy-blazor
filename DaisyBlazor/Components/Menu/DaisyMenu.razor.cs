@@ -5,37 +5,23 @@ namespace DaisyBlazor
 {
     public partial class DaisyMenu
     {
-        private string MenuClass =>
-            new ClassBuilder("menu")
-            .AddClass("menu-shadow-xl", Shadow)
+        private string Classname =>
+            new ClassBuilder("menu bg-base-200")
             .AddClass("menu-horizontal", Horizontal)
-            .AddClass("menu-compact", Compact)
-            .AddClass("rounded-box", Rounded)
+            .AddClass($"menu-{Size.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
-
-        private string MenuStyle =>
-            new StyleBuilder()
-            .AddStyle("--menu-width", Width)
-            .AddStyle(Style)
-            .Build();
-
-        [Parameter]
-        public string Width { get; set; } = "14rem";
 
         [Parameter]
         public bool Horizontal { get; set; }
 
         [Parameter]
-        public bool Rounded { get; set; }
+        public Size Size { get; set; } = Size.Md;
 
         [Parameter]
-        public bool Bordered { get; set; } = true;
+        public string? Title { get; set; }
 
         [Parameter]
-        public bool Shadow { get; set; } = true;
-
-        [Parameter]
-        public bool Compact { get; set; }
+        public string ActiveClass { get; set; } = "active";
     }
 }

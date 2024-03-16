@@ -1,79 +1,14 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@AlertClass" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="alert-content">
-        <div>
-            @if (ShowIcon)
-            {
-                <div>
-                    @switch (AlertLevel)
-                    {
-                        case Level.Info:
-                            if (InfoIconTemplate != null)
-                            {
-                                @InfoIconTemplate
-                            }
-                            else
-                            {
-                                <svg xmlns="http://www.w3.org/2000/svg" class="@IconClass" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            }
-                            break;
-                        case Level.Success:
-                            if (SuccessIconTemplate != null)
-                            {
-                                @SuccessIconTemplate
-                            }
-                            else
-                            {
-                                <svg xmlns="http://www.w3.org/2000/svg" class="@IconClass" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            }
-                            break;
-                        case Level.Warning:
-                            if (WarningIconTemplate != null)
-                            {
-                                @WarningIconTemplate
-                            }
-                            else
-                            {
-                                <svg xmlns="http://www.w3.org/2000/svg" class="@IconClass" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                            }
-                            break;
-                        case Level.Error:
-                            if (ErrorIconTemplate != null)
-                            {
-                                @ErrorIconTemplate
-                            }
-                            else
-                            {
-                                <svg xmlns="http://www.w3.org/2000/svg" class="@IconClass" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            }
-                            break;
-                    }
-                </div>
-            }
-            <div class="@BodyClass">
-                @if (!string.IsNullOrWhiteSpace(Title))
-                {
-                    <h6 class="alert-title">@Title</h6>
-                }
-                <div class="alert-text">
-                    @if (ChildContent != null)
-                    {
-                        @ChildContent
-                    }
-                    else
-                    {
-                        @Message
-                    }
-                </div>
-            </div>
-        </div>
-        @if (ActionContent != null)
-        {
-            <div class="alert-action">
-                @ActionContent
-            </div>
-        }
-    </div>
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @if (IconContent is not null)
+    {
+        <div>@IconContent</div>
+    }
+    <div>@ChildContent</div>
+    @if (ActionContent is not null)
+    {
+        <div>@ActionContent</div>
+    }
 </div>

@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DaisyBlazor.Server/bin/Debug/net7.0/DaisyBlazor.Server.dll",
+            "program": "${workspaceFolder}/DaisyBlazor.Server/bin/Debug/net8.0/DaisyBlazor.Server.dll",
             "args": [],
             "cwd": "${workspaceFolder}/DaisyBlazor.Server",
             "stopAtEntry": false,
@@ -24,7 +24,8 @@
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
-            }
+            },
+            "requireExactSource": false
         },
         {
             "name": ".NET Core Attach",

@@ -1,11 +1,12 @@
 ﻿@page "/collapses"
 
-<DaisyCollapse Title="折叠面板">
-    隐藏的内容
-</DaisyCollapse>
-
-<DaisyCollapse Title="Code折叠面板">
-    <DaisyMockupCode>
-        @("<DaisyCollapse Title = \"折叠面板\">\r\n   <MessageContent>\r\n        隐藏的内容\r\n   </MessageContent>\r\n</DaisyCollapse>")
-    </DaisyMockupCode>
+<DaisyCollapse HasArrow>
+    <TitleContent>Toggle to the content</TitleContent>
+    <ChildContent>
+        <DaisyMockup>
+            <DaisyPreCode>
+                @("<DaisyCollapse Title = \"折叠面板\">\r\n <MessageContent>\r\n 隐藏的内容\r\n </MessageContent>\r\n</DaisyCollapse>")
+            </DaisyPreCode>
+        </DaisyMockup>
+    </ChildContent>
 </DaisyCollapse>

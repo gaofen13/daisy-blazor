@@ -1,18 +1,31 @@
-﻿<DaisyNavMenu Style="height:100%;overflow-y:auto;z-index:1051;">
-    <DaisyButton OnClick="OnCloseBtnClicked" Class="close-btn" Style="margin:1rem 1rem 1rem auto;" Size="@Size.Sm" Color="@Color.Ghost" Circle>✕</DaisyButton>
-    <DaisyNavMenuGroup>
+﻿<DaisyMenu Style="min-height:100%;width:300px;">
+    <DaisyButton OnClick="OnCloseBtnClicked" Class="close-btn" Style="margin:1rem 1rem 1rem auto;" Size="@Size.Sm" Ghost
+        Circle>✕</DaisyButton>
+    <DaisySubMenu>
         <TitleContent>
-            <span class="oi oi-plus" aria-hidden="true"></span> Buttons
+            <span class="oi oi-plus" aria-hidden="true"></span> Actions
         </TitleContent>
         <ChildContent>
-            <DaisyMenuItem Href="buttongroup">
-                <span class="oi oi-plus" aria-hidden="true"></span> ButtonGroup
-            </DaisyMenuItem>
             <DaisyMenuItem Href="button">
                 <span class="oi oi-plus" aria-hidden="true"></span> Button
             </DaisyMenuItem>
+            <DaisyMenuItem Href="dropdown">
+                <span class="oi oi-home" aria-hidden="true"></span> Dropdown
+            </DaisyMenuItem>
+            <DaisyMenuItem Href="swap">
+                <span class="oi oi-home" aria-hidden="true"></span> Swap
+            </DaisyMenuItem>
         </ChildContent>
-    </DaisyNavMenuGroup>
+    </DaisySubMenu>
+    <DaisyMenuItem Href="avatar">
+        <span class="oi oi-plus" aria-hidden="true"></span> Avatar
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="alert">
+        <span class="oi oi-plus" aria-hidden="true"></span> Alert
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="buttongroup">
+        <span class="oi oi-plus" aria-hidden="true"></span> ButtonGroup
+    </DaisyMenuItem>
     <DaisyMenuItem Href="code">
         <span class="oi oi-plus" aria-hidden="true"></span> Code
     </DaisyMenuItem>
@@ -22,11 +35,14 @@
     <DaisyMenuItem Href="countdown">
         <span class="oi oi-home" aria-hidden="true"></span> Countdown
     </DaisyMenuItem>
-    <DaisyMenuItem Href="dropdown">
-        <span class="oi oi-home" aria-hidden="true"></span> Dropdown
-    </DaisyMenuItem>
     <DaisyMenuItem Href="forms">
         <span class="oi oi-plus" aria-hidden="true"></span> Forms
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="link">
+        <span class="oi oi-plus" aria-hidden="true"></span> Link
+    </DaisyMenuItem>
+    <DaisyMenuItem Href="loading">
+        <span class="oi oi-plus" aria-hidden="true"></span> Loading
     </DaisyMenuItem>
     <DaisyMenuItem Href="kbd">
         <span class="oi oi-plus" aria-hidden="true"></span> Kbd
@@ -40,7 +56,7 @@
     <DaisyMenuItem Href="navbar">
         <span class="oi oi-plus" aria-hidden="true"></span> Navbar
     </DaisyMenuItem>
-    <DaisyNavMenuGroup>
+    <DaisySubMenu>
         <TitleContent>
             <span class="oi oi-plus" aria-hidden="true"></span> Menus
         </TitleContent>
@@ -52,14 +68,14 @@
                 <span class="oi oi-plus" aria-hidden="true"></span> NavMenu
             </DaisyMenuItem>
         </ChildContent>
-    </DaisyNavMenuGroup>
+    </DaisySubMenu>
     <DaisyMenuItem Href="pager">
         <span class="oi oi-plus" aria-hidden="true"></span> Pagination
     </DaisyMenuItem>
     <DaisyMenuItem Href="fetchdata">
         <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
     </DaisyMenuItem>
-</DaisyNavMenu>
+</DaisyMenu>
 
 @code {
     [Parameter]
