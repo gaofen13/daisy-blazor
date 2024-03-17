@@ -1,6 +1,6 @@
 ﻿@page "/navbar"
 
-<DaisyNavbar Shadow Rounded>
+<DaisyNavbar>
     <DaisyButton Square Ghost>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="width: 1.2rem;height: 1.2rem;stroke: hsla(var(--bc) / var(--tw-text-opacity, 1));">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -9,7 +9,7 @@
     <DaisyButton Ghost>
         <a style="font-size:larger;font-weight:bolder">标题</a>
     </DaisyButton>
-    <DaisyDropdown AlignsToEnd RoundedBox Style="margin-left:auto">
+    <DaisyDropdown AlignsToEnd Style="margin-left:auto">
         <TitleContent>
             <DaisyButton Square Ghost>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="width: 1.2rem;height: 1.2rem;stroke: hsla(var(--bc) / var(--tw-text-opacity, 1));">
@@ -18,8 +18,8 @@
             </DaisyButton>
         </TitleContent>
         <ChildContent>
-            <DaisyDropdownItem>Item1</DaisyDropdownItem>
-            <DaisyDropdownItem>Item2</DaisyDropdownItem>
+            <DaisyMenuItem>Item1</DaisyMenuItem>
+            <DaisyMenuItem>Item2</DaisyMenuItem>
         </ChildContent>
     </DaisyDropdown>
 </DaisyNavbar>

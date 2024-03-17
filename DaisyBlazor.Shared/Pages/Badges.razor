@@ -1,0 +1,44 @@
+@page "/badge"
+
+<h3>Badge 徽章</h3>
+<DaisyBadge>Badge</DaisyBadge>
+
+<h3>Badge with colors</h3>
+<DaisyBadge>default</DaisyBadge>
+<DaisyBadge Color="@Color.Neutral">neutral</DaisyBadge>
+<DaisyBadge Color="@Color.Primary">primary</DaisyBadge>
+<DaisyBadge Color="@Color.Secondary">secondary</DaisyBadge>
+<DaisyBadge Color="@Color.Accent">accent</DaisyBadge>
+<DaisyBadge Color="@Color.Info">info</DaisyBadge>
+<DaisyBadge Color="@Color.Success">success</DaisyBadge>
+<DaisyBadge Color="@Color.Warning">warning</DaisyBadge>
+<DaisyBadge Color="@Color.Error">error</DaisyBadge>
+<DaisyBadge Ghost>ghost</DaisyBadge>
+
+<h3>Outline Badge with brand colors</h3>
+<DaisyBadge Outline>default</DaisyBadge>
+<DaisyBadge Outline Color="@Color.Primary">primary</DaisyBadge>
+<DaisyBadge Outline Color="@Color.Secondary">secondary</DaisyBadge>
+<DaisyBadge Outline Color="@Color.Accent">accent</DaisyBadge>
+
+<h3>Badge sizes</h3>
+<DaisyBadge Size="@Size.Lg">987,654</DaisyBadge>
+<DaisyBadge Size="@Size.Md">987,654</DaisyBadge>
+<DaisyBadge Size="@Size.Sm">987,654</DaisyBadge>
+<DaisyBadge Size="@Size.Xs">987,654</DaisyBadge>
+
+<h3>Empty Badge</h3>
+<DaisyBadge Color="@Color.Primary" Size="@Size.Lg"></DaisyBadge>
+<DaisyBadge Color="@Color.Primary" Size="@Size.Md"></DaisyBadge>
+<DaisyBadge Color="@Color.Primary" Size="@Size.Sm"></DaisyBadge>
+<DaisyBadge Color="@Color.Primary" Size="@Size.Xs"></DaisyBadge>
+
+<h3>Badge in a button</h3>
+<DaisyButton>
+  Inbox
+  <DaisyBadge>+99</DaisyBadge>
+</DaisyButton>
+<DaisyButton>
+  Inbox
+  <DaisyBadge Color="@Color.Secondary">+99</DaisyBadge>
+</DaisyButton>

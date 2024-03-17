@@ -7,11 +7,6 @@ namespace DaisyBlazor
         /// <summary>
         /// A event that will be invoked when showing a toast
         /// </summary>
-        public event Action<Level, RenderFragment, string?, ToastOptions?>? OnShow;
-
-        /// <summary>
-        /// A event that will be invoked when showing a toast
-        /// </summary>
         public event Action<Type, ComponentParameters?, ToastOptions?>? OnShowComponent;
 
         /// <summary>
