@@ -1,29 +1,23 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@CardClass" style="@Style" @attributes="@AdditionalAttributes">
-    @if (ImgContent is not null)
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @if (ImageContent is not null)
     {
-        <div class="card-img">
-            @ImgContent
-        </div>
+        <figure>@ImageContent</figure>
     }
     <div class="card-body">
-        @if (TitleContent != null)
+        @if (TitleContent is not null)
         {
-            @TitleContent
+            <h2 class="card-title">@TitleContent</h2>
         }
-        else
+        else if (!string.IsNullOrWhiteSpace(Title))
         {
-            <div class="card-title">
-                @Title
-            </div>
+            <h2 class="card-title">@Title</h2>
         }
         @if (ChildContent is not null)
         {
-            <div class="card-content">
-                @ChildContent
-            </div>
+            @ChildContent
         }
         @if (ActionContent != null)
         {

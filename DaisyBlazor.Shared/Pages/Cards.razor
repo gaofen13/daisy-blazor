@@ -1,0 +1,134 @@
+@page "/card"
+
+<h3>Card 卡片</h3>
+<DaisyCard Title="Shoes!" Style="max-width:300px">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    </ImageContent>
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Compact card</h3>
+<DaisyCard Compact Title="Shoes!" Style="max-width:300px">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    </ImageContent>
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card with badge</h3>
+<DaisyCard Title="" Style="max-width:300px">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    </ImageContent>
+    <TitleContent>
+        Shoes!
+        <DaisyBadge Color="@Color.Secondary">NEW</DaisyBadge>
+    </TitleContent>
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyBadge Outline>Fashion</DaisyBadge>
+            <DaisyBadge Outline>Products</DaisyBadge>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card with centered content and paddings</h3>
+<DaisyCard Style="max-width:300px;text-align:center">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    </ImageContent>
+    <TitleContent>
+        <div>Shoes!</div>
+    </TitleContent>
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card with image overlay</h3>
+<DaisyCard ImageOverlay Title="Shoes!" Style="max-width:300px">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    </ImageContent>
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card with no image</h3>
+<DaisyCard Title="Card title!" Style="max-width:300px">
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card glass</h3>
+<div
+    style="width:400px;display:flex;justify-content:center;background-image:url(https://daisyui.com/images/stock/photo-1481026469463-66327c86e544.jpg);background-size:cover;">
+    <DaisyCard Glass Title="Life hack" Style="max-width:300px">
+        <ImageContent><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+        </ImageContent>
+        <ChildContent>
+            <p>How to park your car at your garage?</p>
+        </ChildContent>
+        <ActionContent>
+            <div style="width:100%;text-align:right;">
+                <DaisyButton Color="@Color.Primary">Learn now!</DaisyButton>
+            </div>
+        </ActionContent>
+    </DaisyCard>
+</div>
+
+<h3>Card with custom color</h3>
+<DaisyCard Title="Shoes!" Style="background-color:blue;max-width:300px">
+    <ChildContent>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Buy Now</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
+
+<h3>Card with image on side</h3>
+<DaisyCard ImageOnSide Title="New movie is released!" Style="max-width:600px">
+    <ImageContent><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" />
+    </ImageContent>
+    <ChildContent>
+        <p>Click the button to watch on Jetflix app.</p>
+    </ChildContent>
+    <ActionContent>
+        <div style="width:100%;text-align:right;">
+            <DaisyButton Color="@Color.Primary">Watch</DaisyButton>
+        </div>
+    </ActionContent>
+</DaisyCard>
