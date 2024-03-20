@@ -5,67 +5,83 @@ namespace DaisyBlazor
 {
     public partial class DaisyTab
     {
-        private bool _active;
+        private bool _actived;
 
-        private string TabClass =>
-            new ClassBuilder("tab-content")
-            .AddClass(Class)
+        private string TitleClassname =>
+            new ClassBuilder("tab")
+            .AddClass("tab-active", _actived)
+            .AddClass(TitleClass)
             .Build();
 
-        public string TitleClass =>
-            new ClassBuilder("tab")
-            .AddClass($"tab-{Size.ToString().ToLower()}")
-            .AddClass("tab-bordered", Bordered && !Lifted)
-            .AddClass("tab-lifted", Lifted && !Bordered)
-            .AddClass("tab-active", _active)
+        private string ContentClassname =>
+            new ClassBuilder("tab-content bg-base-100 border-base-300 rounded-lg")
+            .AddClass(ContentClass)
+            .Build();
+
+        private string TitleStylelist =>
+            new StyleBuilder()
+            .AddStyle(TitleStyle)
+            .Build();
+
+        private string ContentStylelist =>
+            new StyleBuilder()
+            .AddStyle(ContentStyle)
             .Build();
 
         [CascadingParameter]
-        private DaisyTabs DaisyTabs { get; set; } = default!;
-
-        [Parameter]
-        public bool Bordered { get; set; }
-
-        [Parameter]
-        public bool Lifted { get; set; }
-
-        [Parameter]
-        public Size Size { get; set; } = Size.Md;
+        private DaisyTabs? DaisyTabs { get; set; }
 
         [Parameter]
         public string? Title { get; set; }
 
         [Parameter]
+        public RenderFragment? TitleContent { get; set; }
+
+        [Parameter]
+        public string? TitleClass { get; set; }
+
+        [Parameter]
+        public string? TitleStyle { get; set; }
+
+        [Parameter]
+        public string? ContentClass { get; set; }
+
+        [Parameter]
+        public string? ContentStyle { get; set; }
+
+        [Parameter]
         public bool Default { get; set; }
 
         [Parameter]
-        public EventCallback OnActived { get; set; }
+        public EventCallback<bool> OnChanged { get; set; }
 
         protected override void OnInitialized()
         {
             if (Default)
             {
-                ActiveTab();
+                OnTabChanged(true);
+                DaisyTabs?.OnActivedItemChanged(this);
             }
-            DaisyTabs.AddTab(this);
             base.OnInitialized();
         }
 
-        public void ActiveTab()
+        internal void OnTabChanged(bool actived)
         {
-            _active = true;
-            OnActived.InvokeAsync();
+            _actived = actived;
+            StateHasChanged();
+            if (OnChanged.HasDelegate)
+            {
+                OnChanged.InvokeAsync(actived);
+            }
         }
 
-        public void DisactiveTab()
+        private void OnClickItem()
         {
-            _active = false;
-        }
-
-        void IDisposable.Dispose()
-        {
-            DaisyTabs.RemoveTab(this);
-            GC.SuppressFinalize(this);
+            if (!_actived)
+            {
+                OnTabChanged(true);
+                DaisyTabs?.OnActivedItemChanged(this);
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DaisyBlazor.Utilities;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace DaisyBlazor
 {

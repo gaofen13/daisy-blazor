@@ -6,7 +6,7 @@ namespace DaisyBlazor
     public partial class DaisyMenu
     {
         private string Classname =>
-            new ClassBuilder("menu bg-base-200")
+            new ClassBuilder("menu")
             .AddClass("menu-horizontal", Horizontal)
             .AddClass($"menu-{Size.ToString().ToLower()}")
             .AddClass(Class)

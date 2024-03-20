@@ -16,17 +16,9 @@
     <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/site.css" />
     <link rel="stylesheet" href="_content/DaisyBlazor.Shared/DaisyBlazor.Shared.bundle.scp.css" />
     <!-- highlight -->
-    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/vs.css" />
-    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/css/highlightjs-copy.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/highlight/css/atom-one-dark.min.css" />
+    <link rel="stylesheet" href="_content/DaisyBlazor.Shared/highlight/css/highlightjs-copy.min.css" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
-    <script>
-        function HighlightCode(code) {
-            if (typeof hljs != "undefined" && hljs != null && code != null) {
-                res = hljs.highlightAuto(code);
-            }
-            return res.value ?? "";
-        }
-    </script>
 </head>
 <body>
     @RenderBody()
@@ -43,9 +35,15 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+
     <!-- highlight -->
-    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/highlight.js"></script>
-    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/cshtml-razor.js"></script>
-    <script type="text/javascript" src="_content/DaisyBlazor.Shared/js/highlightjs-copy.js"></script>
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/highlight/js/highlight.min.js"></script>
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/highlight/js/cshtml-razor.min.js"></script>
+    <script type="text/javascript" src="_content/DaisyBlazor.Shared/highlight/js/highlightjs-copy.min.js"></script>
+    <script>
+        if (hljs != null) {
+            hljs.addPlugin(new CopyButtonPlugin());
+        }
+    </script>
 </body>
 </html>

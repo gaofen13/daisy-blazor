@@ -3,24 +3,15 @@
     <h5>@Title</h5>
 }
 
-@if (Description != null)
-{
-    <div class="demo-section-description">
-        @Description
-    </div>
-}
-
-@if (!string.IsNullOrEmpty(ExampleFile))
-{
-    <DaisyTabs>
-        <DaisyTab Lifted Default Title="Preview">
-            <DynamicComponent Type="@(Type.GetType($"DaisyBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
-        </DaisyTab>
-        <DaisyTab Lifted Title="Code" Class="hljs-copy-wrapper">
-            <DaisyMockupCode Class="hljs">
-                @CodeContents
-            </DaisyMockupCode>
-            <button @ref="@_button" class="hljs-copy-button" data-copied="false" @onclick="@CopyCode">Copied!</button>
-        </DaisyTab>
-    </DaisyTabs>
-}
+<DaisyTabs>
+    <DaisyTab Default Title="Preview" ContentClass="demo-preview">
+        <div style="display: flex;justify-content: center;align-items: center;padding: 0.5rem;max-width: 100%;">
+            <DynamicComponent Type="@Component" Parameters="@ComponentParameters" />
+        </div>
+    </DaisyTab>
+    <DaisyTab Title="Code" OnChanged="@OnTabChanged" TitleStyle="@CodeTitleStylelist">
+        <CodeSnippet Class="hljs rounded-lg" Language="@Language">
+            @CodeContents
+        </CodeSnippet>
+    </DaisyTab>
+</DaisyTabs>

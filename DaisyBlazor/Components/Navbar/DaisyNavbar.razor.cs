@@ -6,7 +6,7 @@ namespace DaisyBlazor
     public partial class DaisyNavbar
     {
         private string Classname =>
-            new ClassBuilder("navbar bg-base-200")
+            new ClassBuilder("navbar")
             .AddClass($"shadow-{ShadowSize.ToString().ToLower()}", !DisabledShadow)
             .AddClass(Class)
             .Build();

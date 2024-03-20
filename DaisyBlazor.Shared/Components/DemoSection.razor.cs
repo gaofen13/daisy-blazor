@@ -1,53 +1,45 @@
 ﻿using DaisyBlazor.Generators;
+using DaisyBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System.Reflection.Metadata;
 
 namespace DaisyBlazor.Shared.Components
 {
     public partial class DemoSection
     {
-        private ElementReference _button;
-        private string? _codeString;
+        private bool _codeTabActived;
 
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
+        private string CodeTitleStylelist =>
+            new StyleBuilder()
+            .AddStyle("--tab-bg", "var(--fallback-n, oklch(var(--n)))", _codeTabActived)
+            .AddStyle("--tab-color", "var(--fallback-nc,oklch(var(--nc)))", _codeTabActived)
+            .Build();
 
         [Parameter, EditorRequired]
         public string Title { get; set; } = string.Empty;
 
-        [Parameter]
-        public RenderFragment? Description { get; set; }
-
         [Parameter, EditorRequired]
-        public string ExampleFile { get; set; } = string.Empty;
+        public Type Component { get; set; } = default!;
 
-        private MarkupString? CodeContents { get; set; }
+        [Parameter]
+        public IDictionary<string, object>? ComponentParameters { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        [Parameter]
+        public string Language { get; set; } = "language-cshtml-razor";
+
+        private string? CodeContents { get; set; }
+
+        protected override void OnInitialized()
         {
-            if (firstRender)
-            {
-                if (!string.IsNullOrEmpty(ExampleFile))
-                {
-                    SetCodeContents();
-                }
-            }
-
-            await base.OnAfterRenderAsync(firstRender);
+            SetCodeContents();
+            base.OnInitialized();
         }
 
-        protected async void SetCodeContents()
+        protected void SetCodeContents()
         {
             try
             {
-                _codeString = DemoSnippets.GetRazor($"{ExampleFile}");
-                var res = await JSRuntime.InvokeAsync<string>("HighlightCode", _codeString);
-                if (!string.IsNullOrWhiteSpace(res))
-                {
-                    CodeContents = new MarkupString(res);
-                }
-                StateHasChanged();
+                CodeContents = DemoSnippets.GetRazor(Component.Name);
             }
             catch
             {
@@ -55,9 +47,10 @@ namespace DaisyBlazor.Shared.Components
             }
         }
 
-        private async Task CopyCode()
+        private void OnTabChanged(bool activedCode)
         {
-            await JSRuntime.InvokeVoidAsync("copyCode", _button, _codeString);
+            _codeTabActived = activedCode;
+            StateHasChanged();
         }
     }
 }

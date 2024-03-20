@@ -9,6 +9,7 @@ namespace DaisyBlazor
             new ClassBuilder("collapse")
             .AddClass("collapse-arrow", HasArrow && ArrowIcon == ArrowIcon.Default)
             .AddClass("collapse-plus", HasArrow && ArrowIcon == ArrowIcon.PlusMinus)
+            .AddClass(Class)
             .Build();
 
         [Parameter]

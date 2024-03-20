@@ -7,11 +7,9 @@ namespace DaisyBlazor
     {
         private string Classname =>
           new ClassBuilder("card")
-            .AddClass($"shadow-{ShadowSize.ToString().ToLower()}")
             .AddClass("card-compact", Compact)
             .AddClass("card-side", ImageOnSide)
             .AddClass("image-full", ImageOverlay)
-            .AddClass("glass", Glass)
             .AddClass(Class)
             .Build();
 
@@ -34,15 +32,9 @@ namespace DaisyBlazor
         public RenderFragment? ActionContent { get; set; }
 
         [Parameter]
-        public Size ShadowSize { get; set; } = Size.Md;
-
-        [Parameter]
         public bool Compact { get; set; }
 
         [Parameter]
         public bool Neutra { get; set; }
-
-        [Parameter]
-        public bool Glass { get; set; }
     }
 }

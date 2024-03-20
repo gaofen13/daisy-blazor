@@ -5,19 +5,18 @@ namespace DaisyBlazor
 {
     public partial class DaisyAvatar
     {
-        private string Classname =>
+        private string ContainerClassname =>
             new ClassBuilder("avatar")
             .AddClass("placeholder", Placeholder)
             .AddClass("offline", Offline)
             .AddClass("online", Online)
-            .AddClass(Class)
             .Build();
 
-        private string ContainerClassname =>
+        private string Classname =>
             new ClassBuilder("rounded")
-            .AddClass("bg-neutral text-neutral-content", Placeholder)
             .AddClass("rounded-full", Circle)
             .AddClass(GetSizeClass())
+            .AddClass(Class)
             .Build();
 
         [Parameter]

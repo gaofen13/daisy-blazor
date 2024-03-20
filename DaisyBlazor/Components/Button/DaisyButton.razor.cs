@@ -15,7 +15,6 @@ namespace DaisyBlazor
             .AddClass("btn-outline", Outline)
             .AddClass("btn-active", Active)
             .AddClass("btn-disabled", Disabled)
-            .AddClass("glass", Glass)
             .AddClass("no-animation", NoAnimation)
             .AddClass("btn-wide", Wide)
             .AddClass("btn-block", Block)
@@ -44,9 +43,6 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool Outline { get; set; }
-
-        [Parameter]
-        public bool Glass { get; set; }
 
         [Parameter]
         public bool Wide { get; set; }

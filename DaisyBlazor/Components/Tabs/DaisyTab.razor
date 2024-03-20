@@ -1,10 +1,16 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
-@implements IDisposable
 
-@if (_active)
-{
-    <div class="@TabClass" style="@Style">
-        @ChildContent
-    </div>
-}
+<a role="tab" class="@TitleClassname" style="@TitleStylelist" @onclick="@OnClickItem">
+    @if (TitleContent is not null)
+    {
+        @TitleContent
+    }
+    else
+    {
+        @Title
+    }
+</a>
+<div role="tabpanel" class="@ContentClassname" style="@ContentStylelist">
+    @ChildContent
+</div>

@@ -1,11 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
-<DaisyLayout Theme="@theme">
-    <DaisyNavbar Style="position:sticky;top:0;z-index:1000">
+<DaisyLayout Theme="@_theme" Style="min-height:100vh;">
+    <DaisyNavbar class="bg-base-200" Style="position:sticky;top:0;margin-bottom:4px;z-index:1000">
         <StartContent>
-            <DaisyButton OnClick="_=>showSidebar=!showSidebar" Square Color="@Color.Neutral">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                    style="width: 1.5rem;height: 1.5rem;stroke: hsla(var(--bc) / var(--tw-text-opacity, 1));">
+            <DaisyButton OnClick="_=>_showSidebar=!_showSidebar" Square>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    style="width: 1.5rem;height: 1.5rem;">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
@@ -15,7 +15,7 @@
             </DaisyLink>
         </StartContent>
         <EndContent>
-            <DaisySelect Style="margin-right:1rem;" @bind-Value="@theme">
+            <DaisySelect Style="margin-right:1rem;" @bind-Value="@_theme">
                 @for (int i = 0; i < daisyTheme.Length; i++)
                 {
                     <option>@daisyTheme[i]</option>
@@ -28,12 +28,16 @@
                 Target="_blank">Gitee</DaisyLink>
         </EndContent>
     </DaisyNavbar>
-    <DaisyDrawer Style="z-index:1001" @bind-Open="@showSidebar">
-        <NavMenu OnCloseBtnClicked="(_=>showSidebar=false)" />
+    <DaisyDrawer Style="@DrawerStylelist" SiderStyle="@SiderStylelist" ContentStyle="height:calc(100vh - 70px);overflow-y:auto;" Persistent="@Persistent" @bind-Open="@_showSidebar">
+        <SiderContent>
+            <NavMenu />
+        </SiderContent>
+        <ChildContent>
+            <DaisyContainer style="padding: 1rem;">
+                <DaisyErrorBoundary>
+                    @Body
+                </DaisyErrorBoundary>
+            </DaisyContainer>
+        </ChildContent>
     </DaisyDrawer>
-    <div>
-        <DaisyErrorBoundary>
-            @Body
-        </DaisyErrorBoundary>
-    </div>
 </DaisyLayout>

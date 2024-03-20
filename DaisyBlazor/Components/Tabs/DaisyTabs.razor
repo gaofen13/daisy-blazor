@@ -1,13 +1,7 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@TabsClass" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="tabs-title">
-        @foreach (var item in _tabs)
-        {
-            <a class="@item.TitleClass" @onclick="@(_=>OnActiveTabChanged(item))">@item.Title</a>
-        }
-    </div>
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>

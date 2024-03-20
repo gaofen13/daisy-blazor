@@ -2,7 +2,7 @@
 
 <h3>Button按钮</h3>
 <div>
-    <DaisyButton>Button</DaisyButton>
+    <DemoSection Title="Simple button" Component="@typeof(SimpleButton)" />
 </div>
 
 <h3>按钮类型和颜色</h3>
@@ -10,9 +10,9 @@
     <DaisyButton Color="@Color.Primary">Primary</DaisyButton>
     <DaisyButton Color="@Color.Secondary">Secondary</DaisyButton>
     <DaisyButton Color="@Color.Accent">Accent</DaisyButton>
-    <DaisyButton Neutral>Neutral</DaisyButton>
+    <DaisyButton Color="@Color.Neutral">Neutral</DaisyButton>
     <DaisyButton Ghost>Ghost</DaisyButton>
-    <DaisyButton Link>Link</DaisyButton>
+    <DaisyButton Href="button">Link</DaisyButton>
 </div>
 
 <h3>不同的状态对应的按钮颜色</h3>
@@ -54,7 +54,7 @@
 <DaisyButton Wide>Wide</DaisyButton>
 
 <h3>玻璃效果</h3>
-<DaisyButton Glass>Glass button</DaisyButton>
+<DaisyButton Class="glass">Glass button</DaisyButton>
 
 <h3>Button可以用不同的HTML标签实现</h3>
 <div>
@@ -73,12 +73,12 @@
 <h3>矩形圆角按钮</h3>
 <div>
     <DaisyButton Square>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </DaisyButton>
     <DaisyButton Square Outline>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </DaisyButton>
@@ -87,12 +87,12 @@
 <h3>圆形按钮</h3>
 <div>
     <DaisyButton Circle>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </DaisyButton>
     <DaisyButton Circle Outline>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </DaisyButton>
@@ -101,7 +101,7 @@
 <h3>图标按钮</h3>
 <div>
     <DaisyButton>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
@@ -109,7 +109,7 @@
     </DaisyButton>
     <DaisyButton Outline>
         Button
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>

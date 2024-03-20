@@ -2,9 +2,10 @@
 @inherits DaisyComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <input type="checkbox" class="drawer-toggle" checked="@CurrentOpened" @onchange="@OnOpenChanged" />
-    <div class="drawer-side">
-        <div class="drawer-overlay" @onclick="_=>CurrentOpened=!CurrentOpened"></div>
-        @ChildContent
+    <input type="checkbox" class="drawer-toggle" checked="@Checked" />
+    <div class="@ContentClassname" style="@ContentStyle">@ChildContent</div>
+    <div class="@SiderClassname" style="@SiderStyle">
+        <div class="drawer-overlay" @onclick="_=>Open=!Open"></div>
+        @SiderContent
     </div>
 </div>

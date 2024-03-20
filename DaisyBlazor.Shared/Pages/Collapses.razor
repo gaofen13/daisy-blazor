@@ -1,12 +1,8 @@
 ﻿@page "/collapses"
 
-<DaisyCollapse HasArrow>
+<DaisyCollapse HasArrow Class="bg-base-300">
     <TitleContent>Toggle to the content</TitleContent>
     <ChildContent>
-        <DaisyMockupCode>
-            <DaisyPreCode>
-                @("<DaisyCollapse Title = \"折叠面板\">\r\n <MessageContent>\r\n 隐藏的内容\r\n </MessageContent>\r\n</DaisyCollapse>")
-            </DaisyPreCode>
-        </DaisyMockupCode>
+        tabindex="0" attribute is necessary to make the div focusable
     </ChildContent>
 </DaisyCollapse>
