@@ -1,20 +1,20 @@
 ﻿@page "/"
 
-<DaisyRadialProgress Color="Color.Primary" Value="10" BgColor="Color.Secondary">10%</DaisyRadialProgress>
+<DaisyRadialProgress Class="text-primary" Value="10">10%</DaisyRadialProgress>
 <DaisyProgress Indeterminate Value="20" Max="100"></DaisyProgress>
 
-<DaisyAlert Title="Info">
+<DaisyAlert>
     <DaisyButton>关闭</DaisyButton>
 </DaisyAlert>
-<DaisyTooltip Class="w-full" Text="alert">
-    <DaisyAlert Title="Warning" AlertLevel="Level.Warning" Filled />
+<DaisyTooltip Style="width:100%" Message="alert">
+    <DaisyAlert Level="Level.Warning">Alert</DaisyAlert>
 </DaisyTooltip>
 
-<DaisyButtonGroup Vertical>
-    <DaisyButton Color="@color" OnClick="@(()=>add+=1)">Button @add</DaisyButton>
-    <DaisyButton Color="Color.Secondary" OnClick="@Toggle">Button2</DaisyButton>
-    <DaisyButton Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
-</DaisyButtonGroup>
+<div class="join">
+    <DaisyButton Class="join-item" Color="@color" OnClick="@(()=>add+=1)">Button @add</DaisyButton>
+    <DaisyButton Class="join-item" Color="Color.Secondary" OnClick="@Toggle">Button2</DaisyButton>
+    <DaisyButton Class="join-item" Color="Color.Error" OnClick="@ShowToast">Button3</DaisyButton>
+</div>
 
 <DaisyFormField Label="输入框">
     <DaisyInputText @ref="@_input" @bind-Value="@input" Bordered="@true" AutoFocus="@true" />
