@@ -1,70 +1,65 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@PagerClass" style="@Style" @attributes="@AdditionalAttributes">
-    @if (ShowSizeOption)
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <DaisyButton Class="join-item" Size="@Size" Disabled="@PrevDisabled" OnClick="@OnClickPrev">&lt;</DaisyButton>
+    @if (Total >= 1)
     {
-        <div class="pager-sizeoption">
-            <h6>@SizeOptionLabel</h6>
-            <DaisySelect @bind-Value="@PageSize" Style="max-width:max-content">
-                @foreach (var option in SizeOption)
-                {
-                    <option value="@option">@option</option>
-                }
-            </DaisySelect>
-        </div>
+        <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(1)" Active="@(PageIndex==1)">1</DaisyButton>
     }
-    <DaisyButtonGroup>
-        <DaisyButton Outline="@Outline" Disabled="@PrevDisabled" OnClick="@OnClickPrev">&lt;</DaisyButton>
-        @if (Total >= 1)
+    @if (Total <= 7)
+    {
+        for (int i = 2; i < Total; i++)
         {
-            <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(1)" Active="@(PageIndex==1)">1</DaisyButton>
+            var buttonIndex = i;
+            <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(buttonIndex)"
+                Active="@(PageIndex==buttonIndex)">
+                @buttonIndex</DaisyButton>
         }
-        @if (Total <= 7)
+    }
+    else
+    {
+        if (PageIndex <= 4)
         {
-            for (int i = 2; i < Total; i++)
+            for (int i = 2; i < 5; i++)
             {
                 var buttonIndex = i;
-                <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
+                <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(buttonIndex)"
+                    Active="@(PageIndex==buttonIndex)">
+                    @buttonIndex</DaisyButton>
+            }
+            <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(5)" Active="@(PageIndex==5)">5</DaisyButton>
+            <DaisyButton Class="join-item" Size="@Size" Disabled>...</DaisyButton>
+        }
+        else if (PageIndex > Total - 4)
+        {
+            <DaisyButton Class="join-item" Size="@Size" Disabled>...</DaisyButton>
+            @for (int i = Total - 4; i < Total; i++)
+            {
+                var buttonIndex = i;
+                <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(buttonIndex)"
+                    Active="@(PageIndex==buttonIndex)">
+                    @buttonIndex</DaisyButton>
             }
         }
         else
         {
-            if (PageIndex <= 4)
+            <DaisyButton Class="join-item" Size="@Size" Disabled>...</DaisyButton>
+            @for (int i = PageIndex - 1; i < PageIndex + 2; i++)
             {
-                for (int i = 2; i < 5; i++)
-                {
-                    var buttonIndex = i;
-                    <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
-                }
-                <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(5)" Active="@(PageIndex==5)">5</DaisyButton>
-                <DaisyButton Outline="@Outline" Disabled>…</DaisyButton>
+                var buttonIndex = i;
+                <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(buttonIndex)"
+                    Active="@(PageIndex==buttonIndex)">
+                    @buttonIndex</DaisyButton>
             }
-            else if (PageIndex > Total - 4)
-            {
-                <DaisyButton Outline="@Outline" Disabled>…</DaisyButton>
-                @for (int i = Total - 4; i < Total; i++)
-                {
-                    var buttonIndex = i;
-                    <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
-                }
-            }
-            else
-            {
-                <DaisyButton Outline="@Outline" Disabled>…</DaisyButton>
-                @for (int i = PageIndex - 1; i < PageIndex + 2; i++)
-                {
-                    var buttonIndex = i;
-                    <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(buttonIndex)" Active="@(PageIndex==buttonIndex)">@buttonIndex</DaisyButton>
-                }
-                <DaisyButton Outline="@Outline" Disabled>…</DaisyButton>
-            }
+            <DaisyButton Class="join-item" Size="@Size" Disabled>...</DaisyButton>
+        }
 
-        }
-        @if (Total >= 2)
-        {
-            <DaisyButton Outline="@Outline" OnClick="_=>OnClickPager(Total)" Active="@(PageIndex==Total)">@Total</DaisyButton>
-        }
-        <DaisyButton Outline="@Outline" Disabled="@NexDisabled" OnClick="@OnClickNex">&gt;</DaisyButton>
-    </DaisyButtonGroup>
+    }
+    @if (Total >= 2)
+    {
+        <DaisyButton Class="join-item" Size="@Size" OnClick="_=>OnClickPager(Total)" Active="@(PageIndex==Total)">@Total
+        </DaisyButton>
+    }
+    <DaisyButton Class="join-item" Size="@Size" Disabled="@NexDisabled" OnClick="@OnClickNex">&gt;</DaisyButton>
 </div>

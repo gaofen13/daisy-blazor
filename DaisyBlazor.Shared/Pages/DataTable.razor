@@ -2,61 +2,25 @@
 @using DaisyBlazor.Shared.Data
 @inject WeatherForecastService ForecastService
 
-<DaisyDataTable Items="@_forecasts"
-                MultiSelection ShowPager
-                DefaultPageIndex="2"
-                PagePosition="PositionX.End"
-                PageSizeOption="@(new int[]{5,10,30,100})">
-    <ToolbarContent>
-        <DaisyButtonGroup>
-            <DaisyButton Color="Color.Primary">Add</DaisyButton>
-            <DaisyButton Color="Color.Accent">Edit</DaisyButton>
-            <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
-        </DaisyButtonGroup>
-    </ToolbarContent>
+<DaisyTable Items="@_forecasts" MultiSelection>
     <Columns>
         <DaisyColumn Title="Date">@context.Date.ToString("yyyy-MM-dd")</DaisyColumn>
         <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
         <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
         <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
     </Columns>
-    <FootContent><th colspan="100">这是客户端分页</th></FootContent>
-</DaisyDataTable>
-
-<DaisyDataTable TItem="@WeatherForecast"
-                ServerDataFunc="@(pagerState => GetWeaterForecastAsync(pagerState.PageIndex,pagerState.PageSize))"
-                MultiSelection 
-                ShowPager
-                DefaultPageSize="5"
-                PagePosition="PositionX.End">
-    <ToolbarContent>
-        <DaisyButtonGroup>
-            <DaisyButton Color="Color.Primary">Add</DaisyButton>
-            <DaisyButton Color="Color.Accent">Edit</DaisyButton>
-            <DaisyButton Color="Color.Secondary">Delete</DaisyButton>
-        </DaisyButtonGroup>
-    </ToolbarContent>
-    <Columns>
-        <DaisyColumn Title="Data">@context.Date</DaisyColumn>
-        <DaisyColumn Title="TemperatureC">@context.TemperatureC</DaisyColumn>
-        <DaisyColumn Title="TemperatureF">@context.TemperatureF</DaisyColumn>
-        <DaisyColumn Title="Summary">@context.Summary</DaisyColumn>
-    </Columns>
-    <FootContent><th colspan="100">这是服务端分页</th></FootContent>
-</DaisyDataTable>
+</DaisyTable>
 
 @code {
     private IEnumerable<WeatherForecast>? _forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        var res = await GetWeaterForecastAsync(1, 50);
-        _forecasts = res.Data;
+        _forecasts = await GetWeaterForecastAsync(1, 50);
     }
 
-    private async Task<TableData<WeatherForecast>> GetWeaterForecastAsync(int index, int size)
+    private async Task<IEnumerable<WeatherForecast>> GetWeaterForecastAsync(int index, int size)
     {
-        var data = await ForecastService.GetForecastAsync(DateTime.Now, index, size);
-        return new TableData<WeatherForecast> { Data = data, Total = 200 };
+        return await ForecastService.GetForecastAsync(DateTime.Now, index, size);
     }
 }

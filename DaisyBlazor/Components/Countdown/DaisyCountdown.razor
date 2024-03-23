@@ -1,16 +1,6 @@
 ﻿@namespace DaisyBlazor
 @inherits DaisyComponentBase
 
-<div class="@CountdownClass" style="@Style">
-    <span class="countdown-content">
-        <span style="--value:@Value;"></span>
-    </span>
-    @if (LabelContent is not null)
-    {
-        @LabelContent
-    }
-    else if (!string.IsNullOrWhiteSpace(Label))
-    {
-        @Label
-    }
-</div>
+<span class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <span style="--value:@Value;"></span>
+</span>

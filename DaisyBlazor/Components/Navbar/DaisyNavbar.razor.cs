@@ -7,15 +7,8 @@ namespace DaisyBlazor
     {
         private string Classname =>
             new ClassBuilder("navbar")
-            .AddClass($"shadow-{ShadowSize.ToString().ToLower()}", !DisabledShadow)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public bool DisabledShadow { get; set; }
-
-        [Parameter]
-        public Size ShadowSize { get; set; } = Size.Md;
 
         [Parameter]
         public RenderFragment? StartContent { get; set; }

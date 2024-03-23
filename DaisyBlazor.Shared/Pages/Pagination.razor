@@ -1,12 +1,8 @@
 ﻿@page "/pager"
 
-<DaisyCheckbox @bind-Value="outline" />
 <p>PageIndex:@index</p>
-<p>PageSize:@size</p>
-<DaisyPagination Outline="outline" Total="5" @bind-PageIndex="index" @bind-PageSize="size"></DaisyPagination>
+<DaisyPagination Total="5" @bind-PageIndex="index"></DaisyPagination>
 
 @code {
     private int index = 2;
-    private int size = 20;
-    private bool outline;
 }

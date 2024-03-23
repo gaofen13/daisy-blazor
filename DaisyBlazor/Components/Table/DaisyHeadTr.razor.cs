@@ -5,7 +5,7 @@ namespace DaisyBlazor
 {
     public partial class DaisyHeadTr<TItem>
     {
-        private string TrClass =>
+        private string Classname =>
             new ClassBuilder()
             .AddClass(Class)
             .Build();
@@ -13,7 +13,7 @@ namespace DaisyBlazor
         private bool Checked => SelectedItems?.Count() == Items?.Count();
 
         [CascadingParameter]
-        public IDataTable<TItem>? Table { get; set; }
+        public ITable<TItem>? Table { get; set; }
 
         [Parameter]
         public IEnumerable<TItem>? SelectedItems { get; set; }

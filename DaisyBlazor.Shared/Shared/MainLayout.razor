@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <DaisyLayout Theme="@_theme" Style="min-height:100vh;">
-    <DaisyNavbar class="bg-base-200" Style="position:sticky;top:0;margin-bottom:4px;z-index:1000">
+    <DaisyNavbar class="bg-base-200 shadow" Style="position:sticky;top:0;margin-bottom:4px;z-index:660">
         <StartContent>
             <DaisyButton OnClick="_=>_showSidebar=!_showSidebar" Square>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -33,7 +33,7 @@
             <NavMenu />
         </SiderContent>
         <ChildContent>
-            <DaisyContainer style="padding: 1rem;">
+            <DaisyContainer style="position:relative;z-index:0;padding:1rem;">
                 <DaisyErrorBoundary>
                     @Body
                 </DaisyErrorBoundary>

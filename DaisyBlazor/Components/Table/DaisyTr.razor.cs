@@ -8,14 +8,15 @@ namespace DaisyBlazor
     {
         private string TrClass =>
             new ClassBuilder()
-            .AddClass("active", Checked)
+            .AddClass("hover", Table?.Hover == true)
+            .AddClass("bg-base-200", Checked)
             .AddClass(Class)
             .Build();
 
         private bool Checked => SelectedItems?.Contains(Item) == true;
 
         [CascadingParameter]
-        public IDataTable<TItem>? Table { get; set; }
+        public ITable<TItem>? Table { get; set; }
 
         [Parameter]
         public bool MultiSelection { get; set; }

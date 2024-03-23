@@ -13,7 +13,7 @@ namespace DaisyBlazor
             .Build();
 
         private string Classname =>
-            new ClassBuilder("rounded")
+            new ClassBuilder("rounded-box")
             .AddClass("rounded-full", Circle)
             .AddClass(GetSizeClass())
             .AddClass(Class)

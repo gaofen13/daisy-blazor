@@ -21,7 +21,7 @@ namespace DaisyBlazor.Shared.Shared
 
         private string DrawerStylelist =>
             new StyleBuilder()
-            .AddStyle("z-index", "1001", _showSidebar && !Persistent)
+            .AddStyle("z-index", "800", _showSidebar && !Persistent)
             .Build();
 
         private string SiderStylelist =>

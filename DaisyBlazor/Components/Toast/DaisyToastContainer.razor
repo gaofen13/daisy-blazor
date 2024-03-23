@@ -3,14 +3,14 @@
 
     <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
         <CascadingValue Value="@this" IsFixed>
-@if (ToastList.Any())
-{
+        @if (ToastList.Any())
+        {
             @foreach (var toast in ToastList.OrderBy(x => x.TimeStamp))
             {
                 <ToastInstance @key="@toast" Id="@toast.Id" Options="@toast.Options">
                     @toast.ToastContent
                 </ToastInstance>
             }
-}
+        }
         </CascadingValue>
     </div>

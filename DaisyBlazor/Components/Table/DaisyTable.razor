@@ -2,17 +2,10 @@
 @inherits DaisyComponentBase
 @typeparam TItem
 
-<div class="table-container">
-    @if (ToolbarContent is not null)
-    {
-        <div class="table-toolbar">
-            @ToolbarContent
-        </div>
-    }
-    <table class="@TableClass" style="@Style" @attributes="@AdditionalAttributes">
+    <table class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
         <CascadingValue Value="@this" IsFixed>
             <thead>
-                <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_currentPageItems" SelectedItems="@SelectedItems">
+                <DaisyHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
                     @if (HeadContent is not null)
                     {
                         @HeadContent
@@ -20,16 +13,16 @@
                     else if (Columns is not null)
                     {
                         <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Head" IsFixed>
-                            @Columns(DaisyDataTable<TItem>.DefaultValue)
+                            @Columns(DaisyTable<TItem>.DefaultValue)
                         </CascadingValue>
                     }
                 </DaisyHeadTr>
             </thead>
             <tbody>
-                @if (_currentPageItems.Any() && Columns != null)
+                @if (_items.Any() && Columns != null)
                 {
                     <CascadingValue Name="RenderMode" Value="@DaisyColumn.RenderMode.Body" IsFixed>
-                        @foreach (var item in _currentPageItems)
+                        @foreach (var item in _items)
                         {
                             <DaisyTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
                                 @Columns(item)
@@ -48,17 +41,3 @@
             }
         </CascadingValue>
     </table>
-    @if (ShowPager)
-    {
-        <div class="@PagerClass">
-            @if (PagerContent is not null)
-            {
-                @PagerContent
-            }
-            else
-            {
-                <DaisyPagination Total="@_totalPager" SizeOption="@PageSizeOption" @bind-PageIndex="@PageIndex" @bind-PageSize="@PageSize" Outline="@OutlinePager" />
-            }
-        </div>
-    }
-</div>

@@ -1,7 +1,9 @@
 ﻿namespace DaisyBlazor
 {
-    public interface IDataTable<TItem>
+    public interface ITable<TItem>
     {
+        bool Hover { get; set; }
+        
         void AddSelectedItem(TItem item);
 
         void RemoveSelectedItem(TItem item);

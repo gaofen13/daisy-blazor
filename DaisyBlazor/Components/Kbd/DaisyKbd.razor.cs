@@ -6,8 +6,9 @@ namespace DaisyBlazor
 {
     public partial class DaisyKbd
     {
-        private string KdbClass =>
+        private string Classname =>
             new ClassBuilder("kbd")
+            .AddClass($"kbd-{Size.ToString().ToLower()}")
             .AddClass(Class)
             .Build();
 
@@ -16,5 +17,8 @@ namespace DaisyBlazor
 
         [Parameter]
         public bool StopPropagation { get; set; }
+
+        [Parameter]
+        public Size Size { get; set; }
     }
 }
